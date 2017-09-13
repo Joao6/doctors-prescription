@@ -1,0 +1,95 @@
+<div ng-include="'views/templates/navbar-adm.html'"></div>
+<div class="container">
+    <div class="jumbotron">
+        <h3>
+            Cadastrar medicamento
+        </h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <form id="formMedicament" name="formMedicament">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>Informações</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="name-medicament">Nome</label>
+                                <input type="text" class="form-control" id="name-medicament" placeholder="Nome do princípio ativo" ng-required="true" ng-model="medicament.name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="comercial-name-medicament">Nome comercial</label>
+                                <input type="text" class="form-control" id="comercial-name-medicament" placeholder="Nome comercial" ng-required="true" ng-model="medicament.comercialName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="apresentation-medicament">Apresentações</label>
+                                <select id="apresentation-medicament" class="form-control" ng-required="true" ng-model="medicament.apresentation">
+                                    <option ng-disabled="true" ng-selected="true">Selecione...</option>
+                                    <option value="COMPRIMIDO">Comprimido</option>
+                                    <option value="SOLUCAO">Solução</option>                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="miligrama-medicament">Miligramas</label>
+                                <input type="text" class="form-control" id="miligrama-medicament" placeholder="Número de miligramas" ng-required="true" ng-model="medicament.miligrama">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="dosage-medicament">Posologia</label>
+                                <textarea rows="5" class="form-control" id="crm-medicament" placeholder="Formas de uso, número de comprimidos por unidade de tempo"
+                                    ng-required="true" ng-model="medicament.dosage"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>
+                                Interação medicamentosa
+                                <a ng-class="addInteracao()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="interation-list" style="border: 1px solid #e2e2e2; padding: 5px; margin: 5px;">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="interation-medicament">Interage com</label>
+                                    <select id="interation-medicament" class="form-control" ng-model="interation.medicament">
+                                    <option ng-disabled="true" ng-selected="true">Selecione...</option>
+                                    <option value="DIPIRONA">Dipirona</option>                                                                     
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="interation-description">Descrição</label>
+                                    <textarea rows="3" class="form-control" id="interation-description" placeholder="Formas de interação"
+                                        ng-model="interation.description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button ng-click="updateMedicament(medicament)" ng-disabled="formMedicament.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
+                    <a href="#/adm/medicamentos" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Todos os direitos reservados <a href="">medicament QR Code</a>
+    </footer>
+</div>

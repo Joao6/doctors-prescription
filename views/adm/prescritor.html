@@ -1,0 +1,52 @@
+<div ng-include="'views/templates/modal-delete-prescritor.html'"></div>
+<div ng-include="'views/templates/navbar-adm.html'"></div>
+<div class="container" ng-init="getPrescritorList()">
+    <div class="jumbotron">
+        <h3>
+            Prescritores
+            <a href="#/adm/prescritores/novo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+        </h3>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="name" placeholder="Pesquisar por nome">
+                    <span class="input-group-btn">
+                        <button ng-click="getPrescritorList(name)" class="btn btn-default" type="button">Pesquisar</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Profissão</th>
+                            <th>CRM</th>
+                            <th>Conta</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="prescritor in prescritorList">
+                            <td>{{prescritor.name}}</td>
+                            <td>{{prescritor.email}}</td>
+                            <td>{{prescritor.profession}}</td>
+                            <td>{{prescritor.crm}}</td>
+                            <td>{{prescritor.account}}</td>
+                            <td>
+                                <a href="#/adm/prescritores/{{prescritor.id}}/edit" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></a>
+                                <a ng-click="openModal('modal-delete', prescritor.id)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+    </footer>
+</div>

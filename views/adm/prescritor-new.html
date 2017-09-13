@@ -1,0 +1,111 @@
+<div ng-include="'views/templates/navbar-adm.html'"></div>
+<div class="container">
+    <div class="jumbotron">
+        <h3>
+            Cadastrar prescritor
+        </h3>
+        <div class="row">
+            <div class="col-lg-12">
+                <form id="formPrescritor" name="formPrescritor">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>Informações pessoais</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="name-prescritor">Nome</label>
+                                <input type="text" class="form-control" id="name-prescritor" placeholder="Ex.: João Pedro" ng-required="true" ng-model="prescritor.name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="email-prescritor">E-mail</label>
+                                <input type="email" class="form-control" id="email-prescritor" placeholder="Ex.: joao@gmail.com" ng-required="true" ng-model="prescritor.email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="password-prescritor">Senha</label>
+                                <input type="password" class="form-control" id="password-prescritor" placeholder="***********" ng-required="true" ng-model="prescritor.password">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="profession-prescritor">Profissão</label>
+                                <input type="text" class="form-control" id="profession-prescritor" placeholder="Ex.: Cirurgião" ng-required="true" ng-model="prescritor.profession">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="crm-prescritor">CRM</label>
+                                <input type="text" class="form-control" id="crm-prescritor" placeholder="Ex.: CRM MG-15684N" ng-required="true" ng-model="prescritor.crm">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="telephone-prescritor">Telefone</label>
+                                <input type="text" class="form-control" id="telephone-prescritor" placeholder="Ex.: (35) 998745212" ng-required="true" ng-model="prescritor.telephone">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="account-prescritor">Tipo de conta</label>
+                                <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account">
+                                    <option ng-disabled="true" ng-selected="true">Selecione...</option>
+                                    <option value="FREE">Free</option>
+                                    <option value="PREMIUM">Premium</option>                                    
+                                  </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>Endereço</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="address-prescritor">Rua</label>
+                                <input type="text" class="form-control" id="address-prescritor" placeholder="Ex.: Rua Marechal Deodoro"
+                                    ng-model="prescritor.address">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="neighborhood-prescritor">Bairro</label>
+                                <input type="text" class="form-control" id="neighborhood-prescritor" placeholder="Ex.: Centro" ng-model="prescritor.neighborhood">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="city-prescritor">Cidade</label>
+                                <input type="text" class="form-control" id="city-prescritor" placeholder="Ex.: Santa Rita do Sapucaí"
+                                    ng-model="prescritor.city">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="uf-prescritor">UF</label>
+                                <input type="text" class="form-control" id="uf-prescritor" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescritor.uf">
+                            </div>
+                        </div>
+                    </div>
+                    <button ng-click="savePrescritor(prescritor)" ng-disabled="formPrescritor.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
+                    <a href="#/adm/prescritores" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+    </footer>
+</div>

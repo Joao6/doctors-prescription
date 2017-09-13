@@ -1,0 +1,24 @@
+{
+  "prescritors": [
+    {
+      "name": "Diego Dulval",
+      "email": "diego@gmail.com",
+      "password": "1234565",
+      "profession": "Pediatra",
+      "crm": "1234567",
+      "telephone": "359988777",
+      "account": "PREMIUM",
+      "id": 2
+    }
+  ],
+  "medicaments": [
+    {
+      "name": "Dipirona Monoidratada",
+      "comercialName": "Dipirona",
+      "apresentation": "GOTAS",
+      "miligrama": "500",
+      "dosage": "Tomar 30 gotas a cada 12 horas em caso de dor.",
+      "id": 1
+    }
+  ]
+}
