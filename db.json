@@ -11,6 +11,20 @@
       "id": 2
     }
   ],
+  "pacients": [
+    {
+      "name": "Marcos",
+      "email": "marcos@gmail.com",
+      "profession": "CLT",
+      "id": 2
+    },
+    {
+      "name": "Joao Pedro",
+      "email": "joao@gmail.com",
+      "profession": "Estagiário",
+      "id": 3
+    }
+  ],
   "medicaments": [
     {
       "name": "Dipirona Monoidratada",
@@ -19,6 +33,34 @@
       "miligrama": "500",
       "dosage": "Tomar 30 gotas a cada 12 horas em caso de dor.",
       "id": 1
+    },
+    {
+      "interationList": [
+        {
+          "medicament": 1,
+          "description": "sccsd"
+        }
+      ],
+      "name": "sfsd",
+      "comercialName": "sdc",
+      "apresentation": "COMPRIMIDO",
+      "miligrama": "500",
+      "dosage": "asdas",
+      "id": 2
+    },
+    {
+      "interationList": [
+        {
+          "medicament": 1,
+          "description": "Este medicamento não deve ser utilizado em conjunto com dipirona, pois causa efeitos colaterais."
+        }
+      ],
+      "name": "Paracetamol",
+      "comercialName": "Paracetamol",
+      "apresentation": "COMPRIMIDO",
+      "miligrama": "50",
+      "dosage": "Tomar somente quando sentir dor",
+      "id": 3
     }
   ]
 }

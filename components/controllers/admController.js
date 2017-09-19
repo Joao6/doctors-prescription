@@ -1,6 +1,7 @@
 'use strict'
 angular.module('prescritor')
-    .controller('admController', function ($scope, $rootScope, $location, apiService, toast, prescritor, medicament) {
+    .controller('admController', function ($scope, $rootScope, $location, apiService, toast, prescritor, medicament, medicamentList) {        
+        
 
         if(prescritor){
             $scope.prescritor = prescritor.data
@@ -8,11 +9,19 @@ angular.module('prescritor')
             $scope.prescritor = {}
         }
 
+        if(medicamentList){
+            $scope.medicamentList = medicamentList.data
+        }else{
+            $scope.medicamentList = []
+        }
+
         if(medicament){
             $scope.medicament = medicament.data
         }else{
             $scope.medicament = {}
         }
+
+        $scope.medicament.interationList = []
 
         $scope.savePrescritor = (prescritor) => {
             apiService.createPrescritor(prescritor).success( data => {
@@ -88,6 +97,14 @@ angular.module('prescritor')
             }).error( err =>{
                 toast.error('Erro ao buscar a lista de medicamentos!', 3000)
             })
+        }
+
+        $scope.addInteracao = (medicament) => {
+            const interation = {
+                medicament: {},
+                description: ""
+            }
+            medicament.interationList.push(interation)
         }
 
         $scope.openModal = (modal, id) => {            

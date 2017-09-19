@@ -20,7 +20,8 @@ $stateProvider
         controller: 'admController',  
         resolve:{
             prescritor: function(){},
-            medicament: function(){}
+            medicament: function(){},
+            medicamentList: function (){}
         }         
     })
     .state({
@@ -30,7 +31,8 @@ $stateProvider
         controller: 'admController',  
         resolve:{
             prescritor: function(){},
-            medicament: function(){}
+            medicament: function(){},
+            medicamentList: function (){}
         }  
     })
     .state({
@@ -40,7 +42,8 @@ $stateProvider
         controller: 'admController',  
         resolve:{
             prescritor: function(){},
-            medicament: function(){}
+            medicament: function(){},
+            medicamentList: function (){}
         }        
     })
     .state({
@@ -52,7 +55,8 @@ $stateProvider
             prescritor: function($stateParams, apiService){
                 return apiService.getUserById($stateParams.idPrescritor) 
             },
-            medicament: function(){}
+            medicament: function(){},
+            medicamentList: function (){}
         }      
     })
     .state({
@@ -62,7 +66,8 @@ $stateProvider
         controller: 'admController',  
         resolve:{
             prescritor: function(){},
-            medicament: function(){}
+            medicament: function(){},
+            medicamentList: function (){}
         }        
     })    
     .state({
@@ -72,7 +77,10 @@ $stateProvider
         controller: 'admController',  
         resolve:{
             prescritor: function(){},
-            medicament: function(){}
+            medicament: function(){},
+            medicamentList: function (apiService){
+                return apiService.getMedicaments()
+            }
         }        
     })
     .state({
@@ -84,8 +92,49 @@ $stateProvider
             prescritor: function(){},
             medicament: function($stateParams, apiService){
                 return apiService.getMedicamentById($stateParams.idMedicament) 
-            }
+            },
+            medicamentList: function (){}
         }      
+    })
+    .state({
+        name: 'prescritor-home',
+        url: '/prescritor/home',
+        templateUrl: 'views/prescritor/home.html',
+        controller: 'prescritorController',
+        resolve: {
+            pacientList: function(){}
+        }
+    })
+    .state({
+        name: 'prescritor-prescription',
+        url: '/prescritor/prescricao',
+        templateUrl: 'views/prescritor/prescription.html',
+        controller: 'prescritorController',
+        resolve: {
+            pacientList: function(apiService){
+                return apiService.getPacientList()
+            }
+        }
+    })    
+    .state({
+        name: 'prescritor-pacients',
+        url: '/prescritor/pacientes',
+        templateUrl: 'views/prescritor/pacients.html',
+        controller: 'prescritorController',
+        resolve: {
+            pacientList: function(apiService){
+                return apiService.getPacientList()
+            }
+        }
+    })
+    .state({
+        name: 'prescritor-pacients-new',
+        url: '/prescritor/pacientes/novo',
+        templateUrl: 'views/prescritor/pacients-new.html',
+        controller: 'prescritorController',
+        resolve: {
+            pacientList: function(){}
+        }             
     })
 $urlRouterProvider.otherwise('login')
 

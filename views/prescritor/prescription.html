@@ -1,0 +1,77 @@
+<div ng-include="'views/templates/navbar-prescritor.html'"></div>
+<div class="container">
+    <div class="jumbotron">
+        <h3>
+            Cadastrar prescrição
+        </h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <form id="formPrescricao" name="formPrescricao">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>Informações</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="prescription-paciente">Paciente</label>
+                                <select id="prescription-paciente" class="form-control" ng-model="prescription.pacient" ng-required="true" ng-options="pacient.id as pacient.name for pacient in pacientList">                                
+                                </select>
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="prescription-descrition">Descrição</label>
+                                <textarea rows="5" class="form-control" id="description-prescription" placeholder="Descrição da prescrição..."
+                                    ng-required="true" ng-model="prescription.description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>
+                                Medicamentos
+                                <a ng-click="addInteracao(medicament)" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="prescription-medicament">Medicamento</label>
+                                <select id="prescription-medicament" class="form-control" ng-model="prescription.medicament" ng-required="true" ng-options="pacient.id as pacient.name for pacient in pacientList">                                
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div ng-repeat="interation in medicament.interationList" class="interation-list" style="border: 1px solid #e2e2e2; padding: 5px; margin: 5px;">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="interation-medicament">Interage com</label>
+                                    <select id="interation-medicament" class="form-control" ng-model="interation.medicament" ng-options="medicament.id as medicament.name for medicament in medicamentList"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="interation-description">Descrição</label>
+                                    <textarea rows="3" class="form-control" id="interation-description" placeholder="Formas de interação" ng-model="interation.description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <button ng-click="savePrescription(prescription)" ng-disabled="formPrescription.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
+                    <a href="#/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+    </footer>
+</div>
