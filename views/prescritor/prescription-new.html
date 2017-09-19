@@ -1,0 +1,100 @@
+<div ng-include="'views/templates/navbar-prescritor.html'"></div>
+<div class="container">
+    <div class="jumbotron">
+        <h3>
+            Cadastrar prescrição
+        </h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <form id="formPrescricao" name="formPrescricao">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>Informações</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="prescription-paciente">Paciente</label>
+                                <select id="prescription-paciente" class="form-control" ng-model="prescription.pacient" ng-required="true" ng-options="pacient as pacient.name for pacient in pacientList">                                
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="prescription-descrition">Descrição</label>
+                                <textarea rows="5" class="form-control" id="description-prescription" placeholder="Descrição da prescrição..." ng-required="true"
+                                    ng-model="prescription.description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>Medicamentos desta prescrição</h4>
+                            <div ng-repeat="medicament in prescription.medicamentList" class="btn btn-primary" style="margin-right: 5px">{{medicament.name}}
+                                <a href="" ng-click="removeMedicament(medicament.id, prescription)"><span class="badge" style="background-color: red;"><span class="glyphicon glyphicon-remove" style="color: white;"></span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-hide="test == 'Joao'" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>Interações medicamentosas desta prescrição</h4>
+                            <ul>
+                                <li ng-repeat="interation in interationList">
+                                    <p>{{interation.description}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>
+                                Selecionar medicamentos
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-change="getMedicamentList(name)" ng-model="name" placeholder="Pesquisar por nome">
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="row" ng-hide="isEmptyMedicamentList()">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Nome comercial</th>
+                                            <th>Miligramas</th>
+                                            <th>Opções</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="medicament in medicamentList">
+                                            <td>{{medicament.name}}</td>
+                                            <td>{{medicament.comercialName}}</td>
+                                            <td>{{medicament.miligrama}}</td>
+                                            <td>
+                                                <a ng-click="verifyInteration(medicament, prescription)" class="btn btn-primary">ADICIONAR</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <button ng-click="savePrescription(prescription)" ng-disabled="formPrescription.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
+                    <a href="#/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+    </footer>
+</div>

@@ -30,11 +30,8 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="apresentation-medicament">Apresentações</label>
-                                <select id="apresentation-medicament" class="form-control" ng-required="true" ng-model="medicament.apresentation">
-                                    <option ng-disabled="true" ng-selected="true">Selecione...</option>
-                                    <option value="COMPRIMIDO">Comprimido</option>
-                                    <option value="GOTAS">Gotas</option>
-                                    <option value="SOLUCAO">Solução</option>                                    
+                                <select id="apresentation-medicament" class="form-control" ng-required="true" ng-model="medicament.apresentation"
+                                ng-options="apresentation as apresentation for apresentation in apresentationList">                                                                                                        
                                 </select>
                             </div>
                         </div>

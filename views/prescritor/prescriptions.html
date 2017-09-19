@@ -1,0 +1,46 @@
+<div ng-include="'views/templates/modal-delete-pacient.html'"></div>
+<div ng-include="'views/templates/navbar-prescritor.html'"></div>
+<div class="container">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="jumbotron">
+            <h3>
+                Prescrições
+                <a href="#/prescritor/prescricao/novo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+            </h3>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="name" placeholder="Pesquisar por nome">
+                        <span class="input-group-btn">
+                        <button ng-click="getPrescriptionList(name)" class="btn btn-default" type="button">Pesquisar</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nome paciente</th>                                                                                            
+                                <th>Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="prescription in prescriptionList">
+                                <td>{{prescription.pacient.name}}</td>                                                           
+                                <td>
+                                    <a href="#/prescritor/prescricao/{{prescription.id}}/info" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></a>
+                                    <a ng-click="openModal('modal-delete', pacient.id)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+    </footer>
+</div>

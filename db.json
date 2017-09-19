@@ -7,8 +7,60 @@
       "profession": "Pediatra",
       "crm": "1234567",
       "telephone": "359988777",
-      "account": "PREMIUM",
-      "id": 2
+      "account": "Premium",
+      "id": 2,
+      "address": "Rua",
+      "neighborhood": "Bairro",
+      "city": "Santa Rita",
+      "uf": "MG"
+    }
+  ],
+  "prescriptions": [
+    {
+      "pacient": {
+        "name": "Marcos",
+        "email": "marcos@gmail.com",
+        "profession": "CLT",
+        "id": 2
+      },
+      "description": "teste ashdvs jvja sdhjasd a",
+      "medicamentList": [
+        {
+          "interationList": [
+            {
+              "medicament": 2,
+              "description": "Se usado junto com dipirona, causa efeitos colaterais."
+            }
+          ],
+          "name": "Paracetamol",
+          "comercialName": "Paracetamol",
+          "apresentation": "Comprimido",
+          "miligrama": "50",
+          "dosage": "Tomar de 12 em 12 horas.",
+          "id": 1
+        },
+        {
+          "interationList": [
+            {
+              "medicament": 1,
+              "description": "Se usado junto com paracetamol, causa efeitos colaterais."
+            }
+          ],
+          "name": "Dipirona",
+          "comercialName": "Dipirona",
+          "apresentation": "Gotas",
+          "miligrama": "60",
+          "dosage": "Tomar de 8 em 8 horas",
+          "id": 2
+        }
+      ],
+      "interationList": [
+        {
+          "medicament": 2,
+          "description": "Se usado junto com dipirona, causa efeitos colaterais."
+        }
+      ],
+      "id": 1
     }
   ],
   "pacients": [
@@ -16,51 +68,51 @@
       "name": "Marcos",
       "email": "marcos@gmail.com",
       "profession": "CLT",
-      "id": 2
+      "id": 2,
+      "address": "Rua",
+      "neighborhood": "Bairro",
+      "city": "Santa Rita",
+      "uf": "MG"
     },
     {
-      "name": "Joao Pedro",
-      "email": "joao@gmail.com",
-      "profession": "Estagiário",
+      "name": "Andre",
+      "email": "andre@gmail.com",
+      "profession": "Engenheiro",
+      "address": "Rua Marechal",
+      "neighborhood": "Brasil",
+      "city": "Santa Rita",
+      "uf": "MG",
       "id": 3
     }
   ],
   "medicaments": [
     {
-      "name": "Dipirona Monoidratada",
-      "comercialName": "Dipirona",
-      "apresentation": "GOTAS",
-      "miligrama": "500",
-      "dosage": "Tomar 30 gotas a cada 12 horas em caso de dor.",
+      "interationList": [
+        {
+          "medicament": 2,
+          "description": "Se usado junto com dipirona, causa efeitos colaterais."
+        }
+      ],
+      "name": "Paracetamol",
+      "comercialName": "Paracetamol",
+      "apresentation": "Comprimido",
+      "miligrama": "50",
+      "dosage": "Tomar de 12 em 12 horas.",
       "id": 1
     },
     {
       "interationList": [
         {
           "medicament": 1,
-          "description": "sccsd"
+          "description": "Se usado junto com paracetamol, causa efeitos colaterais."
         }
       ],
-      "name": "sfsd",
-      "comercialName": "sdc",
-      "apresentation": "COMPRIMIDO",
-      "miligrama": "500",
-      "dosage": "asdas",
+      "name": "Dipirona",
+      "comercialName": "Dipirona",
+      "apresentation": "Gotas",
+      "miligrama": "60",
+      "dosage": "Tomar de 8 em 8 horas",
       "id": 2
-    },
-    {
-      "interationList": [
-        {
-          "medicament": 1,
-          "description": "Este medicamento não deve ser utilizado em conjunto com dipirona, pois causa efeitos colaterais."
-        }
-      ],
-      "name": "Paracetamol",
-      "comercialName": "Paracetamol",
-      "apresentation": "COMPRIMIDO",
-      "miligrama": "50",
-      "dosage": "Tomar somente quando sentir dor",
-      "id": 3
     }
   ]
 }

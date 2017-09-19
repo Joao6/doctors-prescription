@@ -56,10 +56,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="account-prescritor">Tipo de conta</label>
-                                <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account">
-                                    <option ng-disabled="true" ng-selected="true">Selecione...</option>
-                                    <option value="FREE">Free</option>
-                                    <option value="PREMIUM">Premium</option>                                    
+                                <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account" ng-options="account as account for account in accountList">                                 
                                   </select>
                             </div>
                         </div>
@@ -73,8 +70,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="address-prescritor">Rua</label>
-                                <input type="text" class="form-control" id="address-prescritor" placeholder="Ex.: Rua Marechal Deodoro"
-                                    ng-model="prescritor.address">
+                                <input type="text" class="form-control" id="address-prescritor" placeholder="Ex.: Rua Marechal Deodoro" ng-model="prescritor.address">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -88,8 +84,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="city-prescritor">Cidade</label>
-                                <input type="text" class="form-control" id="city-prescritor" placeholder="Ex.: Santa Rita do Sapucaí"
-                                    ng-model="prescritor.city">
+                                <input type="text" class="form-control" id="city-prescritor" placeholder="Ex.: Santa Rita do Sapucaí" ng-model="prescritor.city">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

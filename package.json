@@ -1,8 +1,8 @@
 {
-  "name": "angularjs-boilerplate",
-  "version": "1.3.0",
+  "name": "stetoskop-web",
+  "version": "1.0",
   "license": "MIT",
-  "description": "Simple AngularJS Boilerplate to kick start your new project with SASS support and Gulp watch/build tasks",
+  "description": "This is a web module of an project of medical solution.",
   "main": "app/app.js",
   "devDependencies": {
     "browser-sync": "^1.9.1",
@@ -44,23 +44,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jbutko/AngularJS-Boilerplate.git"
-  },
-  "keywords": [
-    "angular",
-    "angularjs",
-    "boilerplate",
-    "front-end",
-    "app",
-    "single-page",
-    "spa"
-  ],
-  "author": "Jozef Butko",
-  "docs": "https://github.com/jbutko/AngularJS-Boilerplate/blob/master/README.md",
-  "bugs": {
-    "url": "https://github.com/jbutko/AngularJS-Boilerplate/issues"
-  },
-  "homepage": "https://github.com/jbutko/AngularJS-Boilerplate",
+    "url": "https://github.com/Joao6/stetoskop-web.git"
+  },  
   "dependencies": {
     "gulp-sass": "^3.1.0"
   }

@@ -140,16 +140,16 @@ gulp.task('sass', function() {
 
 // SASS Build task
 gulp.task('sass:build', function() {
-  var s = $.size();
+ /*  var s = $.size();
 
   return gulp.src('styles/style.scss')
     .pipe($.sass({
       style: 'compact'
     }))
     .pipe($.autoprefixer('last 3 version'))
-    .pipe($.uncss({
-      html: ['./index.html', './views/**/*.html', './components/**/*.html'],
-      ignore: [
+    .pipe($.uncss({ */
+     // html: ['./index.html', './views/**/*.html', './components/**/*.html'],
+  /*     ignore: [
         '.index',
         '.slick',
         /\.owl+/,
@@ -170,7 +170,7 @@ gulp.task('sass:build', function() {
       message: function() {
         return 'Total CSS size ' + s.prettySize;
       }
-    }));
+    })); */
 });
 
 // BUGFIX: warning: possible EventEmitter memory leak detected. 11 listeners added.

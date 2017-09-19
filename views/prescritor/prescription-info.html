@@ -2,7 +2,7 @@
 <div class="container">
     <div class="jumbotron">
         <h3>
-            Cadastrar prescrição
+            Detalhes da prescrição
         </h3>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -16,36 +16,37 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="prescription-paciente">Paciente</label>
-                                <select id="prescription-paciente" class="form-control" ng-model="prescription.pacient" ng-required="true" ng-options="pacient.id as pacient.name for pacient in pacientList">                                
-                                </select>
+                                <input type="text" class="form-control" id="prescription-paciente" ng-required="true" ng-readonly="true" ng-model="prescription.pacient.name">
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="prescription-descrition">Descrição</label>
-                                <textarea rows="5" class="form-control" id="description-prescription" placeholder="Descrição da prescrição..."
-                                    ng-required="true" ng-model="prescription.description"></textarea>
+                                <textarea rows="5" class="form-control" id="description-prescription" ng-readonly="true" placeholder="Descrição da prescrição..." ng-required="true"
+                                    ng-model="prescription.description"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4>
-                                Medicamentos                                
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <input type="text" class="form-control" ng-model="name" placeholder="Pesquisar por nome">                                
+                            <h4>Medicamentos desta prescrição</h4>
+                            <div ng-repeat="medicament in prescription.medicamentList" class="btn btn-primary" style="margin-right: 5px">{{medicament.name}}                                
                             </div>
                         </div>
-                    </div>                   
-                    <button ng-click="savePrescription(prescription)" ng-disabled="formPrescription.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
-                    <a href="#/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                    </div>
+                    <div  class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4>Interações medicamentosas desta prescrição</h4>
+                            <ul>
+                                <li ng-repeat="interation in prescription.interationList">
+                                    <p>{{interation.description}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>                              
+                    <a href="#/prescritor/prescricao" class="btn btn-primary pull-right" style="margin-right: 2px;">Voltar</a>
                 </form>
             </div>
         </div>

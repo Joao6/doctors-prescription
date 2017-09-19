@@ -1,6 +1,6 @@
 'use strict'
 angular.module('prescritor')
-    .controller('admController', function ($scope, $rootScope, $location, apiService, toast, prescritor, medicament, medicamentList) {        
+    .controller('admController', function ($scope, $rootScope, $location, apiService, toast, prescritor, medicament, medicamentList, prescritorList) {        
         
 
         if(prescritor){
@@ -14,14 +14,23 @@ angular.module('prescritor')
         }else{
             $scope.medicamentList = []
         }
-
+        
         if(medicament){
             $scope.medicament = medicament.data
         }else{
             $scope.medicament = {}
+            $scope.medicament.interationList = []
         }
 
-        $scope.medicament.interationList = []
+        if(prescritorList){
+            $scope.prescritorList = prescritorList.data
+        }else{
+            $scope.prescritorList = []
+        }
+
+        $scope.apresentationList = ['Comprimido','Gotas','Solução']
+        $scope.accountList = ['Free', 'Premium']
+
 
         $scope.savePrescritor = (prescritor) => {
             apiService.createPrescritor(prescritor).success( data => {

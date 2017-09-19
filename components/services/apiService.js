@@ -56,6 +56,22 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         return $http.delete(config.baseUrl + '/pacients/' + id)
     }
 
+    const _createPrescription = prescription => {
+        return $http.post(config.baseUrl + '/prescriptions', prescription)
+    }
+
+    const _getPrescriptions = () => {
+        return $http.get(config.baseUrl + '/prescriptions')
+    }
+     
+    const _getPrescriptionById = (idPrescription) => {
+        return $http.get(config.baseUrl + '/prescriptions/'+idPrescription)
+    }
+
+    const _getPacientById = (idPacient) => {
+        return $http.get(config.baseUrl + '/pacients/'+idPacient)
+    }
+
     return {
         getUserById: _getUserById,
         getPrescritors: _getPrescritors,
@@ -71,5 +87,9 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         updatePacient: _updatePacient,
         createPacient: _createPacient,
         deletePacient: _deletePacient,
+        createPrescription: _createPrescription,
+        getPrescriptions: _getPrescriptions,
+        getPrescriptionById: _getPrescriptionById,
+        getPacientById: _getPacientById
     }
 })
