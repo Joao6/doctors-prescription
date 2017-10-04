@@ -41,23 +41,36 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label for="crm-prescritor">CRM</label>
-                                <input type="text" class="form-control" id="crm-prescritor" placeholder="Ex.: CRM MG-15684N" ng-required="true" ng-model="prescritor.crm">
+                                <label for="cpf-prescritor">CPF</label>
+                                <input type="text" class="form-control" id="cpf-prescritor" placeholder="Ex.: 158.156.213-54" ng-required="false" ng-model="prescritor.cpf">
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="telephone-prescritor">Telefone</label>
                                 <input type="text" class="form-control" id="telephone-prescritor" placeholder="Ex.: (35) 998745212" ng-required="true" ng-model="prescritor.telephone">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="typeNumber-prescritor">Tipo</label>
+                                <input type="text" class="form-control" id="typeNumber-prescritor" placeholder="Ex.: CRM ou CRO" ng-required="true" ng-model="prescritor.typeNumber" ng-maxlength="3">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="number-prescritor">Número</label>
+                                <input type="number" class="form-control" id="number-prescritor" placeholder="Ex.: 1587" ng-required="true" ng-model="prescritor.number" ng-maxlength="4">
+                            </div>
+                        </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="account-prescritor">Tipo de conta</label>
-                                <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account" 
-                                ng-options="account as account for account in accountList">                                                                      
+                                <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account" ng-options="account as account for account in accountList">                                 
                                   </select>
                             </div>
                         </div>

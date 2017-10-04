@@ -13,6 +13,22 @@
       "neighborhood": "Bairro",
       "city": "Santa Rita",
       "uf": "MG"
+    },
+    {
+      "name": "Joao pedro",
+      "email": "joaopedro.dedepaula@gmail.com",
+      "telephone": "3591027191",
+      "city": "Santa Rita do Sapucaí",
+      "password": "123",
+      "profession": "Cirurgião",
+      "cpf": "097.086.496-51",
+      "typeNumber": "CRM",
+      "number": 1587,
+      "account": "Premium",
+      "address": "Rua Jose Moreira da Silv",
+      "neighborhood": "Eletrônica",
+      "uf": "MG",
+      "id": 3
     }
   ],
   "prescriptions": [

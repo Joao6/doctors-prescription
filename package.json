@@ -1,6 +1,6 @@
 {
   "name": "stetoskop-web",
-  "version": "1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "This is a web module of an project of medical solution.",
   "main": "app/app.js",
@@ -45,7 +45,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Joao6/stetoskop-web.git"
-  },  
+  },
   "dependencies": {
     "gulp-sass": "^3.1.0"
   }
