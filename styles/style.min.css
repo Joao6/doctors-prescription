@@ -13,3 +13,5 @@
 @media (max-width:768px){.jumbotron{padding-top:50px!important}
 }
 .badge-medicament{background-color:#e2e2e2;border-radius:7px;padding:5px}
+.btn-add-input{width:30px;height:30px;padding:5px!important;margin-bottom:2px!important}
+.input-separate-bottom{margin-bottom:3px!important}

@@ -20,6 +20,9 @@ angular.module('prescritor')
         } else {
             $scope.medicament = {}
             $scope.medicament.interationList = []
+            $scope.medicament.apresentationList = $scope.apresentationList
+            $scope.medicament.commercialNameList = $scope.commercialNameList
+            $scope.medicament.dosageList = $scope.dosageList
         }
 
         if (prescritorList) {
@@ -34,11 +37,6 @@ angular.module('prescritor')
         $scope.apresentationList = [{ description: '' }]
         $scope.commercialNameList = [{ name: '' }]
         $scope.dosageList = [{ description: '' }]
-
-        $scope.medicament.apresentationList = $scope.apresentationList
-        $scope.medicament.commercialNameList = $scope.commercialNameList
-        $scope.medicament.dosageList = $scope.dosageList
-
 
         $scope.savePrescritor = (prescritor) => {
             apiService.createPrescritor(prescritor).success(data => {
@@ -90,7 +88,7 @@ angular.module('prescritor')
         $scope.updateMedicament = (medicament) => {
             apiService.updateMedicament(medicament).success(data => {
                 toast.success('Medicamento editado com sucesso!', 3000)
-                $location.path('/adm/prescritores')
+                $location.path('/adm/medicamentos')
             }).error(err => {
                 toast.error('Erro ao editar o medicamento!', 3000)
             })
@@ -139,13 +137,13 @@ angular.module('prescritor')
             let index = 0;
             if (list === 'apresentation') {
                 index = medicament.apresentationList.indexOf(input)
-                medicament.apresentationList.splice(index,1)
+                medicament.apresentationList.splice(index, 1)
             } else if (list === 'commercialName') {
                 index = medicament.commercialNameList.indexOf(input)
-                medicament.commercialNameList.splice(index,1)
+                medicament.commercialNameList.splice(index, 1)
             } else if (list === 'dosage') {
                 index = medicament.dosageList.indexOf(input)
-                medicament.dosageList.splice(index,1)
+                medicament.dosageList.splice(index, 1)
             }
         }
 
@@ -157,5 +155,19 @@ angular.module('prescritor')
         $scope.logout = () => {
             $location.path('/login')
         }
+
+        function addMask() {
+            $('.phone_with_ddd').mask('(00) 00000-0000', { placeholder: "Ex.: (99) 99999-9999" });
+            $('.cpf').mask('000.000.000-00', { reverse: false, placeholder: "Ex.: 000.000.000-00" });
+            $('.number').mask('0000', { placeholder: "Ex.: 0000" });
+            $('.typeNumber').mask('SSS', {
+                translation: {
+                    'S': { pattern: /[A-Za-z]/ }
+                }
+            });
+        }
+
+        addMask()
+
 
     })

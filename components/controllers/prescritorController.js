@@ -134,4 +134,10 @@ angular.module('prescritor')
             $location.path('/login')
         }
 
+        function addMask(){
+            $('.phone_with_ddd').mask('(00) 00000-0000');
+        }
+
+        addMask()
+
     })

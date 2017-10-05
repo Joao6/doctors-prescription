@@ -13,24 +13,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="name-prescritor">Nome</label>
                                 <input type="text" class="form-control" id="name-prescritor" placeholder="Ex.: João Pedro" ng-required="true" ng-model="prescritor.name">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">                        
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="email-prescritor">E-mail</label>
                                 <input type="email" class="form-control" id="email-prescritor" placeholder="Ex.: joao@gmail.com" ng-required="true" ng-model="prescritor.email">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="password-prescritor">Senha</label>
-                                <input type="password" class="form-control" id="password-prescritor" placeholder="***********" ng-required="true" ng-model="prescritor.password">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -44,13 +38,13 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="cpf-prescritor">CPF</label>
-                                <input type="text" class="form-control" id="cpf-prescritor" placeholder="Ex.: 158.156.213-54" ng-required="false" ng-model="prescritor.cpf">
+                                <input type="text" class="form-control cpf" id="cpf-prescritor" placeholder="Ex.: 158.156.213-54" ng-required="false" ng-model="prescritor.cpf">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="telephone-prescritor">Telefone</label>
-                                <input type="text" class="form-control" id="telephone-prescritor" placeholder="Ex.: (35) 998745212" ng-required="true" ng-model="prescritor.telephone">
+                                <input type="text" class="form-control phone_with_ddd" id="telephone-prescritor" placeholder="Ex.: (35) 998745212" ng-required="true" ng-model="prescritor.telephone">
                             </div>
                         </div>
                     </div>

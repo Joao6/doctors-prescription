@@ -22,36 +22,52 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="apresentation-medicament">Apresentações</label>
+                            <h4>
+                                Apresentações
                                 <a ng-click="addInput(medicament,'apresentation')" class="btn btn-primary btn-add-input"><span class="glyphicon glyphicon-plus"></span></a>
-                                <div ng-repeat="apresentation in medicament.apresentationList">
-                                    <input type="text" class="form-control input-separate-bottom" placeholder="Apresentação + miligramas" ng-model="apresentation.description" ng-required="true">
-                                    <a ng-click="removeInput(medicament,apresentation,'apresentation')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"><span class="glyphicon glyphicon-trash"></span></a>
+                            </h4>
+                            <div class="apresentations" ng-repeat="apresentation in medicament.apresentationList">
+                                <div class="row">
+                                    <label style="margin-left: 17px;">Apresentação {{medicament.apresentationList.indexOf(apresentation) + 1}}</label>
                                 </div>
+                                <input type="text" class="form-control col-lg-9 col-md-9 col-sm-7 col-xs-7" placeholder="Apresentação + miligramas" ng-model="apresentation.description"
+                                    ng-required="true" style="width: 90%;">
+                                <a ng-click="removeInput(medicament,apresentation,'apresentation')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"
+                                    style="margin: 0px 0px auto 5px;height: 34px;"><i class="glyphicon glyphicon-trash"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="comercial-name-medicament">Nome comercial</label>
+                            <h4>
+                                Nome comercial
                                 <a ng-click="addInput(medicament,'commercialName')" class="btn btn-primary btn-add-input"><span class="glyphicon glyphicon-plus"></span></a>
-                                <div ng-repeat="commercialName in medicament.commercialNameList">
-                                    <input type="text" class="form-control input-separate-bottom col-lg-8 col-md-8 col-sm-8 col-xs-8" ng-model="commercialName.name" placeholder="Nome comercial"
-                                        ng-required="true">
-                                    <a ng-click="removeInput(medicament,commercialName,'commercialName')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"><span class="glyphicon glyphicon-trash"></span></a>
+                            </h4>
+                            <div class="commercialName" ng-repeat="commercialName in medicament.commercialNameList">
+                                <div class="row">
+                                    <label style="margin-left: 17px;">Nome {{medicament.commercialNameList.indexOf(commercialName) + 1}}</label>
                                 </div>
+                                <input type="text" class="form-control input-separate-bottom col-lg-9 col-md-9 col-sm-7 col-xs-7" ng-model="commercialName.name"
+                                    placeholder="Nome comercial" ng-required="true" style="width: 90%;">
+                                <a ng-click="removeInput(medicament,commercialName,'commercialName')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"
+                                    style="margin: 0px 0px auto 5px;height: 34px;"><span class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="dosage-medicament">Posologia</label>
+                            <h4>
+                                Posologia
                                 <a ng-click="addInput(medicament,'dosage')" class="btn btn-primary btn-add-input"><span class="glyphicon glyphicon-plus"></span></a>
-                                <div ng-repeat="dosage in medicament.dosageList">
-                                    <input type="text" class="form-control input-separate-bottom" ng-model="dosage.description" placeholder="Formas de uso, número de comprimidos por unidade de tempo"
-                                        ng-required="true">
-                                    <a ng-click="removeInput(medicament,dosage,'dosage')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"><span class="glyphicon glyphicon-trash"></span></a>
+                            </h4>
+                            <div class="row dosages" ng-repeat="dosage in medicament.dosageList">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <label style="margin-left: 17px;">Posologia {{medicament.dosageList.indexOf(dosage) + 1}}</label>
+                                    </div>
+                                    <input type="text" class="form-control input-separate-bottom col-lg-10 col-md-10 col-sm-9 col-xs-9" ng-model="dosage.description"
+                                        placeholder="Formas de uso, número de comprimidos por unidade de tempo" ng-required="true"
+                                        style="width: 91%;">
+                                    <a ng-click="removeInput(medicament,dosage,'dosage')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"
+                                        style="margin: 0px 0px auto 5px;height: 34px;"><span class="glyphicon glyphicon-trash"></span></a>
                                 </div>
                             </div>
                         </div>
