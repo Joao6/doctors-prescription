@@ -115,7 +115,7 @@ $stateProvider
         templateUrl: 'views/prescritor/home.html',
         controller: 'prescritorController',
         resolve: {
-            pacientList: function(){},
+            pacientList: function(){},            
             prescriptionList: function() {},
             prescriptionInfo: function(){},
             pacientInfo: function(){}
@@ -130,7 +130,7 @@ $stateProvider
             pacientList: function(){},
             prescriptionList: function(apiService){
                 return apiService.getPrescriptions()
-            },
+            },            
             prescriptionInfo: function(){},
             pacientInfo: function(){}
         }
@@ -139,14 +139,20 @@ $stateProvider
         name: 'prescritor-prescription-new',
         url: '/prescritor/prescricao/novo',
         templateUrl: 'views/prescritor/prescription-new.html',
-        controller: 'prescritorController',
+        controller: 'prescriptionController',
         resolve: {
             pacientList: function(apiService){
                 return apiService.getPacientList()
             },
-            prescriptionList: function() {},
-            prescriptionInfo: function(){},
-            pacientInfo: function(){}
+            medicamentList: function(apiService) {
+                return apiService.getMedicaments()
+            },
+            useTypeList: function(apiService){
+                return apiService.getUseTypeList()
+            },
+            unityList: function(apiService){
+                return apiService.getUnityList()
+            }
         }
     })
     .state({
@@ -157,7 +163,7 @@ $stateProvider
         resolve: {
             pacientList: function(apiService){
                 return apiService.getPacientList()
-            },
+            },            
             prescriptionList: function() {},
             prescriptionInfo: function(apiService, $stateParams){
                 return apiService.getPrescriptionById($stateParams.idPrescription)
@@ -173,7 +179,7 @@ $stateProvider
         resolve: {
             pacientList: function(apiService){
                 return apiService.getPacientList()
-            },
+            },            
             prescriptionList: function() {},
             prescriptionInfo: function(){},
             pacientInfo: function(){}
@@ -185,7 +191,7 @@ $stateProvider
         templateUrl: 'views/prescritor/pacients-new.html',
         controller: 'prescritorController',
         resolve: {
-            pacientList: function(){},
+            pacientList: function(){},            
             prescriptionList: function() {},
             prescriptionInfo: function(){},
             pacientInfo: function(){}
@@ -197,7 +203,7 @@ $stateProvider
         templateUrl: 'views/prescritor/pacients-edit.html',
         controller: 'prescritorController',
         resolve: {
-            pacientList: function(){},
+            pacientList: function(){},            
             prescriptionList: function() {},
             prescriptionInfo: function(){},
             pacientInfo: function(apiService,$stateParams){
