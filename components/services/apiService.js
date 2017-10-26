@@ -28,6 +28,14 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         return $http.get(config.baseUrl + '/medicaments', { params: { "name": name } })
     }
 
+    const _getUseTypeList = (name) => {
+        return $http.get(config.baseUrl + '/useTypes', { params: { "name": name } })
+    }
+
+    const _getUnityList = (name) => {
+        return $http.get(config.baseUrl + '/unities', { params: { "name": name } })
+    }
+
     const _updateMedicament = medicament => {
         return $http.put(config.baseUrl + '/medicaments/' + medicament.id, medicament)
     }
@@ -90,6 +98,8 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         createPrescription: _createPrescription,
         getPrescriptions: _getPrescriptions,
         getPrescriptionById: _getPrescriptionById,
-        getPacientById: _getPacientById
+        getPacientById: _getPacientById,
+        getUseTypeList: _getUseTypeList,
+        getUnityList: _getUnityList
     }
 })
