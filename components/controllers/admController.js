@@ -1,7 +1,9 @@
 'use strict'
 angular.module('prescritor')
-    .controller('admController', function ($scope, $rootScope, $location, apiService, toast, prescritor, medicament, medicamentList, prescritorList) {
-
+.controller('admController', function ($scope, $rootScope, $location, apiService, toast, prescritor, medicament, medicamentList, prescritorList) {
+    
+        $scope.apresentationList = [{ description: '' }]
+        $scope.commercialNameList = [{ name: '' }]        
 
         if (prescritor) {
             $scope.prescritor = prescritor.data
@@ -21,8 +23,7 @@ angular.module('prescritor')
             $scope.medicament = {}
             $scope.medicament.interationList = []
             $scope.medicament.apresentationList = $scope.apresentationList
-            $scope.medicament.commercialNameList = $scope.commercialNameList
-            $scope.medicament.dosageList = $scope.dosageList
+            $scope.medicament.commercialNameList = $scope.commercialNameList          
         }
 
         if (prescritorList) {
@@ -31,12 +32,9 @@ angular.module('prescritor')
             $scope.prescritorList = []
         }
 
-        $scope.apresentationList = ['Comprimido', 'Gotas', 'Solução']
+        //$scope.apresentationList = ['Comprimido', 'Gotas', 'Solução']
         $scope.accountList = ['Free', 'Premium']
 
-        $scope.apresentationList = [{ description: '' }]
-        $scope.commercialNameList = [{ name: '' }]
-        $scope.dosageList = [{ description: '' }]
 
         $scope.savePrescritor = (prescritor) => {
             apiService.createPrescritor(prescritor).success(data => {
@@ -128,8 +126,6 @@ angular.module('prescritor')
                 medicament.apresentationList.push(obj)
             } else if (list === 'commercialName') {
                 medicament.commercialNameList.push(obj)
-            } else if (list === 'dosage') {
-                medicament.dosageList.push(obj)
             }
         }
 
@@ -141,9 +137,6 @@ angular.module('prescritor')
             } else if (list === 'commercialName') {
                 index = medicament.commercialNameList.indexOf(input)
                 medicament.commercialNameList.splice(index, 1)
-            } else if (list === 'dosage') {
-                index = medicament.dosageList.indexOf(input)
-                medicament.dosageList.splice(index, 1)
             }
         }
 

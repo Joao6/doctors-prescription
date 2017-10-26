@@ -28,93 +28,53 @@ angular.module('prescritor')
 
         $scope.medicamentList = []
         $scope.interationList = []
-
-        $scope.test = 'Joao'
+        $scope.prescription = {}
 
         $scope.savePacient = (pacient) => {
             //pacient.prescritor = $rootScope.userLogged            
-            apiService.createPacient(pacient).success(data => {
+            apiService.createPacient(pacient).then(data => {
                 toast.success('Paciente cadastrado com sucesso!', 3000)
                 $location.path('/prescritor/pacientes')
-            }).error(err => {
+            }),function error(err) {
                 toast.error('Erro ao cadastrar o paciente!', 3000)
-            })
+            }
         }
 
         $scope.updatePacient = (pacient) => {
-            apiService.updatePacient(pacient).success(data => {
+            apiService.updatePacient(pacient).then(data => {
                 toast.success('Paciente editado com sucesso!', 3000)
                 $location.path('/prescritor/pacientes')
-            }).error(err => {
+            }),function error(err){
                 toast.error('Erro ao editar o paciente!', 3000)
-            })
+            }
         }
 
         $scope.deletePacient = (id) => {
-            apiService.deletePacient(id).success(data => {
+            apiService.deletePacient(id).then(data => {
                 $scope.getPacientList()
-                toast.success('Paciente excluido com sucesso!', 3000)
-            }).error(err => {
+                toast.then('Paciente excluido com sucesso!', 3000)
+            }),function error(err) {
                 toast.error('Erro ao excluir o paciente!', 3000)
-            })
+            }
         }
 
         $scope.getPacientList = (name) => {
             if (name === "") {
                 name = null
             }
-            apiService.getPacientList(name).success(data => {
+            apiService.getPacientList(name).then(data => {
                 $scope.pacientList = data
-            }).error(err => {
+            }), function error(err) {
                 toast.error('Erro ao buscar a lista de pacientes!', 3000)
-            })
+            }
         }
 
         $scope.getMedicamentList = (name) => {
-            apiService.getMedicaments(name).success(data => {
+            apiService.getMedicaments(name).then(data => {
                 $scope.medicamentList = data
-            }).error(err => {
+            }), function error(err) {
                 toast.error('Erro ao buscar a lista de medicamentos!', 3000)
-            })
-        }
-
-        $scope.verifyInteration = (medicament, prescription) => {
-            //if($scope.userLogged.acoount === 'PREMIUM')
-            if (prescription.medicamentList) {
-                prescription.medicamentList.forEach(function (element) {
-                    if (element.interationList) {
-                        element.interationList.forEach(function (interation) {
-                            if (interation.medicament === medicament.id) {
-                                toast.warning('Interação de medicamentos!', 3000)
-                                $scope.interationList.push(interation)
-                            }
-                        })
-                    }
-                })
-            } else {
-                prescription.medicamentList = []
             }
-            prescription.medicamentList.push(medicament)
-        }
-
-        $scope.removeMedicament = (idMedicament, prescription) => {
-            let index, i = 0
-            prescription.medicamentList.forEach(function (element) {
-                i++
-                if (element.id === idMedicament) {
-                    index = i
-                }
-            })
-            prescription.medicamentList.splice(index - 1, 1)
-        }
-
-        $scope.savePrescription = (prescription) =>{
-            prescription.interationList = $scope.interationList
-            apiService.createPrescription(prescription).success( data => {
-
-            }).error( err => {
-                toast.error('Erro ao salvar esta prescrição!', 3000)
-            })
         }
 
         $scope.isEmptyMedicamentList = () => {
