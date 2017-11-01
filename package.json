@@ -36,6 +36,7 @@
     "watch": "^0.13.0"
   },
   "scripts": {
+    "gulp": "gulp",
     "start": "gulp",
     "build": "gulp build",
     "server": "gulp server",

@@ -153,6 +153,224 @@
       },
       "description": "Tomar de 12 em 12 horas.",
       "id": 2
+    },
+    {
+      "date": 1509532634128,
+      "prescriptionList": [
+        {
+          "useType": {
+            "id": 4,
+            "name": "Oral"
+          },
+          "medicamentList": [
+            {
+              "medicament": {
+                "interationList": [],
+                "apresentationList": [
+                  {
+                    "description": "50 mg"
+                  },
+                  {
+                    "description": "25 mg"
+                  }
+                ],
+                "commercialNameList": [
+                  {
+                    "name": "Aspirina"
+                  },
+                  {
+                    "name": "Aspirina Buffered"
+                  }
+                ],
+                "dosageList": [
+                  {
+                    "description": "Tomar de 12 em 12 horas"
+                  },
+                  {
+                    "description": "Tomar de 8 em 8 horas"
+                  },
+                  {
+                    "description": "Tomar 1 por dia se houver necessidade"
+                  }
+                ],
+                "name": "Acetoxybenzoic acid",
+                "id": 3,
+                "comercialName": {
+                  "name": "Aspirina"
+                },
+                "quantity": 1,
+                "unity": {
+                  "id": 1,
+                  "name": "Caixa"
+                },
+                "description": "Tomar de 12 em 12 horas caso sinta dores."
+              }
+            },
+            {
+              "medicament": {
+                "interationList": [],
+                "apresentationList": [
+                  {
+                    "description": "100mg"
+                  },
+                  {
+                    "description": "500mg"
+                  },
+                  {
+                    "description": "200mg"
+                  }
+                ],
+                "commercialNameList": [
+                  {
+                    "name": "Amoxadene"
+                  },
+                  {
+                    "name": "Amoxicap"
+                  },
+                  {
+                    "name": "Amoxil BD"
+                  }
+                ],
+                "name": "Amoxicilina",
+                "id": 4,
+                "comercialName": {
+                  "name": "Amoxicap"
+                },
+                "quantity": 1,
+                "unity": {
+                  "id": 4,
+                  "name": "Frasco"
+                },
+                "description": "Tomar 10ml a cada 8 horas."
+              }
+            }
+          ]
+        }
+      ],
+      "pacient": {
+        "name": "Marcos",
+        "email": "marcos@gmail.com",
+        "profession": "CLT",
+        "id": 2,
+        "address": "Rua",
+        "neighborhood": "Bairro",
+        "city": "Santa Rita",
+        "uf": "MG",
+        "date": "2017-10-26T02:00:00.000Z",
+        "phone": "(35) 99860-6677"
+      },
+      "id": 3
+    },
+    {
+      "date": 1509536768193,
+      "prescriptionList": [
+        {
+          "useType": {
+            "id": 4,
+            "name": "Oral"
+          },
+          "medicamentList": [
+            {
+              "medicament": {
+                "interationList": [],
+                "apresentationList": [
+                  {
+                    "description": "50 mg"
+                  },
+                  {
+                    "description": "25 mg"
+                  }
+                ],
+                "commercialNameList": [
+                  {
+                    "name": "Aspirina"
+                  },
+                  {
+                    "name": "Aspirina Buffered"
+                  }
+                ],
+                "dosageList": [
+                  {
+                    "description": "Tomar de 12 em 12 horas"
+                  },
+                  {
+                    "description": "Tomar de 8 em 8 horas"
+                  },
+                  {
+                    "description": "Tomar 1 por dia se houver necessidade"
+                  }
+                ],
+                "name": "Acetoxybenzoic acid",
+                "id": 3,
+                "comercialName": {
+                  "name": "Aspirina Buffered"
+                },
+                "apresentation": {
+                  "description": "50 mg"
+                },
+                "quantity": 2,
+                "unity": {
+                  "id": 1,
+                  "name": "Caixa"
+                },
+                "description": "Tomar um comprimido a cada 6 horas."
+              }
+            },
+            {
+              "medicament": {
+                "interationList": [],
+                "apresentationList": [
+                  {
+                    "description": "100mg"
+                  },
+                  {
+                    "description": "500mg"
+                  },
+                  {
+                    "description": "200mg"
+                  }
+                ],
+                "commercialNameList": [
+                  {
+                    "name": "Amoxadene"
+                  },
+                  {
+                    "name": "Amoxicap"
+                  },
+                  {
+                    "name": "Amoxil BD"
+                  }
+                ],
+                "name": "Amoxicilina",
+                "id": 4,
+                "comercialName": {
+                  "name": "Amoxil BD"
+                },
+                "apresentation": {
+                  "description": "100mg"
+                },
+                "quantity": 1,
+                "unity": {
+                  "id": 4,
+                  "name": "Frasco"
+                },
+                "description": "Tomar de 12 em 12 horas"
+              }
+            }
+          ]
+        }
+      ],
+      "pacient": {
+        "name": "Andre",
+        "email": "andre@gmail.com",
+        "profession": "Engenheiro",
+        "address": "Rua Marechal",
+        "neighborhood": "Brasil",
+        "city": "Santa Rita",
+        "uf": "MG",
+        "id": 3
+      },
+      "id": 4
     }
   ],
   "pacients": [
@@ -181,41 +399,13 @@
   ],
   "medicaments": [
     {
-      "interationList": [
-        {
-          "medicament": 2,
-          "description": "Se usado junto com dipirona, causa efeitos colaterais."
-        }
-      ],
-      "name": "Paracetamol",
-      "comercialName": "Paracetamol",
-      "apresentation": "Comprimido",
-      "miligrama": "50",
-      "dosage": "Tomar de 12 em 12 horas.",
-      "id": 1
-    },
-    {
-      "interationList": [
-        {
-          "medicament": 1,
-          "description": "Se usado junto com paracetamol, causa efeitos colaterais."
-        }
-      ],
-      "name": "Dipirona",
-      "comercialName": "Dipirona",
-      "apresentation": "Gotas",
-      "miligrama": "60",
-      "dosage": "Tomar de 8 em 8 horas",
-      "id": 2
-    },
-    {
       "interationList": [],
       "apresentationList": [
         {
-          "description": "Comprimido 50 mg"
+          "description": "50 mg"
         },
         {
-          "description": "Gotas 25 mg"
+          "description": "25 mg"
         }
       ],
       "commercialNameList": [
@@ -239,6 +429,33 @@
       ],
       "name": "Acetoxybenzoic acid",
       "id": 3
+    },
+    {
+      "interationList": [],
+      "apresentationList": [
+        {
+          "description": "100mg"
+        },
+        {
+          "description": "500mg"
+        },
+        {
+          "description": "200mg"
+        }
+      ],
+      "commercialNameList": [
+        {
+          "name": "Amoxadene"
+        },
+        {
+          "name": "Amoxicap"
+        },
+        {
+          "name": "Amoxil BD"
+        }
+      ],
+      "name": "Amoxicilina",
+      "id": 4
     }
   ],
   "useTypes": [
