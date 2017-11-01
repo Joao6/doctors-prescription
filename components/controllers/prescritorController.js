@@ -28,7 +28,7 @@ angular.module('prescritor')
 
         $scope.medicamentList = []
         $scope.interationList = []
-        $scope.prescription = {}
+        //$scope.prescription = {}
 
         $scope.savePacient = (pacient) => {
             //pacient.prescritor = $rootScope.userLogged            

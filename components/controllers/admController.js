@@ -75,12 +75,12 @@ angular.module('prescritor')
         }
 
         $scope.saveMedicament = (medicament) => {
-            apiService.createMedicament(medicament).success(data => {
+            apiService.createMedicament(medicament).then(data => {
                 toast.success('Medicamento cadastrado com sucesso!', 3000)
                 $location.path('/adm/medicamentos')
-            }).error(err => {
+            }),function error(err) {
                 toast.error('Erro ao cadastrar o medicamento!', 3000)
-            })
+            }
         }
 
         $scope.updateMedicament = (medicament) => {

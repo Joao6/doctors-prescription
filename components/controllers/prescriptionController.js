@@ -1,12 +1,18 @@
 'use strict'
 angular.module('prescritor')
-    .controller('prescriptionController', function ($scope, $rootScope, $location, apiService, medicamentList, pacientList,useTypeList, unityList) {
+    .controller('prescriptionController', function ($scope, $rootScope, $location, apiService, medicamentList, pacientList, useTypeList, unityList, toast) {
         $scope.prescription = {}
-        $scope.prescription.date = new Date().getTime()  
-        
-        if(medicamentList){
+        $scope.prescription.date = new Date().getTime()
+        $scope.prescription.prescriptionList = [
+            {
+                useType: "",
+                medicamentList: [{}],
+            }
+        ]
+
+        if (medicamentList) {
             $scope.medicamentList = medicamentList.data
-        }else{
+        } else {
             $scope.medicamentList = []
         }
 
@@ -16,15 +22,15 @@ angular.module('prescritor')
             $scope.pacientList = []
         }
 
-        if(useTypeList){
+        if (useTypeList) {
             $scope.useTypeList = useTypeList.data
-        }else{
+        } else {
             $scope.useTypeList = []
         }
 
-        if(unityList){
+        if (unityList) {
             $scope.unityList = unityList.data
-        }else{
+        } else {
             $scope.unityList = []
         }
 
@@ -47,35 +53,54 @@ angular.module('prescritor')
             prescription.medicamentList.push(medicament)
         }
 
-        $scope.removeMedicament = (idMedicament, prescription) => {
+        $scope.removeMedicament = (medicament, list) => {
             let index, i = 0
-            prescription.medicamentList.forEach(function (element) {
+            list.forEach(function(element){
                 i++
-                if (element.id === idMedicament) {
+                if(element.id === medicament.id){
                     index = i
                 }
             })
-            prescription.medicamentList.splice(index - 1, 1)
+            list.splice(index -1, 1)         
         }
 
-        $scope.savePrescription = (prescription) =>{
-            prescription.interationList = $scope.interationList
-            apiService.createPrescription(prescription).then( data => {
+        $scope.removePrescription = (prescription, list) => {
+            let index = list.indexOf(prescription)
+            list.splice(index, 1)         
+        }
 
-            }), function error( err){
+        $scope.savePrescription = (prescription) => {
+            prescription.interationList = $scope.interationList
+            apiService.createPrescription(prescription).then(data => {
+                toast.success('Prescrição cadastrada com sucesso!', 3000)
+                $location.path('prescritor/prescricao')
+            }), function error(err) {
                 toast.error('Erro ao salvar esta prescrição!', 3000)
             }
         }
 
         $scope.isEmptyMedicamentList = () => {
-            return $scope.medicamentList.length < 1             
+            return $scope.medicamentList.length < 1
         }
 
         $scope.isEmptyInterationList = () => {
-            return $scope.interationList.length < 1              
+            return $scope.interationList.length < 1
         }
 
-        $scope.logout = () =>{
+        $scope.addPrescription = (prescription) => {
+            prescription.prescriptionList.push(
+                {
+                    useType: "",
+                    medicamentList: [{}],
+                }
+            )
+        }
+
+        $scope.addMedicament = (prescript) => {
+            prescript.medicamentList.push({})
+        }
+
+        $scope.logout = () => {
             $location.path('/login')
         }
     })
