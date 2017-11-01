@@ -12,155 +12,155 @@
                             <h4>Informações</h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="prescription-date">Data</label>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" ng-readonly="true" ng-model="prescription.date | date: 'dd/MM/yyyy'" placeholder="Data desta prescrição">
-                                </div>                        
-                            </div>
-                        </div>
-                    </div>     
-                    <hr>                 
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="prescription-paciente">Paciente</label>
-                                <select id="prescription-paciente" class="form-control" ng-model="prescription.pacient" ng-required="true" ng-options="pacient as pacient.name for pacient in pacientList">                                
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div ng-hide="">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="name-pacient">Nome</label>
-                                    <input type="text" ng-readonly="true" class="form-control" id="name-pacient" placeholder="Ex.: João Pedro" ng-required="true" ng-model="prescription.pacient.name">
-                                </div>
-                            </div>                        
-                        </div>
-                        <div class="row">                       
+                    <div class="border-prescript-list">
+                        <div class="row ">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="email-pacient">E-mail</label>
-                                    <input type="email" class="form-control" ng-readonly="true" id="email-pacient" placeholder="Ex.: joao@gmail.com" ng-required="true" ng-model="prescription.pacient.email">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="profession-pacient">Profissão</label>
-                                    <input type="text" class="form-control" ng-readonly="true" id="profession-pacient" placeholder="Ex.: Cirurgião" ng-required="true" ng-model="prescription.pacient.profession">
-                                </div>
-                            </div> 
-                        </div> 
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="date-pacient">Data de nascimento</label>
-                                    <input type="date" ng-readonly="true" class="form-control" id="date-pacient" placeholder="Ex.: 06/11/1985" ng-required="true" ng-model="prescription.pacient.date">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="phone-pacient">Telefone</label>
-                                    <input type="text" ng-readonly="true" class="form-control phone_with_ddd" id="phone-pacient" placeholder="Ex.: 3599860-6677" ng-required="true" ng-model="prescription.pacient.phone">
-                                </div>
-                            </div>
-                        </div>                  
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <h4>Endereço</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="address-pacient">Rua</label>
-                                    <input type="text" class="form-control" ng-readonly="true" id="address-pacient" placeholder="Ex.: Rua Marechal Deodoro"
-                                        ng-model="prescription.pacient.address">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="neighborhood-pacient">Bairro</label>
-                                    <input type="text" ng-readonly="true" class="form-control" id="neighborhood-pacient" placeholder="Ex.: Centro" ng-model="prescription.pacient.neighborhood">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="city-pacient">Cidade</label>
-                                    <input type="text" class="form-control" ng-readonly="true" id="city-pacient" placeholder="Ex.: Santa Rita do Sapucaí"
-                                        ng-model="prescription.pacient.city">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="uf-pacient">UF</label>
-                                    <input type="text" class="form-control" id="uf-pacient" ng-readonly="true" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescription.pacient.uf">
+                                    <label for="prescription-date">Data</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-readonly="true" ng-model="prescription.date | date: 'dd/MM/yyyy'" placeholder="Data desta prescrição">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <hr>     
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="prescription-type">Tipo de prescrição</label>
-                                <select id="prescription-type" class="form-control" ng-model="prescription.type" ng-required="true" ng-options="useType as useType.name for useType in useTypeList">                                
-                                </select>
+                    <div class="border-prescript-list">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="prescription-paciente">Paciente</label>
+                                    <select id="prescription-paciente" class="form-control" ng-model="prescription.pacient" ng-required="true" ng-options="pacient as pacient.name for pacient in pacientList">
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>  
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label for="prescription-medicament">Medicamento</label>
-                                <select id="prescription-medicament" class="form-control" ng-model="prescription.medicament" ng-required="true" ng-options="medicament as medicament.name for medicament in medicamentList">                                
-                                </select>
+                        <div ng-hide="">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="name-pacient">Nome</label>
+                                        <input type="text" ng-readonly="true" class="form-control" id="name-pacient" placeholder="Ex.: João Pedro" ng-required="true"
+                                            ng-model="prescription.pacient.name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="email-pacient">E-mail</label>
+                                        <input type="email" class="form-control" ng-readonly="true" id="email-pacient" placeholder="Ex.: joao@gmail.com" ng-required="true"
+                                            ng-model="prescription.pacient.email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="profession-pacient">Profissão</label>
+                                        <input type="text" class="form-control" ng-readonly="true" id="profession-pacient" placeholder="Ex.: Cirurgião" ng-required="true"
+                                            ng-model="prescription.pacient.profession">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="date-pacient">Data de nascimento</label>
+                                        <input type="date" ng-readonly="true" class="form-control" id="date-pacient" placeholder="Ex.: 06/11/1985" ng-required="true"
+                                            ng-model="prescription.pacient.date">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="phone-pacient">Telefone</label>
+                                        <input type="text" ng-readonly="true" class="form-control phone_with_ddd" id="phone-pacient" placeholder="Ex.: 3599860-6677"
+                                            ng-required="true" ng-model="prescription.pacient.phone">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label for="medicament-comercialName">Nome comercial</label>
-                                <select id="medicament-comercialName" class="form-control" ng-model="prescription.medicament.comercialName" ng-required="true" ng-options="comercialName as comercialName.name for comercialName in prescription.medicament.commercialNameList">                                
-                                </select>
+                    </div>
+                    <h4>
+                        Tipo de prescrição
+                        <a ng-click="addPrescription(prescription)" class="btn btn-primary btn-add-input">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </h4>
+                    <div ng-repeat="prescript in prescription.prescriptionList" class="border-prescript-list">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="prescription-type">Prescrição {{prescription.prescriptionList.indexOf(prescript) + 1}}</label>
+                                    <select id="prescription-type" class="form-control" ng-model="prescript.useType" ng-required="true" ng-options="useType as useType.name for useType in useTypeList">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                <a ng-click="removePrescription(prescript,prescription.prescriptionList)" class="btn btn-danger" style="margin: 24px 0px auto 5px;height: 34px;">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label for="medicament-apresentation">Apresentação</label>
-                                <select id="medicament-apresentation" class="form-control" ng-model="prescription.medicament.apresentation" ng-required="true" ng-options="apresentation as apresentation.description for apresentation in prescription.medicament.apresentationList">                                
-                                </select>
+                        <h4>
+                            Medicamentos
+                            <a ng-click="addMedicament(prescript)" class="btn btn-primary btn-add-input">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </h4>
+                        <div ng-repeat="medicamentPrescript in prescript.medicamentList">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prescription-medicament">Medicamento {{prescript.medicamentList.indexOf(medicamentPrescript)+1}}</label>
+                                        <select id="prescription-medicament" class="form-control" ng-model="medicamentPrescript.medicament" ng-required="true" ng-options="medicament as medicament.name for medicament in medicamentList">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="medicament-comercialName">Nome comercial</label>
+                                        <select id="medicament-comercialName" class="form-control" ng-model="medicamentPrescript.medicament.comercialName" ng-required="true"
+                                            ng-options="comercialName as comercialName.name for comercialName in medicamentPrescript.medicament.commercialNameList">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="medicament-apresentation">Apresentação</label>
+                                        <select id="medicament-apresentation" class="form-control" ng-model="medicamentPrescript.medicament.apresentation" ng-required="true"
+                                            ng-options="apresentation as apresentation.description for apresentation in medicamentPrescript.medicament.apresentationList">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="medicament-quantity">Quantidade</label>
+                                        <input type="number" class="form-control" id="medicament-quantity" ng-model="medicamentPrescript.medicament.quantity">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="medicament-unity">Unidade</label>
+                                        <select id="medicament-unity" class="form-control" ng-model="medicamentPrescript.medicament.unity" ng-required="true" ng-options="unity as unity.name for unity in unityList">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                    <a ng-click="removeMedicament(medicamentPrescript,prescript.medicamentList)" class="btn btn-danger" style="margin: 24px 0px auto 5px;height: 34px;">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prescription-descrition">Posologia</label>
+                                        <textarea rows="3" class="form-control" id="description-prescription" placeholder="Descrição da prescrição..." ng-required="true"
+                                            ng-model="medicamentPrescript.medicament.description"></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label for="medicament-quantity">Quantidade</label>
-                                <input type="number" class="form-control" id="medicament-quantity" ng-model="prescription.medicament.quantity">
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label for="medicament-unity">Unidade</label>
-                                <select id="medicament-unity" class="form-control" ng-model="prescription.medicament.unity" ng-required="true" ng-options="unity as unity.name for unity in unityList">                                
-                                </select>
-                            </div>
-                        </div>
-                    </div>   
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="prescription-descrition">Posologia</label>
-                                <textarea rows="3" class="form-control" id="description-prescription" placeholder="Descrição da prescrição..." ng-required="true"
-                                    ng-model="prescription.description"></textarea>
-                            </div>
-                        </div>
-                    </div>         
-                    
+                    </div>
+
                     <button ng-click="savePrescription(prescription)" ng-disabled="formPrescription.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
                     <a href="#!/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
                 </form>
@@ -168,6 +168,7 @@
         </div>
     </div>
     <footer>
-        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+        Todos os direitos reservados
+        <a href="">Prescritor QR Code</a>
     </footer>
 </div>
