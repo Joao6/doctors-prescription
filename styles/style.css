@@ -96,3 +96,14 @@
 .input-separate-bottom{
     margin-bottom: 3px !important;
 }
+
+hr{
+    border-top: 1px solid #222222 !important;
+}
+
+.border-prescript-list{
+    border: 1px solid #b5b2b2;
+    border-radius: 5px;
+    padding: 15px 20px 10px 20px;
+    margin-bottom: 10px;
+}
