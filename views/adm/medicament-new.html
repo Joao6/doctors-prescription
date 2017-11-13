@@ -26,13 +26,13 @@
                                 Apresentações
                                 <a ng-click="addInput(medicament,'apresentation')" class="btn btn-primary btn-add-input"><span class="glyphicon glyphicon-plus"></span></a>
                             </h4>
-                            <div class="apresentations" ng-repeat="apresentation in medicament.apresentationList">
+                            <div class="apresentations" ng-repeat="apresentation in medicament.apresentationList track by $index">
                                 <div class="row">
                                     <label style="margin-left: 17px;">Apresentação {{medicament.apresentationList.indexOf(apresentation) + 1}}</label>
                                 </div>
-                                <input type="text" class="form-control col-lg-9 col-md-9 col-sm-7 col-xs-7" placeholder="Apresentação + miligramas" ng-model="apresentation.description"
+                                <input type="text" class="form-control col-lg-9 col-md-9 col-sm-7 col-xs-7" placeholder="Apresentação + miligramas" ng-model="apresentation.value"
                                     ng-required="true" style="width: 90%;">
-                                <a ng-click="removeInput(medicament,apresentation,'apresentation')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"
+                                <a id="apresentation-{{medicament.apresentationList.indexOf(apresentation)}}" ng-click="removeInput(medicament,apresentation,'apresentation')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"
                                     style="margin: 0px 0px auto 5px;height: 34px;"><i class="glyphicon glyphicon-trash"></i></a>
                             </div>
                         </div>
@@ -41,11 +41,11 @@
                                 Nome comercial
                                 <a ng-click="addInput(medicament,'commercialName')" class="btn btn-primary btn-add-input"><span class="glyphicon glyphicon-plus"></span></a>
                             </h4>
-                            <div class="commercialName" ng-repeat="commercialName in medicament.commercialNameList">
+                            <div class="commercialName" ng-repeat="commercialName in medicament.commercialNameList track by $index">
                                 <div class="row">
                                     <label style="margin-left: 17px;">Nome {{medicament.commercialNameList.indexOf(commercialName) + 1}}</label>
                                 </div>
-                                <input type="text" class="form-control input-separate-bottom col-lg-9 col-md-9 col-sm-7 col-xs-7" ng-model="commercialName.name"
+                                <input id="comercial-{{medicament.commercialNameList.indexOf(commercialName)}}" type="text" class="form-control input-separate-bottom col-lg-9 col-md-9 col-sm-7 col-xs-7" ng-model="commercialName.value"
                                     placeholder="Nome comercial" ng-required="true" style="width: 90%;">
                                 <a ng-click="removeInput(medicament,commercialName,'commercialName')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"
                                     style="margin: 0px 0px auto 5px;height: 34px;"><span class="glyphicon glyphicon-trash"></span></a>

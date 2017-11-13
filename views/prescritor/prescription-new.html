@@ -18,7 +18,7 @@
                                 <div class="form-group">
                                     <label for="prescription-date">Data</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" ng-readonly="true" ng-model="prescription.date | date: 'dd/MM/yyyy'" placeholder="Data desta prescrição">
+                                        <input type="text" class="form-control" ng-model="prescription.date | date: 'dd/MM/yyyy'" placeholder="Data desta prescrição">
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div ng-hide="">
+                        <div ng-hide="pacientIsNull(prescription.pacient)">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
@@ -64,7 +64,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label for="date-pacient">Data de nascimento</label>
-                                        <input type="date" ng-readonly="true" class="form-control" id="date-pacient" placeholder="Ex.: 06/11/1985" ng-required="true"
+                                        <input type="text" ng-readonly="true" class="form-control" id="date-pacient" placeholder="Ex.: 06/11/1985" ng-required="true"
                                             ng-model="prescription.pacient.date">
                                     </div>
                                 </div>
@@ -79,12 +79,73 @@
                         </div>
                     </div>
                     <h4>
-                        Tipo de prescrição
+                        Medicamentos
                         <a ng-click="addPrescription(prescription)" class="btn btn-primary btn-add-input">
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
                     </h4>
-                    <div ng-repeat="prescript in prescription.prescriptionList" class="border-prescript-list">
+                    <div ng-repeat="prescript in prescription.prescriptions" class="border-prescript-list">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="prescript-medicament">Medicamento {{prescription.prescriptions.indexOf(prescript) + 1}}</label>
+                                    <select id="prescript-medicament" class="form-control" ng-model="prescript.medicament" ng-required="true" ng-options="medicament as medicament.name for medicament in medicamentList">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                <a ng-click="removePrescription(prescript,prescription.prescriptions)" class="btn btn-danger" style="margin: 24px 0px auto 5px;height: 34px;">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="prescript-useType">Tipo de uso</label>
+                                    <select id="prescript-useType" class="form-control" ng-model="prescript.useType" ng-required="true" ng-options="useType as useType.name for useType in useTypeList">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="prescript-comercialName">Nome comercial</label>
+                                    <div ng-dropdown-multiselect="" options="prescript.medicament.commercialNameList" selected-model="prescript.comercialName"
+                                        extra-settings="stringSettings"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="prescript-apresentation">Apresentação</label>
+                                    <select id="prescript-apresentation" class="form-control" ng-model="prescript.apresentation" ng-required="true" ng-options="apresentation as apresentation for apresentation in prescript.medicament.apresentationList">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="prescript-quantity">Quantidade</label>
+                                    <input type="number" class="form-control" id="prescript-quantity" ng-model="prescript.quantity">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="prescript-unity">Unidade</label>
+                                    <select id="prescript-unity" class="form-control" ng-model="prescript.unity" ng-required="true" ng-options="unity as unity.name for unity in unityList">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="prescript-description">Posologia</label>
+                                    <textarea rows="3" class="form-control" id="description-prescription" placeholder="Descrição da prescrição deste medicamento" ng-required="true"
+                                        ng-model="prescript.description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div ng-repeat="prescript in prescription.prescriptionList" class="border-prescript-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -117,9 +178,8 @@
                                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="medicament-comercialName">Nome comercial</label>
-                                        <select id="medicament-comercialName" class="form-control" ng-model="medicamentPrescript.medicament.comercialName" ng-required="true"
-                                            ng-options="comercialName as comercialName.name for comercialName in medicamentPrescript.medicament.commercialNameList">
-                                        </select>
+                                       
+                                        <div ng-dropdown-multiselect="" options="medicamentPrescript.medicament.commercialNameList" selected-model="medicamentPrescript.comercialName" extra-settings="stringSettings"></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
@@ -159,7 +219,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <button ng-click="savePrescription(prescription)" ng-disabled="formPrescription.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
                     <a href="#!/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
