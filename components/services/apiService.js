@@ -68,6 +68,14 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         return $http.post(config.baseUrl + '/prescriptions', prescription)
     }
 
+    const _updatePrescription = prescription => {
+        return $http.put(config.baseUrl + '/prescriptions/'+ prescription.id, prescription)
+    }
+
+    const _deletePrescription = id => {
+        return $http.delete(config.baseUrl + '/prescriptions/' + id)
+    }
+
     const _getPrescriptions = () => {
         return $http.get(config.baseUrl + '/prescriptions')
     }
@@ -100,6 +108,8 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         getPrescriptionById: _getPrescriptionById,
         getPacientById: _getPacientById,
         getUseTypeList: _getUseTypeList,
-        getUnityList: _getUnityList
+        getUnityList: _getUnityList,
+        updatePrescription: _updatePrescription,
+        deletePrescription: _deletePrescription
     }
 })

@@ -58,6 +58,15 @@ angular.module('prescritor')
             }
         }
 
+        $scope.deletePrescription = (id) => {
+            apiService.deletePrescription(id).then(data => {
+                $scope.getPrescriptionList()
+                toast.then('Prescrição excluída com sucesso!', 3000)
+            }),function error(err) {
+                toast.error('Erro ao excluir o paciente!', 3000)
+            }
+        }
+
         $scope.getPacientList = (name) => {
             if (name === "") {
                 name = null
@@ -77,6 +86,14 @@ angular.module('prescritor')
             }
         }
 
+        $scope.getPrescriptionList = (name) => {
+            apiService.getPrescriptions(name).then(data => {
+                $scope.prescriptionList = data.data
+            }), function error(err) {
+                toast.error('Erro ao buscar a lista de prescrições!', 3000)
+            }
+        }
+
         $scope.isEmptyMedicamentList = () => {
             return $scope.medicamentList.length < 1             
         }
@@ -92,10 +109,12 @@ angular.module('prescritor')
 
         $scope.logout = () =>{
             $location.path('/login')
-        }
+        }        
 
         function addMask(){
             $('.phone_with_ddd').mask('(00) 00000-0000');
+            $('.date').mask('00/00/0000');
+            $('.uf').mask('AA');
         }
 
         addMask()

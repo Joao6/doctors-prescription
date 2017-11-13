@@ -1,9 +1,9 @@
 'use strict'
 angular.module('prescritor')
-.controller('admController', function ($scope, $rootScope, $location, apiService, toast, prescritor, medicament, medicamentList, prescritorList) {
-    
-        $scope.apresentationList = [{ description: '' }]
-        $scope.commercialNameList = [{ name: '' }]        
+    .controller('admController', function ($scope, $rootScope, $location, apiService, toast, prescritor, medicament, medicamentList, prescritorList) {
+
+        $scope.apresentationList = [{}]
+        $scope.commercialNameList = [{}]
 
         if (prescritor) {
             $scope.prescritor = prescritor.data
@@ -19,11 +19,21 @@ angular.module('prescritor')
 
         if (medicament) {
             $scope.medicament = medicament.data
+            let apresentationList = []
+            let comercialNameList = []
+            $scope.medicament.apresentationList.forEach(function (element) {
+                apresentationList.push({ value: element })
+            })
+            $scope.medicament.commercialNameList.forEach(function (element) {
+                comercialNameList.push({ value: element })
+            })
+            $scope.medicament.apresentationList = apresentationList
+            $scope.medicament.commercialNameList = comercialNameList
         } else {
             $scope.medicament = {}
             $scope.medicament.interationList = []
             $scope.medicament.apresentationList = $scope.apresentationList
-            $scope.medicament.commercialNameList = $scope.commercialNameList          
+            $scope.medicament.commercialNameList = $scope.commercialNameList
         }
 
         if (prescritorList) {
@@ -37,79 +47,99 @@ angular.module('prescritor')
 
 
         $scope.savePrescritor = (prescritor) => {
-            apiService.createPrescritor(prescritor).success(data => {
+            apiService.createPrescritor(prescritor).then(data => {
                 toast.success('Prescritor cadastrado com sucesso!', 3000)
                 $location.path('/adm/prescritores')
-            }).error(err => {
+            }), function error(err) {
                 toast.error('Erro ao cadastrar o prescritor!', 3000)
-            })
+            }
         }
 
         $scope.updatePrescritor = (prescritor) => {
-            apiService.updatePrescritor(prescritor).success(data => {
+            apiService.updatePrescritor(prescritor).then(data => {
                 toast.success('Prescritor editado com sucesso!', 3000)
                 $location.path('/adm/prescritores')
-            }).error(err => {
+            }), function error(err) {
                 toast.error('Erro ao editar o prescritor!', 3000)
-            })
+            }
         }
 
         $scope.deletePrescritor = (id) => {
-            apiService.deletePrescritor(id).success(data => {
+            apiService.deletePrescritor(id).then(data => {
                 $scope.getPrescritorList()
                 toast.success('Prescritor excluido com sucesso!', 3000)
-            }).error(err => {
+            }), function error(err) {
                 toast.error('Erro ao excluir o prescritor!', 3000)
-            })
+            }
         }
 
         $scope.getPrescritorList = (name) => {
             if (name === "") {
                 name = null
             }
-            apiService.getPrescritors(name).success(data => {
-                $scope.prescritorList = data
-            }).error(err => {
+            apiService.getPrescritors(name).then(data => {
+                $scope.prescritorList = data.data
+            }), function error(err) {
                 toast.error('Erro ao buscar a lista de prescritores!', 3000)
-            })
+            }
         }
 
         $scope.saveMedicament = (medicament) => {
+            let apresentationList = []
+            let comercialNameList = []
+            medicament.apresentationList.forEach(function (element) {
+                apresentationList.push(element.value)
+            });
+            medicament.commercialNameList.forEach(function (element) {
+                comercialNameList.push(element.value)
+            });
+            medicament.apresentationList = apresentationList
+            medicament.commercialNameList = comercialNameList
             apiService.createMedicament(medicament).then(data => {
                 toast.success('Medicamento cadastrado com sucesso!', 3000)
                 $location.path('/adm/medicamentos')
-            }),function error(err) {
+            }), function error(err) {
                 toast.error('Erro ao cadastrar o medicamento!', 3000)
             }
         }
 
         $scope.updateMedicament = (medicament) => {
-            apiService.updateMedicament(medicament).success(data => {
+            let apresentationList = []
+            let comercialNameList = []
+            medicament.apresentationList.forEach(function (element) {
+                apresentationList.push(element.value)
+            });
+            medicament.commercialNameList.forEach(function (element) {
+                comercialNameList.push(element.value)
+            });
+            medicament.apresentationList = apresentationList
+            medicament.commercialNameList = comercialNameList
+            apiService.updateMedicament(medicament).then(data => {
                 toast.success('Medicamento editado com sucesso!', 3000)
                 $location.path('/adm/medicamentos')
-            }).error(err => {
+            }), function error(err) {
                 toast.error('Erro ao editar o medicamento!', 3000)
-            })
+            }
         }
 
         $scope.deleteMedicament = (id) => {
-            apiService.deleteMedicament(id).success(data => {
+            apiService.deleteMedicament(id).then(data => {
                 $scope.getMedicamentList()
                 toast.success('Medicamento excluido com sucesso!', 3000)
-            }).error(err => {
+            }), function error(err) {
                 toast.error('Erro ao excluir o medicamento!', 3000)
-            })
+            }
         }
 
         $scope.getMedicamentList = (name) => {
             if (name === "") {
                 name = null
             }
-            apiService.getMedicaments(name).success(data => {
-                $scope.medicamentList = data
-            }).error(err => {
+            apiService.getMedicaments(name).then(data => {
+                $scope.medicamentList = data.data
+            }), function error(err) {
                 toast.error('Erro ao buscar a lista de medicamentos!', 3000)
-            })
+            }
         }
 
         $scope.addInteracao = (medicament) => {
