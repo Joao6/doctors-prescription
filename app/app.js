@@ -1,2 +1,2 @@
 angular
-.module('prescritor', ['ui.router'])
+.module('prescritor', ['ui.router','angularjs-dropdown-multiselect'])
