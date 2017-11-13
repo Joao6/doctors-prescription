@@ -8,10 +8,12 @@
 .form-signin input[type=password]{margin-bottom:10px;border-top-left-radius:0;border-top-right-radius:0}
 .account-wall{margin-top:20px;padding:40px 0 20px;background-color:#f7f7f7;-moz-box-shadow:0 2px 2px rgba(0,0,0,.3);-webkit-box-shadow:0 2px 2px rgba(0,0,0,.3);box-shadow:0 2px 2px rgba(0,0,0,.3)}
 .login-title{color:#555;font-size:18px}
-.profile-img{width:96px;height:96px;margin:0 auto 10px;-moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%}
+.profile-img{width:120px;height:120px;margin:0 auto 10px;-moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%}
 .need-help,.new-account{margin-top:10px}
 @media (max-width:768px){.jumbotron{padding-top:50px!important}
 }
 .badge-medicament{background-color:#e2e2e2;border-radius:7px;padding:5px}
 .btn-add-input{width:30px;height:30px;padding:5px!important;margin-bottom:2px!important}
 .input-separate-bottom{margin-bottom:3px!important}
+hr{border-top:1px solid #222!important}
+.border-prescript-list{border:1px solid #b5b2b2;border-radius:5px;padding:15px 20px 10px;margin-bottom:10px}
