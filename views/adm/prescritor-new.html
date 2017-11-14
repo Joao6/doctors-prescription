@@ -50,7 +50,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="telephone-prescritor">Telefone</label>
-                                <input type="text" class="form-control phone_with_ddd" id="telephone-prescritor" placeholder="Ex.: (35) 998745212" ng-required="true" ng-model="prescritor.telephone">
+                                <input type="text" class="form-control phone_with_ddd" id="telephone-prescritor" placeholder="Ex.: (35) 998745212" ng-required="true" ng-model="prescritor.phone">
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,10 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="account-prescritor">Tipo de conta</label>
-                                <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account" ng-options="account as account for account in accountList">                                 
+                                <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account">                                 
+                                    <option ng-selected="true" ng-disabled="true">Selecione...</option>
+                                    <option value="0">Free</option>
+                                    <option value="1">Premium</option>
                                   </select>
                             </div>
                         </div>
@@ -84,13 +87,13 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="address-prescritor">Rua</label>
-                                <input type="text" class="form-control" id="address-prescritor" placeholder="Ex.: Rua Marechal Deodoro" ng-model="prescritor.address">
+                                <input type="text" class="form-control" id="address-prescritor" placeholder="Ex.: Rua Marechal Deodoro" ng-model="prescritor.address.street">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="neighborhood-prescritor">Bairro</label>
-                                <input type="text" class="form-control" id="neighborhood-prescritor" placeholder="Ex.: Centro" ng-model="prescritor.neighborhood">
+                                <input type="text" class="form-control" id="neighborhood-prescritor" placeholder="Ex.: Centro" ng-model="prescritor.address.neighborhood">
                             </div>
                         </div>
                     </div>
@@ -98,13 +101,13 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="city-prescritor">Cidade</label>
-                                <input type="text" class="form-control" id="city-prescritor" placeholder="Ex.: Santa Rita do Sapucaí" ng-model="prescritor.city">
+                                <input type="text" class="form-control" id="city-prescritor" placeholder="Ex.: Santa Rita do Sapucaí" ng-model="prescritor.address.city">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="uf-prescritor">UF</label>
-                                <input type="text" class="form-control" id="uf-prescritor" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescritor.uf">
+                                <input type="text" class="form-control" id="uf-prescritor" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescritor.address.uf">
                             </div>
                         </div>
                     </div>
