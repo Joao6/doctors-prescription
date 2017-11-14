@@ -37,27 +37,24 @@ angular.module('prescritor')
         }
 
         if (prescriptionInfo) {
-            $scope.prescription = prescriptionInfo.data
-            /* $('#qrcode').qrcode("http://localhost:3000/!#/prescricao-info/" + $scope.prescription.id); */
+            $scope.prescription = prescriptionInfo.data            
         }
 
         $scope.verifyInteration = (medicament, prescription) => {
-            //if($scope.userLogged.acoount === 'PREMIUM')
-            if (prescription.medicamentList) {
-                prescription.medicamentList.forEach(function (element) {
-                    if (element.interationList) {
-                        element.interationList.forEach(function (interation) {
+            //if($scope.userLogged.account === 'PREMIUM')
+            if (prescription.prescriptions) {
+                prescription.prescriptions.forEach(function (element) {
+                    if (element.medicament) {
+                        element.medicament.interationList.forEach(function (interation) {
                             if (interation.medicament === medicament.id) {
                                 toast.warning('Interação de medicamentos!', 3000)
-                                $scope.interationList.push(interation)
+                                //$scope.interationList.push(interation)
                             }
                         })
                     }
                 })
-            } else {
-                prescription.medicamentList = []
-            }
-            prescription.medicamentList.push(medicament)
+            } 
+            //prescription.medicamentList.push(medicament)
         }
 
         $scope.removeMedicament = (medicament, list) => {
