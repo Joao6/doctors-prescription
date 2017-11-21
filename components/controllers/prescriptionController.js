@@ -4,7 +4,7 @@ angular.module('prescritor')
         $scope.stringSettings = { template: '{{option}}', smartButtonTextConverter(skip, option) { return option; }, };
         $scope.prescription = {}
         $scope.prescription.date = new Date().getTime()
-        $scope.prescription.prescriptions = [
+        $scope.prescription.precriptions = [
             {
                 comercialName: [],
                 useType: {},
@@ -13,25 +13,25 @@ angular.module('prescritor')
         ]
 
         if (medicamentList) {
-            $scope.medicamentList = medicamentList.data
+            $scope.medicamentList = medicamentList.data.content
         } else {
             $scope.medicamentList = []
         }
 
         if (pacientList) {
-            $scope.pacientList = pacientList.data
+            $scope.pacientList = pacientList.data.content
         } else {
             $scope.pacientList = []
         }
 
         if (useTypeList) {
-            $scope.useTypeList = useTypeList.data
+            $scope.useTypeList = useTypeList.data.content
         } else {
             $scope.useTypeList = []
         }
 
         if (unityList) {
-            $scope.unityList = unityList.data
+            $scope.unityList = unityList.data.content
         } else {
             $scope.unityList = []
         }
@@ -42,8 +42,8 @@ angular.module('prescritor')
 
         $scope.verifyInteration = (medicament, prescription) => {
             //if($scope.userLogged.account === 'PREMIUM')
-            if (prescription.prescriptions) {
-                prescription.prescriptions.forEach(function (element) {
+            if (prescription.precriptions) {
+                prescription.precriptions.forEach(function (element) {
                     if (element.medicament) {
                         element.medicament.interationList.forEach(function (interation) {
                             if (interation.medicament === medicament.id) {
@@ -74,6 +74,7 @@ angular.module('prescritor')
         }
 
         $scope.savePrescription = (prescription) => {
+            delete prescription.pacient.doctor.roles            
             if(prescription.id){
                 //update
                 apiService.updatePrescription(prescription).then(data => {
@@ -84,7 +85,7 @@ angular.module('prescritor')
                 }
             }else{
                 //create
-                prescription.interationList = $scope.interationList
+                //prescription.interationList = $scope.interationList
                 apiService.createPrescription(prescription).then(data => {
                     toast.success('Prescrição cadastrada com sucesso!', 3000)
                     $location.path('prescritor/prescricao')
@@ -103,7 +104,7 @@ angular.module('prescritor')
         }
 
         $scope.addPrescription = (prescription) => {
-            prescription.prescriptions.push(
+            prescription.precriptions.push(
                 {
                     comercialName: [],
                     useType: {},

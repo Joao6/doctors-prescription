@@ -9,7 +9,7 @@ angular.module('prescritor')
         }
         
         if(prescriptionList){
-            $scope.prescriptionList = prescriptionList.data
+            $scope.prescriptionList = prescriptionList.data.content
         }else{
             $scope.prescriptionList = []
         }
@@ -21,7 +21,7 @@ angular.module('prescritor')
         }
 
         if (pacientList) {
-            $scope.pacientList = pacientList.data
+            $scope.pacientList = pacientList.data.content
         } else {
             $scope.pacientList = []
         }
@@ -72,7 +72,7 @@ angular.module('prescritor')
                 name = null
             }
             apiService.getPacientList(name).then(data => {
-                $scope.pacientList = data
+                $scope.pacientList = data.data
             }), function error(err) {
                 toast.error('Erro ao buscar a lista de pacientes!', 3000)
             }
@@ -88,7 +88,7 @@ angular.module('prescritor')
 
         $scope.getPrescriptionList = (name) => {
             apiService.getPrescriptions(name).then(data => {
-                $scope.prescriptionList = data.data
+                $scope.prescriptionList = data.data.content
             }), function error(err) {
                 toast.error('Erro ao buscar a lista de prescrições!', 3000)
             }

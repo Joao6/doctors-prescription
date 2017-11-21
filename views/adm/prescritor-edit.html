@@ -20,7 +20,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">                        
+                    <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="email-prescritor">E-mail</label>
@@ -44,7 +44,8 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="telephone-prescritor">Telefone</label>
-                                <input type="text" class="form-control phone_with_ddd" id="telephone-prescritor" placeholder="Ex.: (35) 998745212" ng-required="true" ng-model="prescritor.telephone">
+                                <input type="text" class="form-control phone_with_ddd" id="telephone-prescritor" placeholder="Ex.: (35) 998745212" ng-required="true"
+                                    ng-model="prescritor.phone">
                             </div>
                         </div>
                     </div>
@@ -52,20 +53,25 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="typeNumber-prescritor">Tipo</label>
-                                <input type="text" class="form-control" id="typeNumber-prescritor" placeholder="Ex.: CRM ou CRO" ng-required="true" ng-model="prescritor.typeNumber" ng-maxlength="3">
+                                <input type="text" class="form-control" id="typeNumber-prescritor" placeholder="Ex.: CRM ou CRO" ng-required="true" ng-model="prescritor.typeNumber"
+                                    ng-maxlength="3">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="number-prescritor">Número</label>
-                                <input type="number" class="form-control" id="number-prescritor" placeholder="Ex.: 1587" ng-required="true" ng-model="prescritor.number" ng-maxlength="4">
+                                <input type="number" class="form-control" id="number-prescritor" placeholder="Ex.: 1587" ng-required="true" ng-model="prescritor.number"
+                                    ng-maxlength="4">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="account-prescritor">Tipo de conta</label>
-                                <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account" ng-options="account as account for account in accountList">                                 
-                                  </select>
+                                <!-- <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account">
+                                    <option ng-repeat="account in accountList" value="{{account.value}}">{{account.name}}</option>
+                                </select> -->
+                                <select class="form-control" ng-required="true" name="account-prescritor" id="account-prescritor" ng-options="account.name for account in accountList track by account.value"
+                                ng-model="prescritor.account"></select>
                             </div>
                         </div>
                     </div>
@@ -78,14 +84,13 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="address-prescritor">Rua</label>
-                                <input type="text" class="form-control" id="address-prescritor" placeholder="Ex.: Rua Marechal Deodoro"
-                                    ng-model="prescritor.address">
+                                <input type="text" class="form-control" id="address-prescritor" placeholder="Ex.: Rua Marechal Deodoro" ng-model="prescritor.address.street">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="neighborhood-prescritor">Bairro</label>
-                                <input type="text" class="form-control" id="neighborhood-prescritor" placeholder="Ex.: Centro" ng-model="prescritor.neighborhood">
+                                <input type="text" class="form-control" id="neighborhood-prescritor" placeholder="Ex.: Centro" ng-model="prescritor.address.neighborhood">
                             </div>
                         </div>
                     </div>
@@ -93,14 +98,13 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="city-prescritor">Cidade</label>
-                                <input type="text" class="form-control" id="city-prescritor" placeholder="Ex.: Santa Rita do Sapucaí"
-                                    ng-model="prescritor.city">
+                                <input type="text" class="form-control" id="city-prescritor" placeholder="Ex.: Santa Rita do Sapucaí" ng-model="prescritor.address.city.name">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="uf-prescritor">UF</label>
-                                <input type="text" class="form-control" id="uf-prescritor" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescritor.uf">
+                                <input type="text" class="form-control" id="uf-prescritor" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescritor.address.city.state.uf">
                             </div>
                         </div>
                     </div>
@@ -111,6 +115,7 @@
         </div>
     </div>
     <footer>
-        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+        Todos os direitos reservados
+        <a href="">Prescritor QR Code</a>
     </footer>
 </div>

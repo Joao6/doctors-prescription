@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="input-group">
-                    <input type="text" class="form-control" ng-model="name" placeholder="Pesquisar por nome">
+                    <input type="text" ng-change="getPrescritorList(name)" class="form-control" ng-model="name" placeholder="Pesquisar por nome">
                     <span class="input-group-btn">
                         <button ng-click="getPrescritorList(name)" class="btn btn-default" type="button">Pesquisar</button>
                     </span>
@@ -34,7 +34,7 @@
                             <td>{{prescritor.name}}</td>
                             <td>{{prescritor.email}}</td>
                             <td>{{prescritor.profession}}</td>
-                            <td>{{prescritor.typeNumber}} {{prescritor.number}}</td>
+                            <td>{{prescritor.crm}}</td>
                             <td>{{prescritor.account}}</td>
                             <td>
                                 <a href="#!/adm/prescritores/{{prescritor.id}}/edit" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></a>

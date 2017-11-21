@@ -1,23 +1,23 @@
 angular.module('prescritor').factory('apiService', function ($http, config) {
 
     const _getUserById = (id) => {
-        return $http.get(config.baseUrl + '/prescritors/' + id)
+        return $http.get(config.baseUrl + '/doctors/' + id)
     }
 
     const _getPrescritors = (name) => {
-        return $http.get(config.baseUrl + '/prescritors', { params: { "name": name } })
+        return $http.get(config.baseUrl + '/doctors', { params: { "name": name } })
     }
 
     const _updatePrescritor = prescritor => {
-        return $http.put(config.baseUrl + '/prescritors/' + prescritor.id, prescritor)
+        return $http.put(config.baseUrl + '/doctors/' + prescritor.id, prescritor)
     }
 
     const _createPrescritor = prescritor => {
-        return $http.post(config.baseUrl + '/prescritors', prescritor)
+        return $http.post(config.baseUrl + '/doctors', prescritor)
     }
 
     const _deletePrescritor = id => {
-        return $http.delete(config.baseUrl + '/prescritors/' + id)
+        return $http.delete(config.baseUrl + '/doctors/' + id)
     }
 
     const _getMedicamentById = id => {
@@ -29,11 +29,11 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
     }
 
     const _getUseTypeList = (name) => {
-        return $http.get(config.baseUrl + '/useTypes', { params: { "name": name } })
+        return $http.get(config.baseUrl + '/usetypes', { params: { "name": name } })
     }
 
     const _getUnityList = (name) => {
-        return $http.get(config.baseUrl + '/unities', { params: { "name": name } })
+        return $http.get(config.baseUrl + '/unity', { params: { "name": name } })
     }
 
     const _updateMedicament = medicament => {

@@ -38,7 +38,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="date-pacient">Data de nascimento</label>
-                                <input type="text" class="form-control date" id="date-pacient" placeholder="Ex.: 06/11/1985" ng-required="true" ng-model="pacient.date">
+                                <input type="text" class="form-control date" id="date-pacient" placeholder="Ex.: 06/11/1985" ng-required="true" ng-model="pacient.birthdate">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -58,13 +58,13 @@
                             <div class="form-group">
                                 <label for="address-pacient">Rua</label>
                                 <input type="text" class="form-control" id="address-pacient" placeholder="Ex.: Rua Marechal Deodoro"
-                                    ng-model="pacient.address">
+                                    ng-model="pacient.address.street">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="neighborhood-pacient">Bairro</label>
-                                <input type="text" class="form-control" id="neighborhood-pacient" placeholder="Ex.: Centro" ng-model="pacient.neighborhood">
+                                <input type="text" class="form-control" id="neighborhood-pacient" placeholder="Ex.: Centro" ng-model="pacient.address.neighborhood">
                             </div>
                         </div>
                     </div>
@@ -73,13 +73,13 @@
                             <div class="form-group">
                                 <label for="city-pacient">Cidade</label>
                                 <input type="text" class="form-control" id="city-pacient" placeholder="Ex.: Santa Rita do Sapucaí"
-                                    ng-model="pacient.city">
+                                    ng-model="pacient.address.city.name">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="uf-pacient">UF</label>
-                                <input type="text" class="form-control uf" id="uf-pacient" placeholder="Ex.: MG" ng-maxlength="2" ng-model="pacient.uf">
+                                <input type="text" class="form-control uf" id="uf-pacient" placeholder="Ex.: MG" ng-maxlength="2" ng-model="pacient.address.city.state.uf">
                             </div>
                         </div>
                     </div>
