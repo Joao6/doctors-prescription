@@ -22,7 +22,9 @@ function AppConfig($stateProvider, $urlRouterProvider, $rootScope) {
                 prescritorList: function () { },
                 prescritor: function () { },
                 medicament: function () { },
-                medicamentList: function () { }
+                medicamentList: function () { },
+                useTypeList: function () {},
+                unityList: function () {},
             }
         })
         .state({
@@ -34,7 +36,9 @@ function AppConfig($stateProvider, $urlRouterProvider, $rootScope) {
                 prescritorList: function () { },
                 prescritor: function () { },
                 medicament: function () { },
-                medicamentList: function () { }
+                medicamentList: function () { },
+                useTypeList: function () {},
+                unityList: function () {},
             }
         })
         .state({
@@ -48,7 +52,9 @@ function AppConfig($stateProvider, $urlRouterProvider, $rootScope) {
                 },
                 prescritor: function () { },
                 medicament: function () { },
-                medicamentList: function () { }
+                medicamentList: function () { },
+                useTypeList: function () {},
+                unityList: function () {},
             }
         })
         .state({
@@ -60,7 +66,9 @@ function AppConfig($stateProvider, $urlRouterProvider, $rootScope) {
                 prescritorList: function () { },
                 prescritor: function () { },
                 medicament: function () { },
-                medicamentList: function () { }
+                medicamentList: function () { },
+                useTypeList: function () {},
+                unityList: function () {},
             }
         })
         .state({
@@ -74,7 +82,9 @@ function AppConfig($stateProvider, $urlRouterProvider, $rootScope) {
                     return apiService.getUserById($stateParams.idPrescritor)
                 },
                 medicament: function () { },
-                medicamentList: function () { }
+                medicamentList: function () { },
+                useTypeList: function () {},
+                unityList: function () {},
             }
         })
         .state({
@@ -88,7 +98,9 @@ function AppConfig($stateProvider, $urlRouterProvider, $rootScope) {
                 medicament: function () { },
                 medicamentList: function (apiService) {
                     return apiService.getMedicaments()
-                }
+                },
+                useTypeList: function () {},
+                unityList: function () {},
             }
         })
         .state({
@@ -102,7 +114,9 @@ function AppConfig($stateProvider, $urlRouterProvider, $rootScope) {
                 medicament: function () { },
                 medicamentList: function (apiService) {
                     return apiService.getMedicaments()
-                }
+                },
+                useTypeList: function () {},
+                unityList: function () {},
             }
         })
         .state({
@@ -118,7 +132,41 @@ function AppConfig($stateProvider, $urlRouterProvider, $rootScope) {
                 },
                 medicamentList: function (apiService) {
                     return apiService.getMedicaments()
-                }
+                },
+                useTypeList: function () {},
+                unityList: function () {},
+            }
+        })
+        .state({
+            name: 'adm-unities',
+            url: '/adm/unidades',
+            templateUrl: 'views/adm/unities.html',
+            controller: 'admController',
+            resolve: {
+                prescritorList: function () { },
+                prescritor: function () { },
+                medicament: function () { },
+                medicamentList: function () { },
+                useTypeList: function () {},                
+                unityList: function (apiService) {
+                    return apiService.getUnityList()
+                },
+            }
+        })
+        .state({
+            name: 'adm-use-type',
+            url: '/adm/tipo-de-uso',
+            templateUrl: 'views/adm/useTypes.html',
+            controller: 'admController',
+            resolve: {
+                prescritorList: function () { },
+                prescritor: function () { },
+                medicament: function () { },
+                medicamentList: function () { },
+                useTypeList: function (apiService) {
+                    return apiService.getUseTypeList()
+                },
+                unityList: function () {},
             }
         })
         .state({
@@ -177,7 +225,7 @@ function AppConfig($stateProvider, $urlRouterProvider, $rootScope) {
                 unityList: function (apiService) {
                     return apiService.getUnityList()
                 },
-                prescriptionInfo: function () {}
+                prescriptionInfo: function () { }
             }
         })
         .state({
