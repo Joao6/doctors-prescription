@@ -1,0 +1,93 @@
+<div ng-include="'views/templates/navbar-adm.html'"></div>
+<div class="container">
+    <div class="jumbotron">
+        <h3>
+            Tipo de uso
+            <a ng-click="openModalCreateAndUpdate()" href="" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </h3>  
+        <div class="row">
+            <div class="col-lg-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="useType in useTypeList">
+                            <td>{{useType.name}}</td>
+                            <td>
+                                <a ng-click="openModalCreateAndUpdate( useType)" href="" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-zoom-in"></span>
+                                </a>
+                                <a ng-click="openModal('modal-delete', useType.id)" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Todos os direitos reservados
+        <a href="">Prescritor QR Code</a>
+    </footer>
+    <div id="modal-create-update" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Tipo de uso</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="formUseType">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="useType-name">Nome</label>
+                                <input type="text" class="form-control" id="useType-name" ng-model="useType.name">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button ng-click="saveUseType(useType)" ng-disabled="!formUseType.$valid" type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div id="modal-delete" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Excluir tipo de uso</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Você deseja confirmar esta operação? Os dados deste tipo de uso serão apagados de todos os lugares e
+                        não poderá ser revertido.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button ng-click="deleteUseType(idDelete)" type="button" class="btn btn-danger" data-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</div>
