@@ -168,7 +168,19 @@
         "neighborhood": "Centro",
         "city": "Santa Rita",
         "uf": "MG",
-        "id": 4
+        "id": 4,
+        "doctor": {
+          "name": "Alexandre",
+          "email": "alexandre@gmail.com",
+          "password": "123",
+          "profession": "Professor",
+          "cpf": "098.748.222-33",
+          "phone": "(35) 99860-6677",
+          "typeNumber": "CRP",
+          "number": 1236,
+          "account": "0",
+          "id": 6
+        }
       },
       "id": 5
     },
@@ -247,7 +259,19 @@
         "neighborhood": "Centro",
         "city": "Santa Rita",
         "uf": "MG",
-        "id": 4
+        "id": 4,
+        "doctor": {
+          "name": "Alexandre",
+          "email": "alexandre@gmail.com",
+          "password": "123",
+          "profession": "Professor",
+          "cpf": "098.748.222-33",
+          "phone": "(35) 99860-6677",
+          "typeNumber": "CRP",
+          "number": 1236,
+          "account": "0",
+          "id": 6
+        }
       },
       "id": 6
     }
