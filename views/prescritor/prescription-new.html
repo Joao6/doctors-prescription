@@ -136,91 +136,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="prescript-description">Posologia</label>
-                                    <textarea rows="3" class="form-control" id="description-prescription" placeholder="Descrição da prescrição deste medicamento" ng-required="true"
-                                        ng-model="prescript.description"></textarea>
+                                    <textarea rows="3" class="form-control" id="description-prescription" placeholder="Descrição da prescrição deste medicamento"
+                                        ng-required="true" ng-model="prescript.description"></textarea>
                                 </div>
                             </div>
+                            <button ng-click="openPosologia(prescript, 'description')" type="button" style="margin: 24px 0px auto 5px;height: 34px;" class="btn btn-primary">Buscar</button>
+                            <button ng-click="savePosologia(prescript.description)" type="button" style="margin: 24px 0px auto 5px;height: 34px;" class="btn btn-success">Salvar</button>
                         </div>
                     </div>
-                    <!-- <div ng-repeat="prescript in prescription.prescriptionList" class="border-prescript-list">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="prescription-type">Prescrição {{prescription.prescriptionList.indexOf(prescript) + 1}}</label>
-                                    <select id="prescription-type" class="form-control" ng-model="prescript.useType" ng-required="true" ng-options="useType as useType.name for useType in useTypeList">
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                <a ng-click="removePrescription(prescript,prescription.prescriptionList)" class="btn btn-danger" style="margin: 24px 0px auto 5px;height: 34px;">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <h4>
-                            Medicamentos
-                            <a ng-click="addMedicament(prescript)" class="btn btn-primary btn-add-input">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </a>
-                        </h4>
-                        <div ng-repeat="medicamentPrescript in prescript.medicamentList">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="prescription-medicament">Medicamento {{prescript.medicamentList.indexOf(medicamentPrescript)+1}}</label>
-                                        <select id="prescription-medicament" class="form-control" ng-model="medicamentPrescript.medicament" ng-required="true" ng-options="medicament as medicament.name for medicament in medicamentList">
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="medicament-comercialName">Nome comercial</label>
-                                       
-                                        <div ng-dropdown-multiselect="" options="medicamentPrescript.medicament.commercialNameList" selected-model="medicamentPrescript.comercialName" extra-settings="stringSettings"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="medicament-apresentation">Apresentação</label>
-                                        <select id="medicament-apresentation" class="form-control" ng-model="medicamentPrescript.medicament.apresentation" ng-required="true"
-                                            ng-options="apresentation as apresentation.description for apresentation in medicamentPrescript.medicament.apresentationList">
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="medicament-quantity">Quantidade</label>
-                                        <input type="number" class="form-control" id="medicament-quantity" ng-model="medicamentPrescript.medicament.quantity">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="medicament-unity">Unidade</label>
-                                        <select id="medicament-unity" class="form-control" ng-model="medicamentPrescript.medicament.unity" ng-required="true" ng-options="unity as unity.name for unity in unityList">
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                    <a ng-click="removeMedicament(medicamentPrescript,prescript.medicamentList)" class="btn btn-danger" style="margin: 24px 0px auto 5px;height: 34px;">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="prescription-descrition">Posologia</label>
-                                        <textarea rows="3" class="form-control" id="description-prescription" placeholder="Descrição da prescrição..." ng-required="true"
-                                            ng-model="medicamentPrescript.medicament.description"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <button ng-click="savePrescription(prescription)" ng-disabled="formPrescription.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
                     <a href="#!/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
                 </form>
@@ -231,4 +157,30 @@
         Todos os direitos reservados
         <a href="">Prescritor QR Code</a>
     </footer>
+</div>
+<div id="modal-description" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Selecione uma posologia</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">                        
+                        <select id="posologia" class="form-control" ng-model="posologia" ng-required="true" ng-options="posologia.description as posologia.description for posologia in posologiaList">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button ng-click="addPosologia(posologia)" type="button" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

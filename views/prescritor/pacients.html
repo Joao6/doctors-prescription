@@ -24,7 +24,7 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>E-mail</th>
-                                <th>Profissão</th>                                                                
+                                <th>RG</th>                                                                
                                 <th>Opções</th>
                             </tr>
                         </thead>
@@ -32,7 +32,7 @@
                             <tr ng-repeat="pacient in pacientList">
                                 <td>{{pacient.name}}</td>
                                 <td>{{pacient.email}}</td>
-                                <td>{{pacient.profession}}</td>                                
+                                <td>{{pacient.rg}}</td>                                
                                 <td>
                                     <a href="#!/prescritor/pacientes/{{pacient.id}}/edit" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></a>
                                     <a ng-click="openModal('modal-delete', pacient.id)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>

@@ -19,12 +19,14 @@
                                 <input type="text" class="form-control" id="name-medicament" placeholder="Nome do princípio ativo" ng-required="true" ng-model="medicament.name">
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <h4>
                                 Apresentações
-                                <a ng-click="addInput(medicament,'apresentation')" class="btn btn-primary btn-add-input"><span class="glyphicon glyphicon-plus"></span></a>
+                                <a ng-click="addInput(medicament,'apresentation')" class="btn btn-primary btn-add-input">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </a>
                             </h4>
                             <div class="apresentations" ng-repeat="apresentation in medicament.apresentationList">
                                 <div class="row">
@@ -33,13 +35,17 @@
                                 <input type="text" class="form-control col-lg-9 col-md-9 col-sm-7 col-xs-7" placeholder="Apresentação + miligramas" ng-model="apresentation.value"
                                     ng-required="true" style="width: 90%;">
                                 <a ng-click="removeInput(medicament,apresentation,'apresentation')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"
-                                    style="margin: 0px 0px auto 5px;height: 34px;"><i class="glyphicon glyphicon-trash"></i></a>
+                                    style="margin: 0px 0px auto 5px;height: 34px;">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <h4>
                                 Nome comercial
-                                <a ng-click="addInput(medicament,'commercialName')" class="btn btn-primary btn-add-input"><span class="glyphicon glyphicon-plus"></span></a>
+                                <a ng-click="addInput(medicament,'commercialName')" class="btn btn-primary btn-add-input">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </a>
                             </h4>
                             <div class="commercialName" ng-repeat="commercialName in medicament.comercialNameList">
                                 <div class="row">
@@ -48,7 +54,9 @@
                                 <input type="text" class="form-control input-separate-bottom col-lg-9 col-md-9 col-sm-7 col-xs-7" ng-model="commercialName.value"
                                     placeholder="Nome comercial" ng-required="true" style="width: 90%;">
                                 <a ng-click="removeInput(medicament,commercialName,'commercialName')" class="btn btn-danger btn-add-input col-lg-1 col-md-1 col-sm-1 col-xs-1"
-                                    style="margin: 0px 0px auto 5px;height: 34px;"><span class="glyphicon glyphicon-trash"></span></a>
+                                    style="margin: 0px 0px auto 5px;height: 34px;">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -56,30 +64,30 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <h4>
                                 Interação medicamentosa
-                                <a ng-click="addInteracao(medicament)" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                                <a ng-click="addInteracao(medicament)" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </a>
                             </h4>
                         </div>
-                    </div>                    
-                    <div ng-repeat="interation in medicament.interations" class="interation-list" style="border: 1px solid #e2e2e2; padding: 5px; margin: 5px;">                        
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="interation-medicament">Interage com</label>
-                                        <select id="interation-medicament" class="form-control" ng-model="interation.medicament" 
-                                        ng-options="medicament.name for medicament in medicamentList track by medicament.name"></select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="interation-description">Descrição</label>
-                                        <textarea rows="3" class="form-control" id="interation-description" placeholder="Formas de interação"
-                                            ng-model="interation.description"></textarea>
-                                    </div>
+                    </div>
+                    <div ng-repeat="interation in medicament.interationList" class="interation-list" style="border: 1px solid #e2e2e2; padding: 5px; margin: 5px;">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="interation-medicament">Interage com</label>
+                                    <select id="interation-medicament" class="form-control" ng-model="interation.medicament" ng-options="medicament.id as medicament.name for medicament in medicamentList "></select>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="interation-description">Descrição</label>
+                                    <textarea rows="3" class="form-control" id="interation-description" placeholder="Formas de interação" ng-model="interation.description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button ng-click="updateMedicament(medicament)" ng-disabled="formMedicament.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
                     <a href="#!/adm/medicamentos" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
                 </form>
@@ -87,6 +95,7 @@
         </div>
     </div>
     <footer>
-        Todos os direitos reservados <a href="">medicament QR Code</a>
+        Todos os direitos reservados
+        <a href="">medicament QR Code</a>
     </footer>
 </div>
