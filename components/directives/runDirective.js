@@ -1,33 +1,20 @@
-angular.module('prescritor').run(($location, $rootScope, toast, $window, $transitions) => {
+angular.module('prescritor').run(function ($rootScope, $state, $http, AUTH_EVENTS, AuthService) {
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+        if (next.name !== 'login') {
+            var authorizedRoles = next.data.authorizedRoles
+            if (authorizedRoles.indexOf('*') != 0)
+                if (!AuthService.isAuthorized(authorizedRoles)) {
+                    event.preventDefault()
 
-    const nonBlockedRoutes = ['/login']
+                    if (AuthService.isAuthenticated())
+                        $rootScope.$broadcast(AUTH_EVENTS.notAuthorized)
+                    else
+                        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated)
 
-    $transitions.onStart({}, function (trans) {
-
-        const urlActual = $location.path();
-        if ($rootScope.userLogged != null) {
-            if ($rootScope.userLogged.type === 'adm') {
-                if ((urlActual.indexOf('/prescritor/') !== -1)) {
-                    //$location.path('/access-denied')
-                    toast.error('Você não possui permissão', 4000)
+                    $state.go('login')
+                    alert('Access Denied')
                 }
-            } else if ($rootScope.userLogged.type === 'prescritor') {
-                if ((urlActual.indexOf('/adm/') !== -1)) {
-                    //$location.path('/access-denied')
-                    toast.error('Você não possui permissão', 4000)
-                }
-            }
-        } else {
-            if (nonBlockedRoutes.indexOf(urlActual) === -1) {
-                if (!window.localStorage.getItem('qrcode-user-hash')) {
-                    toast.warning('Sua sessão expirou, faça login novamente!', 4000)
-                    $location.path('/login')                    
-                    $window.location.href = '/#!/login';
-                } else {
-                    let user = window.localStorage.getItem('qrcode-user-hash')
-                    $rootScope.userLogged = JSON.parse(user)
-                }
-            }
-        }
+        } else if (next.name == 'responsible' && AuthService.isResponsible())
+            $state.go('responsible')
     })
 })
