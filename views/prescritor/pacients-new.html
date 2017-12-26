@@ -13,41 +13,47 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="name-pacient">Nome</label>
                                 <input type="text" class="form-control" id="name-pacient" placeholder="Ex.: João Pedro" ng-required="true" ng-model="pacient.name">
                             </div>
-                        </div>                        
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="name-pacient">RG</label>
+                                <input type="text" class="form-control" id="rg-pacient" placeholder="Ex.: MG-14.897.512" ng-required="true" ng-model="pacient.rg">
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">                       
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="email-pacient">E-mail</label>
-                                <input type="email" class="form-control" id="email-pacient" placeholder="Ex.: joao@gmail.com" ng-required="true" ng-model="pacient.email">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label for="profession-pacient">Profissão</label>
-                                <input type="text" class="form-control" id="profession-pacient" placeholder="Ex.: Cirurgião" ng-required="true" ng-model="pacient.profession">
-                            </div>
-                        </div>
-                    </div> 
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="date-pacient">Data de nascimento</label>
-                                <input type="text" class="form-control date" id="date-pacient" placeholder="Ex.: 06/11/1985" ng-required="true" ng-model="pacient.birthdate">
+                                <input type="text" class="form-control date" id="date-pacient" placeholder="Ex.: 06/11/1985" ng-required="true" ng-model="pacient.date">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="phone-pacient">Telefone</label>
-                                <input type="text" class="form-control phone_with_ddd" id="phone-pacient" placeholder="Ex.: 3599860-6677" ng-required="true" ng-model="pacient.phone">
+                                <input type="text" class="form-control phone_with_ddd" id="phone-pacient" placeholder="Ex.: 3599860-6677" ng-model="pacient.phone">
                             </div>
                         </div>
-                    </div>                  
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="email-pacient">E-mail</label>
+                                <input type="email" class="form-control" id="email-pacient" placeholder="Ex.: joao@gmail.com" ng-model="pacient.email">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="profession-pacient">Profissão</label>
+                                <input type="text" class="form-control" id="profession-pacient" placeholder="Ex.: Cirurgião" ng-model="pacient.profession">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <h4>Endereço</h4>
@@ -72,8 +78,12 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="city-pacient">Cidade</label>
+<<<<<<< HEAD
                                 <input type="text" class="form-control" id="city-pacient" placeholder="Ex.: Santa Rita do Sapucaí"
                                     ng-model="pacient.address.city.name">
+=======
+                                <input type="text" class="form-control" id="city-pacient" placeholder="Ex.: Santa Rita do Sapucaí" ng-model="pacient.city">
+>>>>>>> master
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -90,6 +100,7 @@
         </div>
     </div>
     <footer>
-        Todos os direitos reservados <a href="">pacient QR Code</a>
+        Todos os direitos reservados
+        <a href="">pacient QR Code</a>
     </footer>
 </div>

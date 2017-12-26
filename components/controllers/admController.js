@@ -1,6 +1,6 @@
 'use strict'
 angular.module('prescritor')
-    .controller('admController', function ($scope, $rootScope, $location, apiService, toast, prescritor, medicament, medicamentList, prescritorList, useTypeList, unityList) {
+    .controller('admController', function ($scope, $rootScope, $location, apiService, userService, toast, prescritor, medicament, medicamentList, prescritorList, useTypeList, unityList, profile) {
 
         $scope.apresentationList = [{}]
         $scope.commercialNameList = [{}]
@@ -18,6 +18,10 @@ angular.module('prescritor')
             $scope.medicamentList = medicamentList.data.content
         } else {
             $scope.medicamentList = []
+        }
+
+        if (profile) {
+            $scope.adm = $rootScope.userLogged
         }
 
         if (medicament) {
@@ -218,14 +222,14 @@ angular.module('prescritor')
         $scope.saveUseType = (useType) => {
             if (useType.id) {
                 apiService.updateUseType(useType).then(data => {
-                    toast.success('Tipo de uso cadastrado com sucesso!', 3000)
+                    toast.success('Tipo de uso editado com sucesso!', 3000)
                     $scope.getUseTypeList()
                 }), function (err) {
                     toast.error('Erro ao salvar o tipo de uso!', 3000)
                 }
             } else {
                 apiService.createUseType(useType).then(data => {
-                    toast.success('Tipo de uso editado com sucesso!', 3000)
+                    toast.success('Tipo de uso cadastrado com sucesso!', 3000)
                     $scope.getUseTypeList()
                 }), function (err) {
                     toast.error('Erro ao salvar o tipo de uso!', 3000)
@@ -237,14 +241,14 @@ angular.module('prescritor')
         $scope.saveUnity = (unity) => {
             if (unity.id) {
                 apiService.updateUnity(unity).then(data => {
-                    toast.success('Unidade cadastrada com sucesso!', 3000)
+                    toast.success('Unidade editada com sucesso!', 3000)
                     $scope.getUnityList()
                 }), function (err) {
                     toast.error('Erro ao salvar a unidade!', 3000)
                 }
             } else {
                 apiService.createUnity(unity).then(data => {
-                    toast.success('Unidade editada com sucesso!', 3000)
+                    toast.success('Unidade cadastrada com sucesso!', 3000)
                     $scope.getUnityList()
                 }), function (err) {
                     toast.error('Erro ao salvar a unidade!', 3000)
@@ -275,7 +279,7 @@ angular.module('prescritor')
             if (entity) {
                 $scope.useType = entity
                 $scope.unity = entity
-            }else{
+            } else {
                 delete $scope.useType
                 delete $scope.unity
             }
@@ -283,7 +287,7 @@ angular.module('prescritor')
         }
 
         $scope.logout = () => {
-            $location.path('/login')
+            userService.logout()            
         }
 
         function addMask() {

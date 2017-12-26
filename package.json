@@ -40,11 +40,12 @@
     "start": "gulp",
     "build": "gulp build",
     "server": "gulp server",
-    "serverbuild": "gulp server-build"    
-  },  
+    "serverbuild": "gulp server-build"
+  },
   "dependencies": {
     "angular": "^1.6.6",
     "angular-sanitize": "^1.6.6",
-    "angularjs-dropdown-multiselect": "^2.0.0-beta.10"    
+    "angularjs-dropdown-multiselect": "^2.0.0-beta.10",
+    "qrious": "^4.0.2"
   }
 }

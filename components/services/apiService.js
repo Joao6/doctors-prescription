@@ -112,6 +112,14 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         return $http.get(config.baseUrl + '/unity', { params: { 'name': name } })
     }
 
+    const _getPosologiaList = (description) => {
+        return $http.get(config.baseUrl + '/posologias', { params: { 'description': description } })
+    }
+
+    const _createPosologia = (posologia) => {
+        return $http.post(config.baseUrl + '/posologias', posologia)
+    }
+
 
     return {
         getUserById: _getUserById,
@@ -141,6 +149,8 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         deleteUseType: _deleteUseType,
         deleteUnity: _deleteUnity,
         getUseTypeList: _getUseTypeList,
-        getUnityList: _getUnityList
+        getUnityList: _getUnityList,
+        getPosologiaList: _getPosologiaList,
+        createPosologia: _createPosologia
     }
 })
