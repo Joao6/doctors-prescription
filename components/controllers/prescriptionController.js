@@ -3,8 +3,9 @@ angular.module('prescritor')
     .controller('prescriptionController', function ($scope, $rootScope, $location, apiService, userService, medicamentList, pacientList, useTypeList, unityList, toast, prescriptionInfo, posologias) {
         $scope.stringSettings = { template: '{{option}}', smartButtonTextConverter(skip, option) { return option; }, };
         $scope.prescription = {}
-        $scope.prescription.date = new Date().getTime()
-        $scope.prescription.precriptions = [
+        let date = new Date()
+        $scope.prescription.date = date.toLocaleDateString()
+        $scope.prescription.prescriptions = [
             {
                 comercialName: [],
                 useType: {},
@@ -46,8 +47,8 @@ angular.module('prescritor')
 
         $scope.verifyInteration = (medicament, prescription) => {
             //if($scope.userLogged.account === 'PREMIUM')
-            if (prescription.precriptions) {
-                prescription.precriptions.forEach(function (element) {
+            if (prescription.prescriptions) {
+                prescription.prescriptions.forEach(function (element) {
                     if (element.medicament) {
                         element.medicament.interationList.forEach(function (interation) {
                             if (interation.medicament === medicament.id) {
@@ -84,18 +85,19 @@ angular.module('prescritor')
                 apiService.updatePrescription(prescription).then(data => {
                     toast.success('Prescrição atualizada com sucesso!', 3000)
                     $location.path('prescritor/prescricao')
-                }), function error(err) {
+                }).catch(function(error){                    
                     toast.error('Erro ao salvar esta prescrição!', 3000)
-                }
+                })
             } else {
                 //create
                 //prescription.interationList = $scope.interationList
+                prescription.description = ''
                 apiService.createPrescription(prescription).then(data => {
                     toast.success('Prescrição cadastrada com sucesso!', 3000)
                     $location.path('prescritor/prescricao')
-                }), function error(err) {
+                }).catch(function(error){                    
                     toast.error('Erro ao salvar esta prescrição!', 3000)
-                }
+                })
             }
         }
 
@@ -108,7 +110,7 @@ angular.module('prescritor')
         }
 
         $scope.addPrescription = (prescription) => {
-            prescription.precriptions.push(
+            prescription.prescriptions.push(
                 {
                     comercialName: [],
                     useType: {},

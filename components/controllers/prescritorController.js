@@ -7,10 +7,10 @@ angular.module('prescritor')
         } else {
             $scope.pacient = {}
         }
-        
-        if(prescriptionList){
+
+        if (prescriptionList) {
             $scope.prescriptionList = prescriptionList.data.content
-        }else{
+        } else {
             $scope.prescriptionList = []
         }
 
@@ -98,8 +98,16 @@ angular.module('prescritor')
             }
         }
 
-        $scope.printPrescription = (prescription) => {
-            printService.onePage(prescription)
+        $scope.printPrescription = (prescription, type) => {
+            if (type == 'onePage') {
+                apiService.getPrescriptionById(prescription.id).then(data => {
+                    printService.onePage(data.data)
+                })
+            } else if (type == 'onePerPage') {
+                apiService.getPrescriptionById(prescription.id).then(data => {
+                    printService.onePerPage(data.data)
+                })
+            }
         }
 
         $scope.isEmptyMedicamentList = () => {
@@ -112,6 +120,11 @@ angular.module('prescritor')
 
         $scope.openModal = (modal, id) => {
             $scope.idDelete = id
+            $('#' + modal).modal()
+        }
+
+        $scope.openModalPrint = (modal, prescriptionPrint) => {
+            $scope.prescriptionPrint = prescriptionPrint
             $('#' + modal).modal()
         }
 
