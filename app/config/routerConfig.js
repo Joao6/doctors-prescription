@@ -282,7 +282,8 @@ angular
                     },
                     prescriptionInfo: function () { },
                     posologias: function (apiService) {
-                        return apiService.getPosologiaList()
+                        //return apiService.getPosologiaList()
+                        return true
                     }
                 },
                 data: {
