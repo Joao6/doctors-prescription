@@ -18,7 +18,7 @@
                                 <div class="form-group">
                                     <label for="prescription-date">Data</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" ng-model="prescription.date | date: 'dd/MM/yyyy'" placeholder="Data desta prescrição">
+                                        <input type="text" class="form-control" ng-model="prescription.date" placeholder="Data desta prescrição">
                                     </div>
                                 </div>
                             </div>
@@ -84,17 +84,17 @@
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
                     </h4>
-                    <div ng-repeat="prescript in prescription.precriptions" class="border-prescript-list">
+                    <div ng-repeat="prescript in prescription.prescriptions" class="border-prescript-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="prescript-medicament">Medicamento {{prescription.precriptions.indexOf(prescript) + 1}}</label>
+                                    <label for="prescript-medicament">Medicamento {{prescription.prescriptions.indexOf(prescript) + 1}}</label>
                                     <select id="prescript-medicament" class="form-control" ng-model="prescript.medicament" ng-required="true" ng-options="medicament as medicament.name for medicament in medicamentList">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                <a ng-click="removePrescription(prescript,prescription.precriptions)" class="btn btn-danger" style="margin: 24px 0px auto 5px;height: 34px;">
+                                <a ng-click="removePrescription(prescript,prescription.prescriptions)" class="btn btn-danger" style="margin: 24px 0px auto 5px;height: 34px;">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>
@@ -148,7 +148,7 @@
                         </div>
                     </div>
                     <button ng-click="savePrescription(prescription)" ng-disabled="formPrescription.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
-                    <a href="#!/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                    <a href="#/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
                 </form>
             </div>
         </div>

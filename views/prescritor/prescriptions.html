@@ -5,15 +5,17 @@
         <div class="jumbotron">
             <h3>
                 Prescrições
-                <a href="#!/prescritor/prescricao/novo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="#/prescritor/prescricao/novo" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
             </h3>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="input-group">
                         <input type="text" class="form-control" ng-model="name" placeholder="Pesquisar por nome">
                         <span class="input-group-btn">
-                        <button ng-click="getPrescriptionList(name)" class="btn btn-default" type="button">Pesquisar</button>
-                    </span>
+                            <button ng-click="getPrescriptionList(name)" class="btn btn-default" type="button">Pesquisar</button>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -22,19 +24,25 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Nome paciente</th>                                                                                            
-                                <th>Data</th>                                                                                            
+                                <th>Nome paciente</th>
+                                <th>Data</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="prescription in prescriptionList">
-                                <td>{{prescription.pacient.name}}</td>                                                           
-                                <td>{{prescription.date | date:'dd/MM/yyyy'}}</td>                                                           
+                                <td>{{prescription.pacient.name}}</td>
+                                <td>{{prescription.date | date:'dd/MM/yyyy'}}</td>
                                 <td>
-                                    <a href="" class="btn btn-success" ng-click="printPrescription(prescription)"><span class="glyphicon glyphicon-print"></span></a>
-                                    <a href="#!/prescritor/prescricao/{{prescription.id}}/info" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></a>
-                                    <a ng-click="openModal('modal-delete', prescription.id)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="" class="btn btn-success" ng-click="openModalPrint('modal-print', prescription)">
+                                        <span class="glyphicon glyphicon-print"></span>
+                                    </a>
+                                    <a href="#/prescritor/prescricao/{{prescription.id}}/info" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-zoom-in"></span>
+                                    </a>
+                                    <a ng-click="openModal('modal-delete', prescription.id)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -44,6 +52,34 @@
         </div>
     </div>
     <footer>
-        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+        Todos os direitos reservados
+        <a href="">Prescritor QR Code</a>
     </footer>
 </div>
+<img id="imageReceita" src="../images/receita.png" style="display: none;">
+
+<div id="modal-print" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Imprimir prescrição</h4>
+            </div>
+            <div class="modal-body">
+                <p>Selecione a forma de impressão desta prescrição!
+                </p>
+            </div>
+            <div class="modal-footer">
+                <center>
+                    <button ng-click="printPrescription(prescriptionPrint,'onePage')" type="button" class="btn btn-success" data-dismiss="modal">Uma página</button>
+                    <button ng-click="printPrescription(prescriptionPrint,'onePerPage')" type="button" class="btn btn-primary" data-dismiss="modal">Um por página</button>
+                </center>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

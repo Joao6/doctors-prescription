@@ -84,7 +84,7 @@
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
                     </h4>
-                    <div ng-repeat="prescript in prescription.precriptions" class="border-prescript-list">
+                    <div ng-repeat="prescript in prescription.prescriptions" class="border-prescript-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -110,14 +110,14 @@
                             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="prescript-comercialName">Nome comercial</label>
-                                    <div ng-dropdown-multiselect="" options="prescript.medicament.commercialNameList" selected-model="prescript.comercialName"
+                                    <div ng-dropdown-multiselect="" options="prescript.medicament.comercialNames" selected-model="prescript.comercialName"
                                         extra-settings="stringSettings"></div>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="prescript-apresentation">Apresentação</label>
-                                    <select id="prescript-apresentation" class="form-control" ng-model="prescript.apresentation" ng-required="true" ng-options="apresentation as apresentation for apresentation in prescript.medicament.apresentationList">
+                                    <select id="prescript-apresentation" class="form-control" ng-model="prescript.apresentation" ng-required="true" ng-options="apresentation as apresentation for apresentation in prescript.medicament.apresentations">
                                     </select>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                         </div>
                     </div>                   
                     <button ng-click="savePrescription(prescription)" ng-disabled="formPrescription.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
-                    <a href="#!/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                    <a href="#/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
                 </form>
             </div>
         </div>
