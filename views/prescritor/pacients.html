@@ -5,26 +5,28 @@
         <div class="jumbotron">
             <h3>
                 Pacientes
-                <a href="#/prescritor/pacientes/novo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="#/prescritor/pacientes/novo" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
             </h3>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="input-group">
                         <input type="text" class="form-control" ng-model="name" placeholder="Pesquisar por nome">
                         <span class="input-group-btn">
-                        <button ng-click="getPacientList(name)" class="btn btn-default" type="button">Pesquisar</button>
-                    </span>
+                            <button ng-click="getPacientList(name)" class="btn btn-default" type="button">Pesquisar</button>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 table-responsive">
+                <div ng-if="pacientList.length > 0" class="col-lg-12 table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>E-mail</th>
-                                <th>RG</th>                                                                
+                                <th>RG</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
@@ -32,19 +34,27 @@
                             <tr ng-repeat="pacient in pacientList">
                                 <td>{{pacient.name}}</td>
                                 <td>{{pacient.email}}</td>
-                                <td>{{pacient.rg}}</td>                                
+                                <td>{{pacient.rg}}</td>
                                 <td>
-                                    <a href="#/prescritor/pacientes/{{pacient.id}}/edit" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></a>
-                                    <a ng-click="openModal('modal-delete', pacient.id)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="#/prescritor/pacientes/{{pacient.id}}/edit" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-zoom-in"></span>
+                                    </a>
+                                    <a ng-click="openModal('modal-delete', pacient.id)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <div ng-if="pacientList.length < 1" class="col-lg-12">
+                    <h4>Não existem pacientes cadastrados!</h4>
+                </div>
             </div>
         </div>
     </div>
     <footer>
-        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+        Todos os direitos reservados
+        <a href="">Prescritor QR Code</a>
     </footer>
 </div>

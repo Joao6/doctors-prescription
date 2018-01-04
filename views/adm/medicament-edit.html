@@ -69,15 +69,13 @@
                                 </a>
                             </h4>
                         </div>
-                    </div>                    
-                    <div ng-repeat="interation in medicament.interations" class="interation-list" style="border: 1px solid #e2e2e2; padding: 5px; margin: 5px;">                        
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="interation-medicament">Interage com</label>
-                                        <select id="interation-medicament" class="form-control" ng-model="interation.medicament" 
-                                        ng-options="medicament.id as medicament.name for medicament in medicamentList track by medicament.name"></select>
-                                    </div>
+                    </div>
+                    <div ng-repeat="interation in medicament.interations" class="interation-list" style="border: 1px solid #e2e2e2; padding: 5px; margin: 5px;">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="interation-medicament">Interage com</label>
+                                    <select id="interation-medicament" class="form-control" ng-model="interation.medicament" ng-options="medicament as medicament.name for medicament in medicamentList track by medicament.name"></select>
                                 </div>
                             </div>
                         </div>
