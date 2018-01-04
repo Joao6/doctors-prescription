@@ -1,14 +1,19 @@
 'use strict'
 angular.module('prescritor')
-    .controller('mainController', function ($scope, $rootScope, $location, userService, loginFactory, USER_ROLES, AuthService) {
+    .controller('mainController', function ($scope, $rootScope, $location, toast, userService, loginFactory, USER_ROLES, AuthService) {
 
         $scope.user = {}
+        $rootScope.loading = false
 
         $scope.login = function (user) {
-
+            $rootScope.loading = true
             loginFactory.login($scope.user)
                 .then(function (res) {
                     $scope.setUser(res)
+                    $rootScope.loading = false
+                }).catch(function (error) {
+                    $rootScope.loading = false
+                    toast.error("Usuário ou senha inválidos!")
                 })
         }
 
@@ -18,15 +23,12 @@ angular.module('prescritor')
         $scope.setUser = function (user) {
             var redirect = null
 
-            if (user.type === 1) {
+            if (user.role === 1) {
                 user.roleCode = USER_ROLES.manager
-                redirect = 'responsible'
-            } else if (user.type === 2) {
-                user.roleCode = USER_ROLES.responsible
-                redirect = 'responsible'
-            } else if (user.type === 3) {
-                user.roleCode = USER_ROLES.children
-                redirect = 'children'
+                redirect = 'adm/home'
+            } else if (user.role === 2) {
+                user.roleCode = USER_ROLES.prescritor
+                redirect = 'prescritor/home'
             }
 
             if (redirect !== null) {
@@ -43,6 +45,7 @@ angular.module('prescritor')
         }
 
         $scope.logout = () => {
-            userService.logout()
+            AuthService.logout()
+            $location.path('login')
         }
     })

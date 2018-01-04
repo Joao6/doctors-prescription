@@ -91,7 +91,7 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
         ctx.drawImage(img, 0, 0);
         var dataURL = canvas.toDataURL("image/png");
 
-        doc.addImage(canvas.toDataURL("image/png"), 'PNG', lMarginImage, 55, 70, 150);
+        doc.addImage(canvas.toDataURL("image/png"), 'PNG', lMarginImage, 55, 60, 130);
 
         doc.text(prescription.pacient.doctor.name.toUpperCase(), pdfInMM / 2, 30, 'center')
         doc.text(prescription.pacient.doctor.profession + " | " + prescription.pacient.doctor.phone, pdfInMM / 2, 40, 'center')

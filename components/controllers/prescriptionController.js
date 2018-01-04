@@ -1,10 +1,11 @@
 'use strict'
 angular.module('prescritor')
-    .controller('prescriptionController', function ($scope, $rootScope, $location, apiService, userService, medicamentList, pacientList, useTypeList, unityList, toast, prescriptionInfo, posologias) {
+    .controller('prescriptionController', function ($scope, $rootScope, AuthService, $location, apiService, userService, medicamentList, pacientList, useTypeList, unityList, toast, prescriptionInfo, posologias) {
         $scope.stringSettings = { template: '{{option}}', smartButtonTextConverter(skip, option) { return option; }, };
+        $rootScope.loading = false
         $scope.prescription = {}
         let date = new Date()
-        $scope.prescription.date = date.toLocaleDateString()
+        $scope.prescription.date = date.toLocaleDateString('pt-br')
         $scope.prescription.prescriptions = [
             {
                 comercialName: [],
@@ -160,6 +161,7 @@ angular.module('prescritor')
         }
 
         $scope.logout = () => {
-            userService.logout()
+            AuthService.logout()
+            $location.path('login')  
         }
     })

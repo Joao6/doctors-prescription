@@ -1,7 +1,7 @@
 angular.module('prescritor').factory('apiService', function ($http, config) {
 
     const _getUserById = (id) => {
-        return $http.get(config.baseUrl + '/doctors/' + id)
+        return $http.get(config.baseUrl + '/users/' + id)
     }
 
     const _getPrescritors = (name) => {
@@ -40,8 +40,8 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         return $http.delete(config.baseUrl + '/medicaments/' + id)
     }
 
-    const _getPacientList = (name) => {
-        return $http.get(config.baseUrl + '/pacients', { params: { "name": name } })
+    const _getPacientList = (name, doctorId) => {
+        return $http.get(config.baseUrl + '/pacients', { params: { "name": name, "doctor": doctorId } })
     }
 
     const _updatePacient = pacient => {
@@ -68,8 +68,8 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         return $http.delete(config.baseUrl + '/prescriptions/' + id)
     }
 
-    const _getPrescriptions = () => {
-        return $http.get(config.baseUrl + '/prescriptions')
+    const _getPrescriptions = (doctorId) => {
+        return $http.get(config.baseUrl + '/prescriptions', { params: { doctor: doctorId } })
     }
 
     const _getPrescriptionById = (idPrescription) => {
