@@ -72,7 +72,7 @@
                                 <label for="account-prescritor">Tipo de conta</label>
                                 <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account">                                 
                                     <option ng-selected="true" ng-disabled="true">Selecione...</option>
-                                    <option value="0">Free</option>
+                                    <option value="2">Free</option>
                                     <option value="1">Premium</option>
                                   </select>
                             </div>
@@ -107,12 +107,12 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="uf-prescritor">UF</label>
-                                <input type="text" class="form-control" id="uf-prescritor" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescritor.address.uf">
+                                <input type="text" class="form-control" id="uf-prescritor" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescritor.address.city.state.uf">
                             </div>
                         </div>
                     </div>
                     <button ng-click="savePrescritor(prescritor)" ng-disabled="formPrescritor.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
-                    <a href="#!/adm/prescritores" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                    <a href="#/adm/prescritores" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
                 </form>
             </div>
         </div>

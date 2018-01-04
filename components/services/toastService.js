@@ -2,7 +2,7 @@ angular.module('prescritor').service('toast', function () {
     
         this.success = (message, duration) => {
             $.toast({
-                heading: 'Information',
+                heading: 'Informação',
                 text: "<strong style='font-size: 12pt'>" +  message +"</strong>",                        
                 icon: 'success',
                 loader: true,
@@ -15,7 +15,7 @@ angular.module('prescritor').service('toast', function () {
     
         this.error = (message, duration) => {
             $.toast({
-                heading: 'Information',
+                heading: 'Informação',
                 text: "<strong style='font-size: 12pt'>" +  message +"</strong>",                           
                 icon: 'error',
                 loader: true, 
@@ -28,7 +28,7 @@ angular.module('prescritor').service('toast', function () {
     
         this.warning = (message, duration) => {
             $.toast({
-                heading: 'Information',
+                heading: 'Informação',
                 text: "<strong style='font-size: 12pt'>" +  message +"</strong>",                                
                 icon: 'warning',
                 loader: true,
@@ -41,7 +41,7 @@ angular.module('prescritor').service('toast', function () {
     
         this.info = (message, duration) => {
             $.toast({
-                heading: 'Information',
+                heading: 'Informação',
                 text: "<strong style='font-size: 12pt'>" +  message +"</strong>",                              
                 icon: 'info',
                 loader: true,

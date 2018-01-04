@@ -1,6 +1,8 @@
 'use strict'
 angular.module('prescritor')
-    .controller('prescritorController', function ($scope, $rootScope, $location, apiService, userService, printService, toast, pacientList, prescriptionList, prescriptionInfo, pacientInfo, profile) {
+    .controller('prescritorController', function ($scope, $rootScope, $location, apiService, AuthService, userService, printService, toast, pacientList, prescriptionList, prescriptionInfo, pacientInfo, profile) {
+
+        $rootScope.loading = false
 
         if (pacientInfo) {
             $scope.pacient = pacientInfo.data
@@ -9,7 +11,11 @@ angular.module('prescritor')
         }
 
         if (prescriptionList) {
-            $scope.prescriptionList = prescriptionList.data
+            $rootScope.loading = true
+            apiService.getPrescriptions($rootScope.currentUser.id).then(data => {
+                $scope.prescriptionList = data.data.content
+                $rootScope.loading = false
+            })
         } else {
             $scope.prescriptionList = []
         }
@@ -21,13 +27,21 @@ angular.module('prescritor')
         }
 
         if (pacientList) {
-            $scope.pacientList = pacientList.data
+            $rootScope.loading = true
+            apiService.getPacientList('', $rootScope.currentUser.id).then(data => {
+                $scope.pacientList = data.data.content
+                $rootScope.loading = false
+            })
         } else {
             $scope.pacientList = []
         }
 
         if (profile) {
-            $scope.prescritor = $rootScope.userLogged
+            $rootScope.loading = true
+            apiService.getUserById($rootScope.currentUser.id).then(data => {
+                $scope.prescritor = data.data
+                $rootScope.loading = false
+            })
         }
 
         $scope.medicamentList = []
@@ -39,36 +53,36 @@ angular.module('prescritor')
             apiService.createPacient(pacient).then(data => {
                 toast.success('Paciente cadastrado com sucesso!', 3000)
                 $location.path('/prescritor/pacientes')
-            }), function error(err) {
+            }).catch(function (error) {
                 toast.error('Erro ao cadastrar o paciente!', 3000)
-            }
+            })
         }
 
         $scope.updatePacient = (pacient) => {
             apiService.updatePacient(pacient).then(data => {
                 toast.success('Paciente editado com sucesso!', 3000)
                 $location.path('/prescritor/pacientes')
-            }), function error(err) {
+            }).catch(function (error) {
                 toast.error('Erro ao editar o paciente!', 3000)
-            }
+            })
         }
 
         $scope.deletePacient = (id) => {
             apiService.deletePacient(id).then(data => {
                 $scope.getPacientList()
                 toast.then('Paciente excluido com sucesso!', 3000)
-            }), function error(err) {
+            }).catch(function (error) {
                 toast.error('Erro ao excluir o paciente!', 3000)
-            }
+            })
         }
 
         $scope.deletePrescription = (id) => {
             apiService.deletePrescription(id).then(data => {
                 $scope.getPrescriptionList()
                 toast.then('Prescrição excluída com sucesso!', 3000)
-            }), function error(err) {
+            }).catch(function (error) {
                 toast.error('Erro ao excluir o paciente!', 3000)
-            }
+            })
         }
 
         $scope.getPacientList = (name) => {
@@ -76,30 +90,38 @@ angular.module('prescritor')
                 name = null
             }
             apiService.getPacientList(name).then(data => {
-                $scope.pacientList = data
-            }), function error(err) {
+                $scope.pacientList = data.data
+            }).catch(function (error) {
                 toast.error('Erro ao buscar a lista de pacientes!', 3000)
-            }
+            })
         }
 
         $scope.getMedicamentList = (name) => {
             apiService.getMedicaments(name).then(data => {
                 $scope.medicamentList = data
-            }), function error(err) {
+            }).catch(function (error) {
                 toast.error('Erro ao buscar a lista de medicamentos!', 3000)
-            }
+            })
         }
 
         $scope.getPrescriptionList = (name) => {
             apiService.getPrescriptions(name).then(data => {
-                $scope.prescriptionList = data.data
-            }), function error(err) {
+                $scope.prescriptionList = data.data.content
+            }).catch(function (error) {
                 toast.error('Erro ao buscar a lista de prescrições!', 3000)
-            }
+            })
         }
 
-        $scope.printPrescription = (prescription) => {
-            printService.onePage(prescription)
+        $scope.printPrescription = (prescription, type) => {
+            if (type == 'onePage') {
+                apiService.getPrescriptionById(prescription.id).then(data => {
+                    printService.onePage(data.data)
+                })
+            } else if (type == 'onePerPage') {
+                apiService.getPrescriptionById(prescription.id).then(data => {
+                    printService.onePerPage(data.data)
+                })
+            }
         }
 
         $scope.isEmptyMedicamentList = () => {
@@ -115,8 +137,14 @@ angular.module('prescritor')
             $('#' + modal).modal()
         }
 
+        $scope.openModalPrint = (modal, prescriptionPrint) => {
+            $scope.prescriptionPrint = prescriptionPrint
+            $('#' + modal).modal()
+        }
+
         $scope.logout = () => {
-            userService.logout()
+            AuthService.logout()
+            $location.path('login')
         }
 
         function addMask() {

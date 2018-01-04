@@ -1,23 +1,23 @@
 angular.module('prescritor').factory('apiService', function ($http, config) {
 
     const _getUserById = (id) => {
-        return $http.get(config.baseUrl + '/prescritors/' + id)
+        return $http.get(config.baseUrl + '/users/' + id)
     }
 
     const _getPrescritors = (name) => {
-        return $http.get(config.baseUrl + '/prescritors', { params: { "name": name } })
+        return $http.get(config.baseUrl + '/doctors', { params: { "name": name } })
     }
 
     const _updatePrescritor = prescritor => {
-        return $http.put(config.baseUrl + '/prescritors/' + prescritor.id, prescritor)
+        return $http.put(config.baseUrl + '/doctors/' + prescritor.id, prescritor)
     }
 
     const _createPrescritor = prescritor => {
-        return $http.post(config.baseUrl + '/prescritors', prescritor)
+        return $http.post(config.baseUrl + '/doctors', prescritor)
     }
 
     const _deletePrescritor = id => {
-        return $http.delete(config.baseUrl + '/prescritors/' + id)
+        return $http.delete(config.baseUrl + '/doctors/' + id)
     }
 
     const _getMedicamentById = id => {
@@ -40,8 +40,8 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         return $http.delete(config.baseUrl + '/medicaments/' + id)
     }
 
-    const _getPacientList = (name) => {
-        return $http.get(config.baseUrl + '/pacients', { params: { "name": name } })
+    const _getPacientList = (name, doctorId) => {
+        return $http.get(config.baseUrl + '/pacients', { params: { "name": name, "doctor": doctorId } })
     }
 
     const _updatePacient = pacient => {
@@ -68,8 +68,8 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         return $http.delete(config.baseUrl + '/prescriptions/' + id)
     }
 
-    const _getPrescriptions = () => {
-        return $http.get(config.baseUrl + '/prescriptions')
+    const _getPrescriptions = (doctorId) => {
+        return $http.get(config.baseUrl + '/prescriptions', { params: { doctor: doctorId } })
     }
 
     const _getPrescriptionById = (idPrescription) => {
@@ -119,6 +119,7 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
     const _createPosologia = (posologia) => {
         return $http.post(config.baseUrl + '/posologias', posologia)
     }
+
 
     return {
         getUserById: _getUserById,

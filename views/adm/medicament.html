@@ -5,7 +5,7 @@
         <div class="jumbotron">
             <h3>
                 Medicamentos
-                <a href="#!/adm/medicamentos/novo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="#/adm/medicamentos/novo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </h3>
             <div class="row">
                 <div class="col-lg-6">
@@ -36,7 +36,7 @@
                                 <td>{{medicament.apresentation}}</td>
                                 <td>{{medicament.miligrama}}</td>
                                 <td>
-                                    <a href="#!/adm/medicamentos/{{medicament.id}}/edit" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></a>
+                                    <a href="#/adm/medicamentos/{{medicament.id}}/edit" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></a>
                                     <a ng-click="openModal('modal-delete', medicament.id)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>

@@ -1,9 +1,11 @@
 'use strict'
 angular.module('prescritor')
-    .controller('prescriptionController', function ($scope, $rootScope, $location, apiService, userService, medicamentList, pacientList, useTypeList, unityList, toast, prescriptionInfo, posologias) {
+    .controller('prescriptionController', function ($scope, $rootScope, AuthService, $location, apiService, userService, medicamentList, pacientList, useTypeList, unityList, toast, prescriptionInfo, posologias) {
         $scope.stringSettings = { template: '{{option}}', smartButtonTextConverter(skip, option) { return option; }, };
+        $rootScope.loading = false
         $scope.prescription = {}
-        $scope.prescription.date = new Date().getTime()
+        let date = new Date()
+        $scope.prescription.date = date.toLocaleDateString('pt-br')
         $scope.prescription.prescriptions = [
             {
                 comercialName: [],
@@ -13,25 +15,25 @@ angular.module('prescritor')
         ]
 
         if (medicamentList) {
-            $scope.medicamentList = medicamentList.data
+            $scope.medicamentList = medicamentList.data.content
         } else {
             $scope.medicamentList = []
         }
 
         if (pacientList) {
-            $scope.pacientList = pacientList.data
+            $scope.pacientList = pacientList.data.content
         } else {
             $scope.pacientList = []
         }
 
         if (useTypeList) {
-            $scope.useTypeList = useTypeList.data
+            $scope.useTypeList = useTypeList.data.content
         } else {
             $scope.useTypeList = []
         }
 
         if (unityList) {
-            $scope.unityList = unityList.data
+            $scope.unityList = unityList.data.content
         } else {
             $scope.unityList = []
         }
@@ -78,23 +80,25 @@ angular.module('prescritor')
         }
 
         $scope.savePrescription = (prescription) => {
-            if (prescription.id) {
+            delete prescription.pacient.doctor.roles            
+            if(prescription.id){
                 //update
                 apiService.updatePrescription(prescription).then(data => {
                     toast.success('Prescrição atualizada com sucesso!', 3000)
                     $location.path('prescritor/prescricao')
-                }), function error(err) {
+                }).catch(function(error){                    
                     toast.error('Erro ao salvar esta prescrição!', 3000)
-                }
+                })
             } else {
                 //create
-                prescription.interationList = $scope.interationList
+                //prescription.interationList = $scope.interationList
+                prescription.description = ''
                 apiService.createPrescription(prescription).then(data => {
                     toast.success('Prescrição cadastrada com sucesso!', 3000)
                     $location.path('prescritor/prescricao')
-                }), function error(err) {
+                }).catch(function(error){                    
                     toast.error('Erro ao salvar esta prescrição!', 3000)
-                }
+                })
             }
         }
 
@@ -157,6 +161,7 @@ angular.module('prescritor')
         }
 
         $scope.logout = () => {
-            userService.logout()
+            AuthService.logout()
+            $location.path('login')  
         }
     })

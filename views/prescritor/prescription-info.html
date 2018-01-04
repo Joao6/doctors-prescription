@@ -65,7 +65,7 @@
                                     <div class="form-group">
                                         <label for="date-pacient">Data de nascimento</label>
                                         <input type="text" ng-readonly="true" class="form-control" id="date-pacient" placeholder="Ex.: 06/11/1985" ng-required="true"
-                                            ng-model="prescription.pacient.date">
+                                            ng-model="prescription.pacient.birthdate">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -88,13 +88,13 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="prescript-medicament">Medicamento {{prescription.prescriptions.indexOf(prescript) + 1}}</label>
+                                    <label for="prescript-medicament">Medicamento {{prescription.precriptions.indexOf(prescript) + 1}}</label>
                                     <select id="prescript-medicament" class="form-control" ng-model="prescript.medicament" ng-required="true" ng-options="medicament.name for medicament in medicamentList track by medicament.id">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                <a ng-click="removePrescription(prescript,prescription.prescriptions)" class="btn btn-danger" style="margin: 24px 0px auto 5px;height: 34px;">
+                                <a ng-click="removePrescription(prescript,prescription.precriptions)" class="btn btn-danger" style="margin: 24px 0px auto 5px;height: 34px;">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>
@@ -110,14 +110,14 @@
                             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="prescript-comercialName">Nome comercial</label>
-                                    <div ng-dropdown-multiselect="" options="prescript.medicament.commercialNameList" selected-model="prescript.comercialName"
+                                    <div ng-dropdown-multiselect="" options="prescript.medicament.comercialNames" selected-model="prescript.comercialName"
                                         extra-settings="stringSettings"></div>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="prescript-apresentation">Apresentação</label>
-                                    <select id="prescript-apresentation" class="form-control" ng-model="prescript.apresentation" ng-required="true" ng-options="apresentation as apresentation for apresentation in prescript.medicament.apresentationList">
+                                    <select id="prescript-apresentation" class="form-control" ng-model="prescript.apresentation" ng-required="true" ng-options="apresentation as apresentation for apresentation in prescript.medicament.apresentations">
                                     </select>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                         </div>
                     </div>                   
                     <button ng-click="savePrescription(prescription)" ng-disabled="formPrescription.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
-                    <a href="#!/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                    <a href="#/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
                 </form>
             </div>
         </div>

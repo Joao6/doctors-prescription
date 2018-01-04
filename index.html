@@ -37,7 +37,10 @@
 
 <body class="main-wrapper">
 	<!-- Main view for templates -->
-	<main ui-view class="main"></main>
+	<div id="loading-modal" class="loading-modal" ng-if="loading">
+		<img class="loading-image" src="images/loading-spin.svg">
+	</div>
+	<main ui-view class="main" autoscroll="true"></main>
 </body>
 
 <!-- build:nonangularlibs js/nonangularlibs.js -->
@@ -52,17 +55,20 @@
 <!-- endbuild -->
 
 <!-- build:angularlibs js/angularlibs.js -->
-<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+<!-- <script type="text/javascript" src="node_modules/angular/angular.min.js"></script> -->
+<script type="text/javascript" src="js/angular/angular.min.js"></script>
+<!-- <script type="text/javascript" src="js/angular/angular-ui-router.min.js"></script> -->
 <script type="text/javascript" src="js/angular/angular-ui-router.min.js"></script>
-<script type="text/javascript" src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
-<script type="text/javascript" src="node_modules/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>
+<!-- <script type="text/javascript" src="node_modules/angular-sanitize/angular-sanitize.min.js"></script> -->
+<script type="text/javascript" src="js/angular/angularjs-dropdown-multiselect.min.js"></script>
 <!-- endbuild -->
 
 <!-- build:appcomponents js/appcomponents.js -->
 <script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/session.js"></script>
 <script type="text/javascript" src="app/config/routerConfig.js"></script>
-<!-- endbuild -->
 <script type="text/javascript" src="components/directives/runDirective.js"></script>
+<!-- endbuild -->
 
 <!-- controllers.js -->
 <script type="text/javascript" src="components/controllers/mainController.js"></script>
@@ -72,12 +78,16 @@
 <script type="text/javascript" src="components/controllers/pacientController.js"></script>
 <!-- values.js -->
 <script type="text/javascript" src="components/values/configValue.js"></script>
+<script type="text/javascript" src="components/values/userRoles.js"></script>
+<script type="text/javascript" src="components/values/authConstants.js"></script>
 
 <!-- services.js -->
 <script type="text/javascript" src="components/services/apiService.js"></script>
 <script type="text/javascript" src="components/services/userService.js"></script>
 <script type="text/javascript" src="components/services/toastService.js"></script>
 <script type="text/javascript" src="components/services/printService.js"></script>
+<script type="text/javascript" src="components/services/loginService.js"></script>
+<script type="text/javascript" src="components/services/authService.js"></script>
 
 <!-- endbuild -->
 
