@@ -252,7 +252,7 @@ angular
                 resolve: {
                     pacientList: function () { },
                     prescriptionList: function (apiService) {
-                        return apiService.getPrescriptions()
+                        return true
                     },
                     prescriptionInfo: function () { },
                     pacientInfo: function () { },
@@ -324,7 +324,7 @@ angular
                 controller: 'prescritorController',
                 resolve: {
                     pacientList: function (apiService) {
-                        return apiService.getPacientList()
+                        return true
                     },
                     prescriptionList: function () { },
                     prescriptionInfo: function () { },
