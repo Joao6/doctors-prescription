@@ -1,5 +1,5 @@
 angular.module('prescritor')
-    .factory('loginFactory', ['$http', '$q',
+    .factory('loginFactory', ['$http', '$q', 'config',
         function ($http, $q, config) {
             var loginFactory = {}
             $http.defaults.useXDomain = true
