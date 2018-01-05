@@ -4,6 +4,6 @@ angular.module('prescritor')
         $rootScope.loading = false
         if (prescriptionInfo) {
             $scope.prescription = prescriptionInfo.data
-            $('#qrcode').qrcode("http://localhost:3000/!#/paciente/prescricao/" + $scope.prescription.id);
+            $('#qrcode').qrcode("https://qr-code-app.herokuapp.com/#/paciente/prescricao/" + $scope.prescription.id);
         }
     })
