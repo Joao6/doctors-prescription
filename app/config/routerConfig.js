@@ -24,7 +24,8 @@ angular
                     medicamentList: function () { },
                     useTypeList: function () { },
                     unityList: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -44,7 +45,8 @@ angular
                     unityList: function () { },
                     profile: function () {
                         return true
-                    }
+                    },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -64,7 +66,8 @@ angular
                     medicamentList: function () { },
                     useTypeList: function () { },
                     unityList: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -82,7 +85,10 @@ angular
                     medicamentList: function () { },
                     useTypeList: function () { },
                     unityList: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () {
+                        return true
+                    }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -102,7 +108,10 @@ angular
                     medicamentList: function () { },
                     useTypeList: function () { },
                     unityList: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () {
+                        return true
+                    }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -122,7 +131,8 @@ angular
                     },
                     useTypeList: function () { },
                     unityList: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -142,7 +152,8 @@ angular
                     },
                     useTypeList: function () { },
                     unityList: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -164,7 +175,8 @@ angular
                     },
                     useTypeList: function () { },
                     unityList: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -184,7 +196,8 @@ angular
                     unityList: function (apiService) {
                         return apiService.getUnityList()
                     },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -204,7 +217,8 @@ angular
                         return apiService.getUseTypeList()
                     },
                     unityList: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.manager]
@@ -220,7 +234,8 @@ angular
                     prescriptionList: function () { },
                     prescriptionInfo: function () { },
                     pacientInfo: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.prescritor]
@@ -237,6 +252,9 @@ angular
                     prescriptionInfo: function () { },
                     pacientInfo: function () { },
                     profile: function () {
+                        return true
+                    },
+                    city: function () {
                         return true
                     }
                 },
@@ -256,7 +274,8 @@ angular
                     },
                     prescriptionInfo: function () { },
                     pacientInfo: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.prescritor]
@@ -268,8 +287,8 @@ angular
                 templateUrl: 'views/prescritor/prescription-new.html',
                 controller: 'prescriptionController',
                 resolve: {
-                    pacientList: function (apiService) {
-                        return apiService.getPacientList()
+                    pacientList: function () {
+                        return true
                     },
                     medicamentList: function (apiService) {
                         return apiService.getMedicaments()
@@ -281,8 +300,7 @@ angular
                         return apiService.getUnityList()
                     },
                     prescriptionInfo: function () { },
-                    posologias: function (apiService) {
-                        //return apiService.getPosologiaList()
+                    posologias: function () {
                         return true
                     }
                 },
@@ -300,7 +318,7 @@ angular
                         return apiService.getPrescriptionById($stateParams.idPrescription)
                     },
                     pacientList: function (apiService) {
-                        return apiService.getPacientList()
+                        return true
                     },
                     medicamentList: function (apiService) {
                         return apiService.getMedicaments()
@@ -311,7 +329,9 @@ angular
                     unityList: function (apiService) {
                         return apiService.getUnityList()
                     },
-                    posologias: function () { }
+                    posologias: function () {
+                        return true
+                    }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.prescritor]
@@ -329,7 +349,8 @@ angular
                     prescriptionList: function () { },
                     prescriptionInfo: function () { },
                     pacientInfo: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () { }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.prescritor]
@@ -345,7 +366,10 @@ angular
                     prescriptionList: function () { },
                     prescriptionInfo: function () { },
                     pacientInfo: function () { },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () {
+                        return true
+                    }
                 },
                 data: {
                     authorizedRoles: [USER_ROLES.prescritor]
@@ -363,7 +387,13 @@ angular
                     pacientInfo: function (apiService, $stateParams) {
                         return apiService.getPacientById($stateParams.idPacient)
                     },
-                    profile: function () { }
+                    profile: function () { },
+                    city: function () {
+                        return true
+                    }
+                },
+                data: {
+                    authorizedRoles: [USER_ROLES.prescritor]
                 }
             })
             .state({
