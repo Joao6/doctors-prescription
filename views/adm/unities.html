@@ -8,7 +8,7 @@
             </a>
         </h3>
         <div class="row">
-            <div class="col-lg-12 table-responsive">
+            <div ng-if="unityList.length > 0" class="col-lg-12 table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -30,6 +30,9 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div ng-if="unityList.length < 1" class="col-lg-12">
+                <h4>Não existem unidades cadastradas!</h4>
             </div>
         </div>
     </div>

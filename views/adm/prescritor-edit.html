@@ -70,8 +70,8 @@
                                 <!-- <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account">
                                     <option ng-repeat="account in accountList" value="{{account.value}}">{{account.name}}</option>
                                 </select> -->
-                                <select class="form-control" ng-required="true" name="account-prescritor" id="account-prescritor" ng-options="account.name for account in accountList track by account.value"
-                                ng-model="prescritor.account"></select>
+                                <select class="form-control" ng-required="true" name="account-prescritor" id="account-prescritor" ng-options="account.value as account.name for account in accountList track by account.value"
+                                    ng-model="prescritor.account"></select>
                             </div>
                         </div>
                     </div>
@@ -97,19 +97,25 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label for="city-prescritor">Cidade</label>
-                                <input type="text" class="form-control" id="city-prescritor" placeholder="Ex.: Santa Rita do Sapucaí" ng-model="prescritor.address.city.name">
+                                <label for="uf-prescritor">UF</label>
+                                <select id="interation-medicament" class="form-control" ng-model="prescritor.address.city.state" ng-change="getCityList(prescritor.address.city.state.id)"
+                                    ng-options="state as state.name for state in stateList track by state.id">
+                                    <option disabled value="">-- selecione um estado --</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label for="uf-prescritor">UF</label>
-                                <input type="text" class="form-control" id="uf-prescritor" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescritor.address.city.state.uf">
+                                <label for="city-prescritor">Cidade</label>
+                                <select id="interation-medicament" class="form-control" ng-model="prescritor.address.city" ng-options="city as city.name for city in cityList track by city.id">
+                                    <option disabled value="">-- selecione uma cidade --</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <button ng-click="updatePrescritor(prescritor)" ng-disabled="formPrescritor.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
-                    <a href="#/adm/prescritores" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
+                    <a href="#/adm/prescritores" class="btn btn-primary pull-right">Cancelar</a>
+                    <button ng-click="updatePrescritor(prescritor)" style="margin-right: 2px;" ng-disabled="formPrescritor.$invalid" type="submit"
+                        class="btn btn-success pull-right">Salvar</button>
                 </form>
             </div>
         </div>

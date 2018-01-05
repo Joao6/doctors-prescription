@@ -5,20 +5,22 @@
         <div class="jumbotron">
             <h3>
                 Medicamentos
-                <a href="#/adm/medicamentos/novo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="#/adm/medicamentos/novo" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
             </h3>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="name" placeholder="Pesquisar por nome">
+                        <input type="text" ng-change="getMedicamentList(name)" class="form-control" ng-model="name" placeholder="Pesquisar por nome">
                         <span class="input-group-btn">
-                        <button ng-click="getMedicamentList(name)" class="btn btn-default" type="button">Pesquisar</button>
-                    </span>
+                            <button ng-click="getMedicamentList(name)" class="btn btn-default" type="button">Pesquisar</button>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 table-responsive">
+                <div ng-if="medicamentList.length > 0" class="col-lg-12 table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -36,17 +38,25 @@
                                 <td>{{medicament.apresentation}}</td>
                                 <td>{{medicament.miligrama}}</td>
                                 <td>
-                                    <a href="#/adm/medicamentos/{{medicament.id}}/edit" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></a>
-                                    <a ng-click="openModal('modal-delete', medicament.id)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="#/adm/medicamentos/{{medicament.id}}/edit" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-zoom-in"></span>
+                                    </a>
+                                    <a ng-click="openModal('modal-delete', medicament.id)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <div ng-if="medicamentList.length < 1" class="col-lg-12">
+                    <h4>Não existem medicamentos cadastrados!</h4>
+                </div>
             </div>
         </div>
     </div>
     <footer>
-        Todos os direitos reservados <a href="">Prescritor QR Code</a>
+        Todos os direitos reservados
+        <a href="">Prescritor QR Code</a>
     </footer>
 </div>

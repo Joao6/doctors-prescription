@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="telephone-prescritor">Telefone</label>
                                     <input type="text" class="form-control phone_with_ddd" id="telephone-prescritor" placeholder="Ex.: (35) 998745212" ng-required="true"
-                                        ng-model="prescritor.telephone">
+                                        ng-model="prescritor.phone">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -73,7 +73,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="address-prescritor">Rua</label>
-                                    <input type="text" class="form-control" id="address-prescritor" placeholder="Ex.: Rua Marechal Deodoro" ng-model="prescritor.address">
+                                    <input type="text" class="form-control" id="address-prescritor" placeholder="Ex.: Rua Marechal Deodoro" ng-model="prescritor.address.street">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -86,19 +86,24 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="city-prescritor">Cidade</label>
-                                    <input type="text" class="form-control" id="city-prescritor" placeholder="Ex.: Santa Rita do Sapucaí" ng-model="prescritor.city">
+                                    <label for="uf-prescritor">UF</label>
+                                    <select id="interation-medicament" class="form-control" ng-model="prescritor.address.city.state" ng-change="getCityList(prescritor.address.city.state.id)"
+                                        ng-options="state as state.name for state in stateList">
+                                        <option disabled value="">-- selecione um estado --</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="uf-prescritor">UF</label>
-                                    <input type="text" class="form-control" id="uf-prescritor" placeholder="Ex.: MG" ng-maxlength="2" ng-model="prescritor.uf">
+                                    <label for="city-prescritor">Cidade</label>
+                                    <select id="interation-medicament" class="form-control" ng-model="prescritor.address.city" ng-options="city as city.name for city in cityList">
+                                        <option disabled value="">-- selecione uma cidade --</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
+                        <a href="#/prescritor/home" class="btn btn-primary pull-right" style="margin-left: 2px;">Cancelar</a>
                         <button ng-click="savePrescritor(prescritor)" ng-disabled="formPrescritor.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
-                        <a href="#/prescritor/home" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
                     </form>
                 </div>
             </div>

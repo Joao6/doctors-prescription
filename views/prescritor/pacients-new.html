@@ -63,8 +63,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="address-pacient">Rua</label>
-                                <input type="text" class="form-control" id="address-pacient" placeholder="Ex.: Rua Marechal Deodoro"
-                                    ng-model="pacient.address.street">
+                                <input type="text" class="form-control" id="address-pacient" placeholder="Ex.: Rua Marechal Deodoro" ng-model="pacient.address.street">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -77,19 +76,24 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label for="city-pacient">Cidade</label>
-                                <input type="text" class="form-control" id="city-pacient" placeholder="Ex.: Santa Rita do Sapucaí" ng-model="pacient.city">
+                                <label for="uf-prescritor">UF</label>
+                                <select id="uf-prescritor" class="form-control" ng-model="pacient.address.city.state" ng-change="getCityList(pacient.address.city.state.id)"
+                                    ng-options="state as state.name for state in stateList">
+                                    <option disabled value="">-- selecione um estado --</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label for="uf-pacient">UF</label>
-                                <input type="text" class="form-control uf" id="uf-pacient" placeholder="Ex.: MG" ng-maxlength="2" ng-model="pacient.address.city.state.uf">
+                                <label for="city-prescritor">Cidade</label>
+                                <select id="city-prescritor" class="form-control" ng-model="pacient.address.city" ng-options="city as city.name for city in cityList">
+                                    <option disabled value="">-- selecione uma cidade --</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+                    <a href="#/prescritor/pacientes" class="btn btn-primary pull-right" style="margin-left: 2px;">Cancelar</a>
                     <button ng-click="savePacient(pacient)" ng-disabled="formPacient.$invalid" type="submit" class="btn btn-success pull-right">Salvar</button>
-                    <a href="#/prescritor/pacientes" class="btn btn-primary pull-right" style="margin-right: 2px;">Cancelar</a>
                 </form>
             </div>
         </div>
