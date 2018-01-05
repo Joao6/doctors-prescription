@@ -1,6 +1,6 @@
 angular.module('prescritor')
     .factory('loginFactory', ['$http', '$q',
-        function ($http, $q) {
+        function ($http, $q, config) {
             var loginFactory = {}
             $http.defaults.useXDomain = true
 
@@ -9,7 +9,7 @@ angular.module('prescritor')
 
                 $http({
                     method: 'POST',
-                    url: 'http://localhost:8080/login',
+                    url: config.baseUrl + '/login',
                     data: {
                         email: user.email,
                         password: user.pword
