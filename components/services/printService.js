@@ -13,7 +13,7 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
 
         addHeaderPage(prescription)
         doc.text(lMargin, 60, "Paciente: " + prescription.pacient.name)
-        doc.text(lMargin, 65, "Endereço: " + prescription.pacient.address.street || 'Não informado')
+        doc.text(lMargin, 65, "Endereço: " + prescription.pacient.address.city.name + " - " + prescription.pacient.address.city.state.name || 'Não informado')
 
         doc.setFontSize(12);
         doc.text(lMargin, 75, "Prescrição")
@@ -37,11 +37,13 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
             })
             doc.text(lMargin, top += 10, "Quantidade: " + element.quantity + " " + element.unity.name)
             doc.text(lMargin, top += 10, "Forma de uso: " + element.useType.name)
-            doc.text(lMargin, top += 10, "Descrição: " + element.description)
+            var lines = doc.splitTextToSize(element.description, (pdfInMM - (lMargin + 10) - rMargin));
+            doc.text(lMargin, top += 10, "Descrição:")
+            doc.text(lMargin + 5, top += 10, lines)
             top += 20
         })
 
-        doc.save('Generated.pdf');
+        doc.save('Receita.pdf');
     }
 
     this.onePerPage = (prescription) => {
@@ -62,17 +64,19 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
             })
             doc.text(lMargin, top += 10, "Quantidade: " + element.quantity + " " + element.unity.name)
             doc.text(lMargin, top += 10, "Forma de uso: " + element.useType.name)
-            doc.text(lMargin, top += 10, "Descrição: " + element.description)
+            var lines = doc.splitTextToSize(element.description, (pdfInMM - (lMargin + 10) - rMargin));
+            doc.text(lMargin, top += 10, "Descrição:")
+            doc.text(lMargin + 5, top += 10, lines)
 
             addHeaderPage(prescription)
             doc.text(lMargin, 60, "Paciente: " + prescription.pacient.name)
-            doc.text(lMargin, 65, "Endereço: " + prescription.pacient.address.street || 'Não informado')
+            doc.text(lMargin, 65, "Endereço: " + prescription.pacient.address.city.name + " - " + prescription.pacient.address.city.state.name || 'Não informado')
             top = 85
             if (i < prescription.prescriptions.length)
                 doc.addPage();
         })
 
-        doc.save('Generated.pdf');
+        doc.save('Receita.pdf');
 
     }
 
@@ -80,7 +84,7 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
         doc.setFontSize(12);
         doc.setFontType("bold");
         doc.text("RECEITUÁRIO DE CONTROLE ESPECIAL", pdfInMM / 2, 20, 'center')
-        const qr = new QRious({ value: 'http://prescritor-qrCode.com/prescricao/' + prescription.id });
+        const qr = new QRious({ value: 'https://qr-code-app.herokuapp.com/#/paciente/prescricao/' + prescription.id });
         doc.addImage(qr.toDataURL('image/png'), 'PNG', 170, 10, 30, 30);
 
         var img = $("#imageReceita")[0];

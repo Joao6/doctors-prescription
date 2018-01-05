@@ -1,11 +1,22 @@
 'use strict'
 angular.module('prescritor')
-    .controller('prescritorController', function ($scope, $rootScope, $location, apiService, AuthService, userService, printService, toast, pacientList, prescriptionList, prescriptionInfo, pacientInfo, profile) {
+    .controller('prescritorController', function ($scope, $rootScope, $location, apiService, AuthService, userService, printService, toast, pacientList, prescriptionList, prescriptionInfo, pacientInfo, profile, city) {
 
         $rootScope.loading = false
 
+        $scope.getCityList = (stateId) => {
+            apiService.getCityList(stateId).then(data => {
+                $scope.cityList = data.data.content
+            }).catch(function (error) {
+                toast.error('Erro ao buscar a lista de cidades!', 3000)
+            })
+        }
+
         if (pacientInfo) {
             $scope.pacient = pacientInfo.data
+            if ($scope.pacient.address.city.state) {
+                $scope.getCityList($scope.pacient.address.city.state.id)
+            }
         } else {
             $scope.pacient = {}
         }
@@ -36,10 +47,29 @@ angular.module('prescritor')
             $scope.pacientList = []
         }
 
+        if (city) {
+            $rootScope.loading = true
+            apiService.getStateList().then(data => {
+                $scope.stateList = data.data.content
+                $rootScope.loading = false
+            })
+        }
+
         if (profile) {
             $rootScope.loading = true
             apiService.getUserById($rootScope.currentUser.id).then(data => {
                 $scope.prescritor = data.data
+                let register = $scope.prescritor.crm.split(" ")
+                $scope.prescritor.typeNumber = register[0]
+                $scope.prescritor.number = Number(register[1])
+                if ($scope.prescritor.address && $scope.prescritor.address.city && $scope.prescritor.address.city.state) {
+                    $scope.getCityList($scope.prescritor.address.city.state.id)
+                }
+                if ($scope.prescritor.account === 'FREE') {
+                    $scope.prescritor.account = 2
+                } else {
+                    $scope.prescritor.account = 1
+                }
                 $rootScope.loading = false
             })
         }
@@ -48,8 +78,24 @@ angular.module('prescritor')
         $scope.interationList = []
         //$scope.prescription = {}
 
+        $scope.savePrescritor = (prescritor) => {
+            $rootScope.loading = true
+            if (!prescritor.address) {
+                prescritor.address = {}
+            }
+            $scope.prescritor.crm = $scope.prescritor.typeNumber + " " + $scope.prescritor.number
+            apiService.updatePrescritor(prescritor).then(data => {
+                toast.success('Perfil editado com sucesso!', 3000)
+                $rootScope.loading = false
+                $location.path('/prescritor/home')
+            }).catch(function (error) {
+                $rootScope.loading = false
+                toast.error('Erro ao atualizar os dados!', 3000)
+            })
+        }
+
         $scope.savePacient = (pacient) => {
-            //pacient.prescritor = $rootScope.userLogged            
+            pacient.doctor = $rootScope.currentUser
             apiService.createPacient(pacient).then(data => {
                 toast.success('Paciente cadastrado com sucesso!', 3000)
                 $location.path('/prescritor/pacientes')
@@ -70,7 +116,7 @@ angular.module('prescritor')
         $scope.deletePacient = (id) => {
             apiService.deletePacient(id).then(data => {
                 $scope.getPacientList()
-                toast.then('Paciente excluido com sucesso!', 3000)
+                toast.success('Paciente excluido com sucesso!', 3000)
             }).catch(function (error) {
                 toast.error('Erro ao excluir o paciente!', 3000)
             })
@@ -79,9 +125,9 @@ angular.module('prescritor')
         $scope.deletePrescription = (id) => {
             apiService.deletePrescription(id).then(data => {
                 $scope.getPrescriptionList()
-                toast.then('Prescrição excluída com sucesso!', 3000)
+                toast.success('Prescrição excluída com sucesso!', 3000)
             }).catch(function (error) {
-                toast.error('Erro ao excluir o paciente!', 3000)
+                toast.error('Erro ao excluir a prescrição!', 3000)
             })
         }
 

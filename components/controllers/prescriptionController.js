@@ -21,7 +21,11 @@ angular.module('prescritor')
         }
 
         if (pacientList) {
-            $scope.pacientList = pacientList.data.content
+            $rootScope.loading = true
+            apiService.getPacientList('', $rootScope.currentUser.id).then(data => {
+                $scope.pacientList = data.data.content
+                $rootScope.loading = false
+            })
         } else {
             $scope.pacientList = []
         }
@@ -39,7 +43,11 @@ angular.module('prescritor')
         }
 
         if (posologias) {
-            $scope.posologiaList = posologias.data
+            $rootScope.loading = true
+            apiService.getPosologiaList('', $rootScope.currentUser.id).then(data => {
+                $scope.posologiaList = data.data.content
+                $rootScope.loading = false
+            })
         }
 
         if (prescriptionInfo) {
@@ -80,13 +88,13 @@ angular.module('prescritor')
         }
 
         $scope.savePrescription = (prescription) => {
-            delete prescription.pacient.doctor.roles            
-            if(prescription.id){
+            delete prescription.pacient.doctor.roles
+            if (prescription.id) {
                 //update
                 apiService.updatePrescription(prescription).then(data => {
                     toast.success('Prescrição atualizada com sucesso!', 3000)
                     $location.path('prescritor/prescricao')
-                }).catch(function(error){                    
+                }).catch(function (error) {
                     toast.error('Erro ao salvar esta prescrição!', 3000)
                 })
             } else {
@@ -96,7 +104,7 @@ angular.module('prescritor')
                 apiService.createPrescription(prescription).then(data => {
                     toast.success('Prescrição cadastrada com sucesso!', 3000)
                     $location.path('prescritor/prescricao')
-                }).catch(function(error){                    
+                }).catch(function (error) {
                     toast.error('Erro ao salvar esta prescrição!', 3000)
                 })
             }
@@ -139,12 +147,20 @@ angular.module('prescritor')
         }
 
         $scope.openPosologia = (prescript, modal) => {
+            $scope.getPosologiaList()
             if (prescript) {
                 $rootScope.prescript = prescript
             } else {
                 $rootScope.prescript = {}
             }
             $("#modal-" + modal).modal()
+        }
+
+        $scope.getPosologiaList = () => {
+            apiService.getPosologiaList('', $rootScope.currentUser.id).then(data => {
+                $scope.posologiaList = data.data.content
+                $rootScope.loading = false
+            })
         }
 
         $scope.addPosologia = (posologia) => {
@@ -154,7 +170,7 @@ angular.module('prescritor')
         }
 
         $scope.savePosologia = (posologia) => {
-            let poso = { description: posologia, prescritor: $rootScope.userLogged }
+            let poso = { description: posologia, doctor: $rootScope.currentUser }
             apiService.createPosologia(poso).then(data => {
                 toast.success('Salvo com sucesso!', 3000)
             })
@@ -162,6 +178,6 @@ angular.module('prescritor')
 
         $scope.logout = () => {
             AuthService.logout()
-            $location.path('login')  
+            $location.path('login')
         }
     })

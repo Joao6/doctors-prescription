@@ -112,16 +112,26 @@ angular.module('prescritor').factory('apiService', function ($http, config) {
         return $http.get(config.baseUrl + '/unity', { params: { 'name': name } })
     }
 
-    const _getPosologiaList = (description) => {
-        return $http.get(config.baseUrl + '/posologias', { params: { 'description': description } })
+    const _getPosologiaList = (description, doctor) => {
+        return $http.get(config.baseUrl + '/posology', { params: { 'description': description, 'doctor': doctor } })
     }
 
     const _createPosologia = (posologia) => {
-        return $http.post(config.baseUrl + '/posologias', posologia)
+        return $http.post(config.baseUrl + '/posology', posologia)
+    }
+
+    const _getStateList = () => {
+        return $http.get(config.baseUrl + '/state')
+    }
+
+    const _getCityList = (stateId) => {
+        return $http.get(config.baseUrl + '/city', { params: { 'state': stateId , 'linesPerPage': 1000} })
     }
 
 
     return {
+        getStateList: _getStateList,
+        getCityList: _getCityList,
         getUserById: _getUserById,
         getPrescritors: _getPrescritors,
         updatePrescritor: _updatePrescritor,

@@ -1,16 +1,32 @@
 'use strict'
 angular.module('prescritor')
-    .controller('admController', function ($scope, $rootScope, $location, apiService, AuthService, userService, toast, prescritor, medicament, medicamentList, prescritorList, useTypeList, unityList, profile) {
+    .controller('admController', function ($scope, $rootScope, $location, apiService, AuthService, userService, toast, prescritor, medicament, medicamentList, prescritorList, useTypeList, unityList, profile, city) {
 
         $scope.apresentationList = [{}]
         $scope.commercialNameList = [{}]
         $rootScope.loading = false
+
+        $scope.getCityList = (stateId) => {
+            apiService.getCityList(stateId).then(data => {
+                $scope.cityList = data.data.content
+            }).catch(function (error) {
+                toast.error('Erro ao buscar a lista de cidades!', 3000)
+            })
+        }
 
         if (prescritor) {
             $scope.prescritor = prescritor.data
             let register = $scope.prescritor.crm.split(" ")
             $scope.prescritor.typeNumber = register[0]
             $scope.prescritor.number = Number(register[1])
+            if ($scope.prescritor.address &&  $scope.prescritor.address.city && $scope.prescritor.address.city.state) {
+                $scope.getCityList($scope.prescritor.address.city.state.id)
+            }
+            if ($scope.prescritor.account === 'FREE') {
+                $scope.prescritor.account = 2
+            } else {
+                $scope.prescritor.account = 1
+            }
         } else {
             $scope.prescritor = {}
         }
@@ -25,6 +41,14 @@ angular.module('prescritor')
             $rootScope.loading = true
             apiService.getUserById($rootScope.currentUser.id).then(data => {
                 $scope.adm = data.data
+                $rootScope.loading = false
+            })
+        }
+
+        if (city) {
+            $rootScope.loading = true
+            apiService.getStateList().then(data => {
+                $scope.stateList = data.data.content
                 $rootScope.loading = false
             })
         }
@@ -54,11 +78,11 @@ angular.module('prescritor')
             $scope.prescritorList = []
         }
 
-        if(useTypeList){
+        if (useTypeList) {
             $scope.useTypeList = useTypeList.data.content
         }
 
-        if(unityList){
+        if (unityList) {
             $scope.unityList = unityList.data.content
         }
 
@@ -67,7 +91,7 @@ angular.module('prescritor')
 
         $scope.savePrescritor = (prescritor) => {
             $rootScope.loading = true
-            if(!prescritor.address){
+            if (!prescritor.address) {
                 prescritor.address = {}
             }
             $scope.prescritor.crm = $scope.prescritor.typeNumber + " " + $scope.prescritor.number
@@ -75,7 +99,7 @@ angular.module('prescritor')
                 toast.success('Prescritor cadastrado com sucesso!', 3000)
                 $rootScope.loading = false
                 $location.path('/adm/prescritores')
-            }).catch(function(error){
+            }).catch(function (error) {
                 $rootScope.loading = false
                 toast.error('Erro ao cadastrar o prescritor!', 3000)
             })
@@ -88,7 +112,7 @@ angular.module('prescritor')
                 toast.success('Prescritor editado com sucesso!', 3000)
                 $rootScope.loading = false
                 $location.path('/adm/prescritores')
-            }).catch(function(error){
+            }).catch(function (error) {
                 toast.error('Erro ao editar o prescritor!', 3000)
                 $rootScope.loading = false
             })
@@ -98,18 +122,15 @@ angular.module('prescritor')
             apiService.deletePrescritor(id).then(data => {
                 $scope.getPrescritorList()
                 toast.success('Prescritor excluido com sucesso!', 3000)
-            }).catch(function(error){
+            }).catch(function (error) {
                 toast.error('Erro ao excluir o prescritor!', 3000)
             })
         }
 
         $scope.getPrescritorList = (name) => {
-            if (name === "") {
-                name = null
-            }
             apiService.getPrescritors(name).then(data => {
                 $scope.prescritorList = data.data.content
-            }).catch(function(error){
+            }).catch(function (error) {
                 toast.error('Erro ao buscar a lista de prescritores!', 3000)
             })
         }
@@ -128,15 +149,17 @@ angular.module('prescritor')
             medicament.comercialNames = comercialNameList
             var interations = {};
             medicament.interations.forEach(function (element) {
-                var id = element.medicament.id
-                interations[id] = element.description
+                if (element.medicament.id) {
+                    var id = element.medicament.id
+                    interations[id] = element.description
+                }
             })
             medicament.interations = interations
             apiService.createMedicament(medicament).then(data => {
                 toast.success('Medicamento cadastrado com sucesso!', 3000)
                 $rootScope.loading = false
                 $location.path('/adm/medicamentos')
-            }).catch(function(error){
+            }).catch(function (error) {
                 $rootScope.loading = false
                 toast.error('Erro ao cadastrar o medicamento!', 3000)
             })
@@ -155,14 +178,16 @@ angular.module('prescritor')
             medicament.comercialNames = comercialNameList
             var interations = {};
             medicament.interations.forEach(function (element) {
-                var id = element.medicament.id
-                interations[id] = element.description
+                if (element.medicament.id) {
+                    var id = element.medicament.id
+                    interations[id] = element.description
+                }
             })
             medicament.interations = interations
             apiService.updateMedicament(medicament).then(data => {
                 toast.success('Medicamento editado com sucesso!', 3000)
                 $location.path('/adm/medicamentos')
-            }).catch(function(error){
+            }).catch(function (error) {
                 toast.error('Erro ao editar o medicamento!', 3000)
             })
         }
@@ -171,7 +196,7 @@ angular.module('prescritor')
             apiService.deleteMedicament(id).then(data => {
                 $scope.getMedicamentList()
                 toast.success('Medicamento excluido com sucesso!', 3000)
-            }).catch(function(error){
+            }).catch(function (error) {
                 toast.error('Erro ao excluir o medicamento!', 3000)
             })
         }
@@ -182,17 +207,19 @@ angular.module('prescritor')
             }
             apiService.getMedicaments(name).then(data => {
                 $scope.medicamentList = data.data.content
-            }).catch(function(error){
+            }).catch(function (error) {
                 toast.error('Erro ao buscar a lista de medicamentos!', 3000)
             })
         }
 
         $scope.addInteracao = (medicament) => {
-            const interation = {
-                /* medicament: medicament,
-                description: "" */
-            }
+            const interation = {}
             medicament.interations.push(interation)
+        }
+
+        $scope.removeInteracao = (medicament, interation) => {
+            var index = medicament.interations.indexOf(interation)
+            medicament.interations.splice(index, 1)
         }
 
         $scope.addInput = (medicament, list) => {
@@ -304,8 +331,8 @@ angular.module('prescritor')
         }
 
         $scope.logout = () => {
-            AuthService.logout()     
-            $location.path('login')       
+            AuthService.logout()
+            $location.path('login')
         }
 
         function addMask() {
