@@ -14,7 +14,7 @@ angular.module('prescritor')
 
         if (pacientInfo) {
             $scope.pacient = pacientInfo.data
-            if ($scope.pacient.address.city.state) {
+            if ($scope.pacient.address && $scope.pacient.address.city) {
                 $scope.getCityList($scope.pacient.address.city.state.id)
             }
         } else {
@@ -95,6 +95,9 @@ angular.module('prescritor')
         }
 
         $scope.savePacient = (pacient) => {
+            if (!pacient.address) {
+                pacient.address = {}
+            }
             pacient.doctor = $rootScope.currentUser
             apiService.createPacient(pacient).then(data => {
                 toast.success('Paciente cadastrado com sucesso!', 3000)
@@ -115,7 +118,7 @@ angular.module('prescritor')
 
         $scope.deletePacient = (id) => {
             apiService.deletePacient(id).then(data => {
-                $scope.getPacientList()
+                $scope.getPacientList('', $rootScope.currentUser.id)
                 toast.success('Paciente excluido com sucesso!', 3000)
             }).catch(function (error) {
                 toast.error('Erro ao excluir o paciente!', 3000)
@@ -131,12 +134,12 @@ angular.module('prescritor')
             })
         }
 
-        $scope.getPacientList = (name) => {
+        $scope.getPacientList = (name, currentUser) => {
             if (name === "") {
                 name = null
             }
-            apiService.getPacientList(name).then(data => {
-                $scope.pacientList = data.data
+            apiService.getPacientList(name, currentUser).then(data => {
+                $scope.pacientList = data.data.content
             }).catch(function (error) {
                 toast.error('Erro ao buscar a lista de pacientes!', 3000)
             })
