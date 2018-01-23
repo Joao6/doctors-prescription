@@ -127,7 +127,7 @@ angular.module('prescritor')
 
         $scope.deletePrescription = (id) => {
             apiService.deletePrescription(id).then(data => {
-                $scope.getPrescriptionList()
+                $scope.getPrescriptionList('',$rootScope.currentUser.id)
                 toast.success('Prescrição excluída com sucesso!', 3000)
             }).catch(function (error) {
                 toast.error('Erro ao excluir a prescrição!', 3000)
@@ -153,8 +153,8 @@ angular.module('prescritor')
             })
         }
 
-        $scope.getPrescriptionList = (name) => {
-            apiService.getPrescriptions(name).then(data => {
+        $scope.getPrescriptionList = (doctor) => {
+            apiService.getPrescriptions(doctor).then(data => {
                 $scope.prescriptionList = data.data.content
             }).catch(function (error) {
                 toast.error('Erro ao buscar a lista de prescrições!', 3000)
