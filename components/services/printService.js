@@ -107,6 +107,6 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
 
         doc.text(prescription.pacient.doctor.name.toUpperCase(), pdfInMM / 2, 30, 'center')
         doc.text(prescription.pacient.doctor.profession + " | " + prescription.pacient.doctor.phone, pdfInMM / 2, 40, 'center')
-        doc.text("CRM" + " " + prescription.pacient.doctor.crm, pdfInMM / 2, 50, 'center')
+        doc.text("Registro" + " " + prescription.pacient.doctor.crm, pdfInMM / 2, 50, 'center')
     }
 })
