@@ -1,6 +1,6 @@
 angular.module('prescritor').service('printService', function ($rootScope, $location, toast) {
     var doc = new jsPDF("p", "mm", "a4");
-    var lMargin = 95; //left margin in mm
+    var lMargin = 65; //left margin in mm
     var lMarginImage = 15; //left margin in mm
     var rMargin = 15; //right margin in mm
     var pdfInMM = 210; // width of A4 in mm
@@ -14,36 +14,40 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
         addHeaderPage(prescription)
         doc.text(lMargin, 60, "Paciente: " + prescription.pacient.name)
         if(prescription.pacient.address && prescription.pacient.address.city){
-            doc.text(lMargin, 65, "Endereço: " + prescription.pacient.address.city.name + " - " + prescription.pacient.address.city.state.name)
+            doc.text(lMargin, 65, "Endereço: " + prescription.pacient.address.street + " - " + prescription.pacient.address.city.name + " - " + prescription.pacient.address.city.state.uf)                
         }else{    
-            doc.text(lMargin, 65, "Endereço: ------------")
+            doc.text(lMargin, 65, "Endereço: Não informado")
         }
 
         doc.setFontSize(12);
-        doc.text(lMargin, 75, "Prescrição")
+        //doc.text(lMargin, 75, "Prescrição")
         let top = 85
         doc.setFontType("normal");
         let i = 0
-        prescription.prescriptions.forEach(function (element) {
+        prescription.prescriptions.forEach(function (element) {        
             doc.setFontType("bold");
-            doc.text(lMargin, top, "Medicamento " + ++i + " de " + prescription.prescriptions.length)
+            doc.text(lMargin, top, "Uso " + element.useType.name)     
             doc.setFontType("normal");
             if (top > 210) {
                 doc.addPage();
                 top = 20
                 addHeaderPage(prescription)
             }
-            doc.text(lMargin, top += 10, "Nome: " + element.medicament.name)
-            doc.text(lMargin, top += 10, "Apresentação: " + element.apresentation)
-            doc.text(lMargin, top += 10, "Nome(s) comercial(is):")
-            element.comercialName.forEach(function (name) {
-                doc.text(lMargin, top += 10, " - " + name)
+
+            var comercialNames = ""
+            element.comercialName.forEach(function (name) {                
+                comercialNames = name + ", "
             })
-            doc.text(lMargin, top += 10, "Quantidade: " + element.quantity + " " + element.unity.name)
-            doc.text(lMargin, top += 10, "Forma de uso: " + element.useType.name)
+            comercialNames = comercialNames.substring(0, comercialNames.length -2)
             var lines = doc.splitTextToSize(element.description, (pdfInMM - (lMargin + 10) - rMargin));
-            doc.text(lMargin, top += 10, "Descrição:")
-            doc.text(lMargin + 5, top += 10, lines)
+            var medicamentLine = ++i + ") " + 
+                                element.medicament.name + 
+                                " " + element.apresentation + 
+                                " (" + comercialNames + ")" +
+                                " - " +  element.quantity + 
+                                " " + element.unity.name;
+            doc.text(lMargin, top += 10, medicamentLine)
+            doc.text(lMargin + 5, top += 5, lines)
             top += 20
         })
 
@@ -57,27 +61,31 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
         prescription.prescriptions.forEach(function (element) {
             addHeaderPage(prescription)
 
-            doc.text(lMargin, top, "Prescrição")
-            doc.text(lMargin, top += 10, "Medicamento " + ++i + " de " + prescription.prescriptions.length)
+            doc.setFontType("bold");
+            doc.text(lMargin, top, "Uso " + element.useType.name)            
             doc.setFontType("normal");
-            doc.text(lMargin, top += 10, "Nome: " + element.medicament.name)
-            doc.text(lMargin, top += 10, "Apresentação: " + element.apresentation)
-            doc.text(lMargin, top += 10, "Nome(s) comercial(is):")
-            element.comercialName.forEach(function (name) {
-                doc.text(lMargin, top += 10, " - " + name)
+
+            var comercialNames = ""
+            element.comercialName.forEach(function (name) {                
+                comercialNames = name + ", "
             })
-            doc.text(lMargin, top += 10, "Quantidade: " + element.quantity + " " + element.unity.name)
-            doc.text(lMargin, top += 10, "Forma de uso: " + element.useType.name)
+            comercialNames = comercialNames.substring(0, comercialNames.length -2)
             var lines = doc.splitTextToSize(element.description, (pdfInMM - (lMargin + 10) - rMargin));
-            doc.text(lMargin, top += 10, "Descrição:")
-            doc.text(lMargin + 5, top += 10, lines)
+            var medicamentLine = ++i + ") " + 
+                                element.medicament.name + 
+                                " " + element.apresentation + 
+                                " (" + comercialNames + ")" +
+                                " - " +  element.quantity + 
+                                " " + element.unity.name;
+            doc.text(lMargin, top += 10, medicamentLine)
+            doc.text(lMargin + 5, top += 5, lines)
 
             addHeaderPage(prescription)
             doc.text(lMargin, 60, "Paciente: " + prescription.pacient.name)
             if(prescription.pacient.address && prescription.pacient.address.city){
-                doc.text(lMargin, 65, "Endereço: " + prescription.pacient.address.city.name + " - " + prescription.pacient.address.city.state.name)                
+                doc.text(lMargin, 65, "Endereço: " + prescription.pacient.address.street + " - " + prescription.pacient.address.city.name + " - " + prescription.pacient.address.city.state.uf)                
             }else{    
-                doc.text(lMargin, 65, "Endereço: ------------")
+                doc.text(lMargin, 65, "Endereço: Não informado")
             }
             top = 85
             if (i < prescription.prescriptions.length)
@@ -91,7 +99,7 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
     function addHeaderPage(prescription) {
         doc.setFontSize(12);
         doc.setFontType("bold");
-        doc.text("RECEITUÁRIO DE CONTROLE ESPECIAL", pdfInMM / 2, 20, 'center')
+        doc.text("RECEITUÁRIO", pdfInMM / 2, 20, 'center')
         const qr = new QRious({ value: 'https://qr-code-app.herokuapp.com/#/paciente/prescricao/' + prescription.id });
         doc.addImage(qr.toDataURL('image/png'), 'PNG', 170, 10, 30, 30);
 
@@ -103,10 +111,12 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
         ctx.drawImage(img, 0, 0);
         var dataURL = canvas.toDataURL("image/png");
 
-        doc.addImage(canvas.toDataURL("image/png"), 'PNG', lMarginImage, 55, 60, 130);
+        doc.addImage(canvas.toDataURL("image/png"), 'PNG', lMarginImage, 10, 40, 100);
 
         doc.text(prescription.pacient.doctor.name.toUpperCase(), pdfInMM / 2, 30, 'center')
         doc.text(prescription.pacient.doctor.profession + " | " + prescription.pacient.doctor.phone, pdfInMM / 2, 40, 'center')
         doc.text("Registro" + " " + prescription.pacient.doctor.crm, pdfInMM / 2, 50, 'center')
+        var date = new Date()
+        doc.text("Data " + date.toLocaleDateString(), 165, 290)
     }
 })

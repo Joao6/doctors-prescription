@@ -338,7 +338,7 @@ angular.module('prescritor')
         function addMask() {
             $('.phone_with_ddd').mask('(00) 00000-0000', { placeholder: "Ex.: (99) 99999-9999" });
             $('.cpf').mask('000.000.000-00', { reverse: false, placeholder: "Ex.: 000.000.000-00" });
-            $('.number').mask('0000', { placeholder: "Ex.: 0000" });
+            $('.number').mask('00000', { placeholder: "Ex.: 00000" });
             $('.typeNumber').mask('SSS', {
                 translation: {
                     'S': { pattern: /[A-Za-z]/ }
