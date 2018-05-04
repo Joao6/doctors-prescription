@@ -13,13 +13,6 @@ angular.module('prescritor').service('printService', function ($rootScope, $loca
 
         addHeaderPage(prescription)
 
-        /* doc.text(lMargin, 60, "Paciente: " + prescription.pacient.name)
-        if (prescription.pacient.address && prescription.pacient.address.city) {
-            doc.text(lMargin, 65, "Endereço: " + prescription.pacient.address.street + " - " + prescription.pacient.address.city.name + " - " + prescription.pacient.address.city.state.uf)
-        } else {
-            doc.text(lMargin, 65, "Endereço: Não informado")
-        } */
-
         doc.setFontSize(12);
         //doc.text(lMargin, 75, "Prescrição")
         let top = 85
