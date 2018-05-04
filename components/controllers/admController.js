@@ -21,6 +21,7 @@ angular.module('prescritor')
             $scope.prescritor.number = Number(register[1])
             if ($scope.prescritor.address &&  $scope.prescritor.address.city && $scope.prescritor.address.city.state) {
                 $scope.getCityList($scope.prescritor.address.city.state.id)
+                $scope.prescritor.address.state = $scope.prescritor.address.city.state
             }
             if ($scope.prescritor.account === 'FREE') {
                 $scope.prescritor.account = 2
