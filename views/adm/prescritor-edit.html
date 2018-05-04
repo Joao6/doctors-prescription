@@ -70,7 +70,7 @@
                                 <!-- <select id="account-prescritor" class="form-control" ng-required="true" ng-model="prescritor.account">
                                     <option ng-repeat="account in accountList" value="{{account.value}}">{{account.name}}</option>
                                 </select> -->
-                                <select class="form-control" ng-required="true" name="account-prescritor" id="account-prescritor" ng-options="account.value as account.name for account in accountList track by account.value"
+                                <select class="form-control" ng-required="true" name="account-prescritor" id="account-prescritor" ng-options="account.value as account.name for account in accountList"
                                     ng-model="prescritor.account"></select>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="uf-prescritor">UF</label>
-                                <select id="interation-medicament" class="form-control" ng-model="prescritor.address.city.state" ng-change="getCityList(prescritor.address.city.state.id)"
+                                <select id="interation-medicament" class="form-control" ng-model="prescritor.address.state" ng-change="getCityList(prescritor.address.state.id)"
                                     ng-options="state as state.name for state in stateList track by state.id">
                                     <option disabled value="">-- selecione um estado --</option>
                                 </select>

@@ -66,8 +66,8 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="number-prescritor">Número</label>
-                                <input type="number" class="form-control number" id="number-prescritor" placeholder="Ex.: 15878" ng-required="true" ng-model="prescritor.number"
-                                    ng-maxlength="6">
+                                <input type="text" class="form-control" id="number-prescritor" placeholder="Ex.: 15878" ng-required="true" ng-model="prescritor.number"
+                                    ng-maxlength="6" maxlength="6">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -104,7 +104,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="uf-prescritor">UF</label>
-                                <select id="interation-medicament" class="form-control" ng-model="prescritor.address.city.state" ng-change="getCityList(prescritor.address.city.state.id)"
+                                <select id="interation-medicament" class="form-control" ng-model="prescritor.address.state" ng-change="getCityList(prescritor.address.state.id)"
                                     ng-options="state as state.name for state in stateList">
                                     <option disabled value="">-- selecione um estado --</option>
                                 </select>
@@ -119,6 +119,7 @@
                             </div>
                         </div>
                     </div>
+                    {{prescritor.address}}
                     <a href="#/adm/prescritores" class="btn btn-primary pull-right">Cancelar</a>
                     <button ng-click="savePrescritor(prescritor)" style="margin-right: 2px;" ng-disabled="formPrescritor.$invalid" type="submit"
                         class="btn btn-success pull-right">Salvar</button>
