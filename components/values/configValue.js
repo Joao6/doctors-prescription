@@ -1,5 +1,5 @@
 angular.module('prescritor').value('config', {
-    baseUrl: 'https://prescricao.herokuapp.com'
+    baseUrl: 'http://http://159.65.225.228:8081'
   })
   
   

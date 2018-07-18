@@ -1,0 +1,8 @@
+{
+    "apps": [
+        {
+            "name": "Stetoskop-Web",
+            "script": "./run.sh"
+        }
+    ]
+}
